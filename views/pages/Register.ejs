@@ -1,0 +1,75 @@
+<html>
+<head>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <script src="/scripts/register.js" type="application/javascript"></script>
+</head>
+<body>
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Lakewood Fun Meet<br>Competitor Registration</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form id="frmRegister" action="/register" method="post" onsubmit="submitScript(e);">
+          <div class="row clearfix">
+            <span class="credit"><b>Kids can use their parent's email too!</b></span>
+          </div>
+          <div class="input_field"> <span><img src="/img/email-small.png" class="form_icon"></span>
+            <input id="iEmail" type="email" name="Email" placeholder="Email" required />
+          </div>
+          <div class="input_field"> <span><img src="/img/key-small.png" class="form_icon"></span>
+            <input id="iPassword1" type="password" name="Password" placeholder="Password" required />
+          </div>
+          <div class="input_field"> <span><img src="/img/key-small.png" class="form_icon"></span>
+            <input id="iPassword2" type="password" name="Password" placeholder="Re-type Password" required />
+          </div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                <input id="iFirstName" type="text" name="FirstName" placeholder="First Name" required/>
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                <input id="iNickName" type="text" name="NickName" placeholder="Nick Name" />
+              </div>
+            </div>
+           </div>
+            <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+              <input id="iLastName" type="text" name="LastName" placeholder="Last Name" required />
+            </div>
+          <div class="row clearfix">
+          <div class="col_third">
+            <div class="input_field"> <span><img src="/img/hourglass-small.png" class="form_icon"></span>
+              <input id="iAge" type="text" name="Age" minlength="1" maxlength="2"  placeholder="Age" required />
+            </div>
+          </div>
+          <div class="col_two_thirds">
+            <div class="input_field"> <span><img src="/img/calendar-small.png" class="form_icon"></span>
+              <input id="iDateOfBirth" type="text" name="DateOfBirth" placeholder="Date Of Birth - MM/DD/YYYY" />
+            </div>
+          </div>
+          </div>
+          <div class="row clearfix">
+            <div class="input_field">
+              <p class="credit">Date of Birth is optional and it is recommended that you use an approximation. It is
+                unnecessary for swimmers well above the age cutoff(s), as this is merely to know an accurate age for
+                event qualification. If a Date of Birth is not provided, the swimmer will simply be considered one year
+                older on this date each year. </p>
+            </div>
+          </div>
+          <input id="btnRegister" class="button" type="submit" value="Register" />
+        </form>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <p class="credit"><a href="/Login">
+          <img src="/img/home-small.png">
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

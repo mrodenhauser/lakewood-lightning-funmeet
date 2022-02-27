@@ -1,0 +1,149 @@
+<html>
+<head>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Lakewood Fun Meet<br>Create a Team</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form id="frmCreateTeam" action="/CreateTeam" method="post" onsubmit="submitScript(e);">
+          <div class="row clearfix">
+            <div class="input_field"> <span><img src="/img/team-small.png" class="form_icon"></span>
+              <%if(typeof TeamName !== 'undefined' && TeamName !== ''){%>
+              <input type="text" name="TeamName" value="<%=TeamName%>" required />
+              <%}else{%>
+              <input type="text" name="TeamName" placeholder="Team Name (Keep it clean!)" required />
+              <%}%>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="input_field"> <span><img src="/img/team-small.png" class="form_icon"></span>
+              <%if(typeof TeamTaunt !== 'undefined' && TeamTaunt !== ''){%>
+              <input type="text" name="TeamTaunt" value="<%=TeamTaunt%>"/>
+              <%}else{%>
+              <input type="text" name="TeamTaunt" placeholder="Team Taunt (optional)"/>
+              <%}%>
+            </div>
+          </div>
+          <div class="row clearfix">
+              <p class="credit">By creating a team, you will become the Team Captain and can register the
+                team for events. Make sure to create a team with the right number of members for the Events you plan on
+                competing in. Oh, and make sure you have others' permission to be on your team :-)</p>
+          </div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/crown-small.png" class="form_icon"></span>
+                <input type="text" name="FirstName" value="<%=TeamCaptain.FirstName%>" required readonly/>
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/crown-small.png" class="form_icon"></span>
+                <input type="text" name="LastName" value="<%=TeamCaptain.LastName%>" required readonly/>
+              </div>
+            </div>
+            <input type="hidden" name="IndividualId" value="<%=TeamCaptain.IndividualId%>">
+          </div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 1){%>
+                  <input type="text" name="FirstName" value="<%=FirstNames[1]%>" required/>
+                <%} else {%>
+                  <input type="text" name="FirstName" placeholder="First Name" required/>
+                <%}%>
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 1){%>
+                  <input type="text" name="LastName" value="<%=LastNames[1]%>" required/>
+                <%} else {%>
+                  <input type="text" name="LastName" placeholder="Last Name" required/>
+                <%}%>
+              </div>
+            </div>
+            <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 1){%>
+            <input type="hidden" name="IndividualId" value="<%=IndividualIds[1]%>">
+            <%}else{%>
+            <input type="hidden" name="IndividualId">
+            <%}%>
+          </div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 2){%>
+                <input type="text" name="FirstName" value="<%=FirstNames[2]%>" required/>
+                <%} else {%>
+                  <input type="text" name="FirstName" placeholder="First Name" required/>
+                <%}%>
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 2){%>
+                <input type="text" name="LastName" value="<%=LastNames[2]%>" required/>
+                <%} else {%>
+                  <input type="text" name="LastName" placeholder="Last Name" required/>
+                <%}%>
+              </div>
+            </div>
+            <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 2){%>
+            <input type="hidden" name="IndividualId" value="<%=IndividualIds[2]%>">
+            <%}else{%>
+              <input type="hidden" name="IndividualId">
+            <%}%>
+          </div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 3){%>
+                <input type="text" name="FirstName" value="<%=FirstNames[3]%>" required/>
+                <%} else {%>
+                  <input type="text" name="FirstName" placeholder="First Name" required/>
+                <%}%>
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 3){%>
+                <input type="text" name="LastName" value="<%=LastNames[3]%>" required/>
+                <%} else {%>
+                  <input type="text" name="LastName" placeholder="Last Name" required/>
+                <%}%>
+              </div>
+            </div>
+            <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 3){%>
+            <input type="hidden" name="IndividualId" value="<%=IndividualIds[3]%>">
+            <%}else{%>
+              <input type="hidden" name="IndividualId">
+            <%}%>
+          </div>
+          <%if(typeof ValidationErrors !== 'undefined' && ValidationErrors !== ''){%>
+          <div class="row clearfix">
+            <p class="credit"><%=ValidationErrors%></p>
+          </div>
+          <%}%>
+          <input class="button" type="submit" value="Create Team" />
+        </form>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+  <div class="row clearfix">
+    <a href="/MeetEvents?IndividualId=<%=TeamCaptain.IndividualId%>"  class="col_half">
+      <img src="/img/triangle-flag-small.png">
+    </a>
+    <a href="/Home?IndividualId=<%=TeamCaptain.IndividualId%>">
+      <img src="/img/home-small.png">
+    </a>
+    <a href="/Login" class="bottom_right">
+      <img src="/img/square-new-window-small.png" >
+    </a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+const validation = require('./validations');
+
+exports.getHash = function (inText) {
+    let hash = 0, i, chr;
+    if(inText) {
+        if (inText.length === 0) return hash;
+        for (i = 0; i < inText.length; i++) {
+            chr = inText.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+        }
+    }
+    return hash;
+};
+
+exports.hashTextInResp = function(respJson, propName){
+    if(!propName)
+        propName = 'DateOfBirth';
+
+    if(Array.isArray(respJson)){
+        respJson.forEach((obj) => {
+            if (obj.hasOwnProperty(propName)) {
+                obj[propName] = this.getHash(obj[propName]);
+            }
+        });
+    }
+    else {
+        if (respJson.hasOwnProperty(propName)) {
+            respJson[propName] = this.getHash(respJson[propName]);
+        }
+
+    }
+};
+
+exports.hashToNewProp = function(respJson, propName, newPropName){
+    if(!propName)
+        propName = 'DateOfBirth';
+
+    if(Array.isArray(respJson)){
+        respJson.forEach((obj) => {
+            if (obj.hasOwnProperty(propName)) {
+                obj[newPropName] = this.getHash(validation.StringifyDataObj(obj[propName]));
+                obj[propName] = null;
+            }
+        });
+    }
+    else {
+        if (respJson.hasOwnProperty(propName)) {
+            respJson[newPropName] = this.getHash(validation.StringifyDataObj(respJson[propName]));
+            respJson[propName] = null;
+        }
+
+    }
+};

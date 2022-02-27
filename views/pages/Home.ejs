@@ -1,0 +1,79 @@
+<html>
+<%- include header.ejs %>
+<body>
+<%- include nav.ejs%>
+    <div class="container">
+        <div class="p-5 text-center bg-light" style= "margin-top: 50px;">
+            <h2 class="mb-3">Lakewood Fun Meet - Registration Home</h2>
+            <h3 class="mb-3">Welcome <%= CurrentUser.FirstName %> <%= CurrentUser.LastName %>!</h3>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-text">
+                    You are registered for <%= CurrentUser.IndividualEventCount %> events as an individual.
+                </p>
+                <a href="/MyIndividualEvents?IndividualId=<%=CurrentUser.IndividualId%>" class="card-link">
+                    View my individual events</a>
+                <a href="#" class="card-link">Withdraw from events</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <p class="card-text">
+                    You are registered for <%=CurrentUser.TeamEventCount%> events as part of a team.
+                </p>
+                <a href="/MyTeamEvents?IndividualId=<%= CurrentUser.IndividualId %>" class="card-link">
+                    View my team events</a>
+                <a href="#" class="card-link">Withdraw from events</a>
+            </div>
+        </div>
+        <% if((parseInt(CurrentUser.IndividualEventCount) + parseInt(CurrentUser.TeamEventCount)) < 5) {%>
+        <div class="d-flex p-2">
+            You can register for <%=( 5 - (parseInt(CurrentUser.IndividualEventCount) + parseInt(CurrentUser.TeamEventCount)))%> more events.
+        </div>
+        <div class="px-4">
+            <div class="row gx-5">
+                <div class="col">
+                    <div class="p-3">
+                        <a href="/MeetEvents?IndividualId=<%=CurrentUser.IndividualId%>">
+                            <button class="btn btn-primary">Register for an Event</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3">
+                        <a href="/CreateTeam?IndividualId=<%=CurrentUser.IndividualId%>">
+                            <button class="btn btn-info">Start a Team</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+                <% } else {%>
+                <div class="row clearfix">
+                    <span class="credit">
+                        <b>You have reached your <%= (parseInt(CurrentUser.IndividualEventCount) + parseInt(CurrentUser.TeamEventCount)) %>
+                            event maximum!</b>
+                    </span>
+                </div>
+                <% }%>
+                <% if(CurrentUser.IsAdmin === true) {%>
+                <div class="row clearfix">
+                    <a><button class="button">Create an Event"</button></a>
+                </div>
+                <div class="row clearfix">
+                    <a><button class="button">Define an Event Type"</button></a>
+                </div>
+                <div class="row clearfix">
+                    <p class="credit">An Event Type is a reusable definition for what is the same about the event across
+                        instances of it.  If the rules, stroke, or team structure needs to change, a new Event Type must
+                        be created. However, if those are all the same, but only the age range or distance needs to be
+                        changed, you can reuse that Event Type any number of times to schedule actual events.
+                    </p>
+                </div>
+                <% }%>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

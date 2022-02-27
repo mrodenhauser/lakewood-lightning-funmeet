@@ -1,0 +1,86 @@
+<html>
+<head>
+  <link href="/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Lakewood Fun Meet<br>Heat Creation</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form id="frmCreateHeat" action="/CreateHeat" method="post" onsubmit="submitScript(e);">
+          <input type="hidden" name="EventId" value="<%=Event.EventId%>"/>
+          <input type="hidden" name="MeetId" value="<%=Event.MeetId%>"/>
+          <input type="hidden" name="IsTeamEvent" value="<%=Event.IsTeamEvent%>"/>
+          <div class="row clearfix">
+              <p>Creating Heats for <%=Event.EventDescription%> <%=Event.DistanceNum%><%=Event.DistanceUnit%>
+                (<% if (parseInt(Event.AgeMax)) { %>
+                <%=Event.AgeMin %>-<%= Event.AgeMax %> yrs
+                <%} else { %><%=Event.AgeMin%> & up<%}%>)</p>
+          </div>
+          <%var individualCount = 0; var teamCount = 0;%>
+          <%if (Event.IsTeamEvent === true){%>
+            <%if (typeof Teams !== 'undefined' && Teams.length > 0) { teamCount = Teams.length%>
+              <% for(var lcv=0; lcv < Event.MaxTeamsPerHeat; lcv++) {%>
+                <div class="row clearfix">
+                  <div class="input_field"> <span><img src="/img/team-small.png" class="form_icon"></span>
+                    <select name="HeatTeamIds" id="selHeatTeam<%=lcv%>">
+                      <option selected value="">Empty</option>
+                      <% for(var lcv=0; lcv < Teams.length; lcv++) {%>
+                        <option value="<%=Teams[lcv].TeamId%>"><%=Teams[lcv].TeamName%></option>
+                      <%}%>
+                    </select>
+                  </div>
+                </div>
+              <%}%>
+            <%} else {%>
+              <div class="row clearfix">
+                <p>All Individuals for this event have been assigned to heats! (or there are none registered for the event)</p>
+              </div>
+            <%}%>
+          <%} else {%>
+            <%if (typeof Individuals !== 'undefined' && Individuals.length > 0) { individualCount = Individuals.length %>
+              <% for(var lcv=0; lcv < Event.MaxTeamsPerHeat; lcv++) {%>
+                <div class="row clearfix">
+                  <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                    <select name="HeatIndividualIds" id="selHeatIndividual<%=lcv%>">
+                      <option selected value="">Empty</option>
+                      <% for(var lcv=0; lcv < Individuals.length; lcv++) {%>
+                      <option value="<%=Individuals[lcv].IndividualId%>">
+                        <%=Individuals[lcv].FirstName%> <%=Individuals[lcv].LastName%>
+                      </option>
+                      <%}%>
+                    </select>
+                  </div>
+                </div>
+              <%}%>
+            <%} else {%>
+              <div class="row clearfix">
+                <p>All Teams for this event have been assigned to heats! (or there are none registered for the event)</p>
+              </div>
+            <%}%>
+          <%}%>
+          <% if(individualCount > 0 || teamCount > 0) {%>
+            <input class="button" type="submit" value="Assign to a Heat" />
+          <%}%>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
+  <div class="row clearfix">
+    <a href="/MeetEvents?IndividualId=<%=AdminId%>" class="col_half">
+      <img src="/img/triangle-flag-small.png">
+    </a>
+    <a href="/Home?IndividualId=<%=AdminId%>">
+      <img src="/img/home-small.png">
+    </a>
+    <a href="/Login" class="bottom_right">
+      <img src="/img/square-new-window-small.png" >
+    </a>
+  </div>
+</div>
+</body>
+</html>

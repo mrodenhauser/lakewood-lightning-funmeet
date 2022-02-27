@@ -1,0 +1,85 @@
+<html>
+<head>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/scripts/register.js" type="application/javascript"></script>
+</head>
+<body>
+<div class="form_wrapper">
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Lakewood Fun Meet<br><%=Team.TeamName%></h2>
+            <h3><%=Team.TeamTaunt%></h3>
+        </div>
+        <div class="row clearfix">
+            <% if(typeof Members !== 'undefined' && Members.length > 0) {%>
+                <% for(var lcv=0; lcv < Members.length; lcv++) {%>
+                <div class="row clearfix">
+                    <span class="credit">
+                        <%if (Members[lcv]['IsTeamCaptain'] === true){%>
+                            <img src="/img/crown-small.png" class="form_icon"><b>
+                        <%} else {%>
+                            <img src="/img/user-small.png" class="form_icon">
+                        <%}%>
+                        <%=Members[lcv]['FirstName']%> <%=Members[lcv]['LastName']%>
+                        <%if (Members[lcv]['IsTeamCaptain'] === true){%></b><%}%>
+                    </span>
+                </div>
+                <%}%>
+
+            <%} else {%>
+                <div class="row clearfix">
+                <span class="credit">
+                    <p>This Team does not have an members</p>
+                </span>
+                </div>
+            <%}%>
+        </div>
+        <div class="row clearfix">
+            <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
+                <div class="row clearfix">
+                    <span class="credit">
+                        <p>
+                            <img src="/img/team-small.png" class="form_icon"> <%=Team.TeamName%> are currently registered for:
+                        </p>
+                    </span>
+                </div>
+                <% for(var lcv=0; lcv < Events.length; lcv++) {%>
+                <div class="row clearfix">
+                            <span class="credit">
+                               <b><%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%>
+                               </b> (<% if (parseInt(Events[lcv].AgeMax)) { %>
+                                (<%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs)
+                                <%} else { %> <%=Events[lcv].AgeMin%> & up<%}%>
+                                )
+                            </span>
+                </div>
+                <%}%>
+            <%} else {%>
+                <div class="row clearfix">
+                    <span class="credit">
+                        <p><%=Team.TeamName%> are not registered for any events.</p>
+                    </span>
+                </div>
+            <%}%>
+            <div class="row clearfix">
+                <span class="credit">
+                    <a href="/MeetEvents?IndividualId=<%=Team.TeamCaptain%>">See all events</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row clearfix">
+        <a href="/MeetEvents?IndividualId=<%=Team.TeamCaptain%>" class="col_half">
+            <img src="/img/triangle-flag-small.png">
+        </a>
+        <a href="/Home?IndividualId=<%=Team.TeamCaptain%>">
+            <img src="/img/home-small.png">
+        </a>
+        <a href="/Login" class="bottom_right">
+            <img src="/img/square-new-window-small.png" >
+        </a>
+    </div>
+</div>
+</body>
+</html>

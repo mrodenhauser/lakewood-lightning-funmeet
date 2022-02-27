@@ -1,0 +1,51 @@
+<html>
+<head>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <script src="/scripts/register.js" type="application/javascript"></script>
+</head>
+<body>
+<div class="form_wrapper">
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Lakewood Fun Meet<br> My <%= EventsType %> Events</h2>
+            <h3><%= Individual.FirstName %> <%= Individual.LastName %>'s Events</h3>
+        </div>
+        <div class="row clearfix">
+            <div class="">
+                <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
+                    <% for(var lcv=0; lcv < Events.length; lcv++) {%>
+                    <div class="row clearfix">
+                            <span class="credit">
+                               <b><%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%>
+                               </b> (<% if (parseInt(Events[lcv].AgeMax)) { %>
+                                (<%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs)
+                                <%} else { %> <%=Events[lcv].AgeMin%> & up<%}%>
+                                )
+                            </span>
+                    </div>
+                    <%}%>
+                <%} else {%>
+                    <div class="row clearfix">
+                    <span class="credit">
+                        <p>You are not registered for any <%= EventsType %> events. How sad :(</p>
+                    </span>
+                    </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row clearfix">
+        <a href="/MeetEvents?IndividualId=<%=Individual.IndividualId%>" class="col_half">
+            <img src="/img/triangle-flag-small.png">
+        </a>
+        <a href="/Home?IndividualId=<%=Individual.IndividualId%>">
+            <img src="/img/home-small.png">
+        </a>
+        <a href="/Login" class="bottom_right">
+            <img src="/img/square-new-window-small.png" >
+        </a>
+    </div>
+</div>
+</body>
+</html>
