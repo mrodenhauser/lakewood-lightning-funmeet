@@ -57,7 +57,7 @@ exports.addToEvent = async function addIndividualToEvent(eventId, individualId) 
                 successFunc(data);
             })
             .catch(error => {
-                rejectFunc(error);
+                 rejectFunc(error);
             });
     })
 };
