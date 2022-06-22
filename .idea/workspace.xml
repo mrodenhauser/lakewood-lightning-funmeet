@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7bc5bc77-4a9f-4153-99d4-3c60eb887eae" name="Default Changelist" comment="Added betterlogic for backup credentials">
+    <list default="true" id="7bc5bc77-4a9f-4153-99d4-3c60eb887eae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/database.js" afterDir="false" />
     </list>
@@ -20,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="188" selection-start-line="23" selection-start-column="188" selection-end-line="23" selection-end-column="188" />
+            <state relative-caret-position="170">
+              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -36,35 +36,39 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/assert-options/dist/src/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/objectMappings.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="121" column="31" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-327">
-              <caret line="5" column="32" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="32" />
+            <state relative-caret-position="442">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2278">
+              <caret line="378" column="42" selection-start-line="378" selection-start-column="42" selection-end-line="378" selection-end-column="42" />
+              <folding>
+                <element signature="n#!!block;n#validateTeamAndGetIds#0" />
+                <element signature="e#6028#7001#0" />
+                <element signature="e#7057#8018#0" />
+                <element signature="e#8072#9309#0" />
+                <element signature="e#9363#10409#0" />
+                <element signature="e#10464#11949#0" />
+                <element signature="e#11997#13049#0" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -90,15 +94,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
               <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="8" selection-start-line="1" selection-end-line="1" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -161,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/scripts/register.js" />
         <option value="$PROJECT_DIR$/lib/validations.js" />
         <option value="$PROJECT_DIR$/public/scripts/register.js" />
         <option value="$PROJECT_DIR$/public/scripts/home.js" />
@@ -211,6 +205,7 @@
         <option value="$PROJECT_DIR$/views/pages/Home.ejs" />
         <option value="$PROJECT_DIR$/database_entities/individual.js" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/database.js" />
       </list>
     </option>
@@ -245,7 +240,18 @@
             <path>
               <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
               <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -355,11 +361,25 @@
       <option name="project" value="LOCAL" />
       <updated>1655933798252</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added better logic for backup credentials">
+      <created>1655937091083</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655937091083</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed package.json start">
+      <created>1655938934515</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655938934515</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="472619000" />
+    <option name="totallyTimeSpent" value="474940000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -372,6 +392,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25256106" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -380,12 +401,12 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32784313" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3257989" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39750585" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39750585" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3289166" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3289166" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32969603" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
@@ -426,7 +447,9 @@
     </ignored-roots>
     <MESSAGE value="Initial commit...working version from 2021" />
     <MESSAGE value="Added logic for backup credentials" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logic for backup credentials" />
+    <MESSAGE value="Added better logic for backup credentials" />
+    <MESSAGE value="Fixed package.json start" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed package.json start" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -519,9 +542,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/img/adjust-small.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/img/calendar-small.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -577,24 +597,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="139" column="59" selection-start-line="139" selection-start-column="59" selection-end-line="139" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="378" column="42" selection-start-line="378" selection-start-column="42" selection-end-line="378" selection-end-column="42" />
-          <folding>
-            <element signature="n#!!block;n#validateTeamAndGetIds#0" />
-            <element signature="e#6028#7001#0" />
-            <element signature="e#7057#8018#0" />
-            <element signature="e#8072#9309#0" />
-            <element signature="e#9363#10409#0" />
-            <element signature="e#10464#11949#0" />
-            <element signature="e#11997#13049#0" />
-            <element signature="e#14131#15905#0" />
-            <element signature="e#15960#17385#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -797,20 +799,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
+    <entry file="file://$PROJECT_DIR$/package-lock.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-327">
-          <caret line="5" column="32" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="32" />
+        <state relative-caret-position="2278">
+          <caret line="378" column="42" selection-start-line="378" selection-start-column="42" selection-end-line="378" selection-end-column="42" />
+          <folding>
+            <element signature="n#!!block;n#validateTeamAndGetIds#0" />
+            <element signature="e#6028#7001#0" />
+            <element signature="e#7057#8018#0" />
+            <element signature="e#8072#9309#0" />
+            <element signature="e#9363#10409#0" />
+            <element signature="e#10464#11949#0" />
+            <element signature="e#11997#13049#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="188" selection-start-line="23" selection-start-column="188" selection-end-line="23" selection-end-column="188" />
+        <state relative-caret-position="170">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
