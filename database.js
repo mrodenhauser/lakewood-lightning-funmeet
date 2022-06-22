@@ -17,19 +17,12 @@ monitor.attach(initOptions)
 
 // Preparing the connection details:
 
-// local
+// local testing only
 // const cn = 'postgresql://postgres:Jun3 Bug@localhost:5432/postgres';
 
-// heroku remote
-//const cn = 'postgres://khjwxjvjkxxldh:24935094ee474f4fc65f2dfeb6d4e4eee67036bafc9473751f67eb411ce20c01@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d3jq4rrtb9856q';
-
 // env
-let cn = process.env.DATABASE_URL;
+let cn = process.env.DATABASE_URL || 'postgres://ncgipwbjvdimxn:c84b682ba9e35e7fb1a5319321d3369a3d655c6c8972c758aa5627df7681b272@ec2-3-224-8-189.compute-1.amazonaws.com:5432/dch0qkdk3h6iia';
 
-//use latest known credentials if process.env not working.
-if (cn === undefined){
-    cn = 'postgres://khjwxjvjkxxldh:24935094ee474f4fc65f2dfeb6d4e4eee67036bafc9473751f67eb411ce20c01@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d3jq4rrtb9856q';
-}
 
 // Creating and exporting a new database instance from the connection details:
 exports.db = pgp(cn);
