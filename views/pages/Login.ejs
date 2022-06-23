@@ -1,48 +1,48 @@
 <html>
-<head>
-  <link href="/css/style.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="form_wrapper">
-  <div class="form_container">
-    <div class="title_container">
-      <h2>Lakewood Fun Meet<br>Competitor Registration</h2>
-    </div>
-    <div class="row clearfix">
-      <div class="">
-        <form id="frmLogin" action="/loginAttempt" method="post" onsubmit="submitScript(e);">
-          <!-- <div class="input_field"> <span><img src="/img/email-small.png" class="form_icon"></span>
-            <input type="email" name="email" placeholder="Email" required />
-          </div>
-          <span class="credit"><b>OR</b></span> -->
-          <div class="row clearfix">
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <input type="text" name="FirstName"  placeholder="First Name" required/>
+  <head>
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="form_wrapper">
+      <div class="form_container">
+        <div class="title_container">
+          <h2>Lakewood Fun Meet<br>Competitor Login</h2>
+        </div>
+        <div class="row clearfix">
+          <div class="">
+            <form id="frmLogin" action="/loginAttempt" method="post" onsubmit="submitScript(e);">
+              <!-- <div class="input_field"> <span><img src="/img/email-small.png" class="form_icon"></span>
+                <input type="email" name="email" placeholder="Email" required />
               </div>
-            </div>
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <input type="text" name="LastName"  placeholder="Last Name" required />
+              <span class="credit"><b>OR</b></span> -->
+              <div class="row clearfix">
+                <div class="col_half">
+                  <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                    <input type="text" name="FirstName"  placeholder="First Name" required/>
+                  </div>
+                </div>
+                <div class="col_half">
+                  <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
+                    <input type="text" name="LastName"  placeholder="Last Name" required />
+                  </div>
+                </div>
               </div>
-            </div>
+              <div class="row clearfix">
+                <div class="input_field"> <span><img src="/img/key-small.png" class="form_icon"></span>
+                  <input type="password" name="Password" placeholder="Password" required />
+                </div>
+              </div>
+              <div class="row clearfix">
+                <div class="input_field"><% if (typeof LoginResult !== 'undefined') {%>
+                  <p class="credit"><%=LoginResult%></p>
+                  <% } %>
+                </div>
+              </div>
+              <input class="button" type="submit" value="Login" />
+            </form>
           </div>
-          <div class="row clearfix">
-            <div class="input_field"> <span><img src="/img/key-small.png" class="form_icon"></span>
-              <input type="password" name="Password" placeholder="Password" required />
-            </div>
-          </div>
-          <div class="row clearfix">
-            <div class="input_field"><% if (typeof LoginResult !== 'undefined') {%>
-              <p class="credit"><%=LoginResult%></p>
-              <% } %>
-            </div>
-          </div>
-          <input class="button" type="submit" value="Login" />
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+  </body>
 </html>
