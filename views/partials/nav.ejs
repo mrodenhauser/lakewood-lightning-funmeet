@@ -1,65 +1,57 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <!-- Container wrapper -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <!-- Toggle button -->
-    <button
-            class="navbar-toggler"
-            type="button"
-            data-mdb-toggle="collapse"
-            data-mdb-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- Collapsible wrapper -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Left links -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <% if(CurrentUser){ %>
-          <li class="nav-item">
-            <a class="nav-link" href="/Home?IndividualId=<%=CurrentUser.IndividualId%>">Home</a>
+    <ul class="navbar-nav">
+      <!-- Dropdown -->
+      <li class="nav-item dropdown">
+        <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false"
+        >
+          Menu
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <% if(typeof CurrentUser !== 'undefined'){ %>
+          <li>
+            <a class="dropdown-item" href="/Home?IndividualId=<%=CurrentUser.IndividualId%>">Home</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/Register">Register</a>
           </li>
           <% if(CurrentUser.IsAdmin){%>
-            <li class="nav-item">
-              <a class="nav-link" href="/MeetEvents?IndividualId=<%=CurrentUser.IndividualId%>">Meets</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Event Definitions</a>
-            </li>
+          <li>
+            <a class="nav-link" href="/MeetEvents?IndividualId=<%=CurrentUser.IndividualId%>">Meets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Event Definitions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Heats</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Reports</a>
+          </li>
           <%}%>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Events</a>
+          <%} else {%>
+          <li>
+            <a class="dropdown-item" href="#">Login</a>
           </li>
-          <% if(CurrentUser.IsAdmin){%>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Heats</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Reports</a>
-            </li>
+          <li>
+            <a class="ndropdown-item" href="#">Register</a>
+          </li>
           <%}%>
-        <%} else {%>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
-          </li>
-        <%}%>
-      </ul>
-      <!-- Left links -->
-    </div>
-    <!-- Collapsible wrapper -->
 
-    <!-- Right elements -->
+        </ul>
+      </li>
+    </ul>
     <div class="d-flex align-items-center">
 
       <!-- User -->
-      <%if (CurrentUser) {%>
+      <%if (typeof CurrentUser !== 'undefined') {%>
         <a
                 class="dropdown-toggle d-flex align-items-center hidden-arrow"
                 href="#"
@@ -84,8 +76,6 @@
       <%}%>
       <!-- User -->
     </div>
-    <!-- Right elements -->
   </div>
-  <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
