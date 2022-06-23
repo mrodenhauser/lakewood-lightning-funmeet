@@ -78,7 +78,9 @@ router.post('/Register',async(req, res, next) => {
     if(validationErrors === '')
         dbIndividual.create(individualJson)
             .then(data => {
-                res.status(200).render('pages/Home', data );
+                res.status(200).render('pages/Home',  {
+                    CurrentUser: data
+                }  );
             })
             .catch(error =>{
                 exHandlers.createGetErrorResponse(next, error);
@@ -113,7 +115,9 @@ router.post('/LoginAttempt',async(req, res) => {
     if(validationErrors === '')
         dbIndividual.getIndividualForLogin(firstName, lastName, passwordHash)
             .then(data => {
-                res.status(200).render('pages/Home', data );
+                res.status(200).render('pages/Home',  {
+                    CurrentUser: data
+                }  );
             })
             .catch(error =>{
                 console.warn(firstName + ", " + lastName + " made an unsuccessful login attempt. " + error.message);
@@ -140,7 +144,9 @@ router.get('/Home',async(req, res, next) => {
         if (validations.isInt(individualId)){
             dbIndividual.getById(individualId)
                 .then(data => {
-                    res.render('pages/Home', data );
+                    res.render('pages/Home', {
+                        CurrentUser: data
+                    } );
                 })
                 .catch(error =>{
                     exHandlers.createGetErrorResponse(next, "Could not load the Individual due to a server error. "
