@@ -43,9 +43,9 @@ app.use('/',indexRouter);
 //static pages
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.get('/register', (req, res) => res.render('pages/register'));
-app.get('/login', (req, res) => res.render('pages/login'));
-app.get('/', (req, res) => res.render('pages/login'));
+app.get('/register', (req, res) => res.render('pages/Register'));
+app.get('/login', (req, res) => res.render('pages/Login'));
+app.get('/', (req, res) => res.render('pages/Login'));
 app.get('/admin-home', (req, res) => res.render('pages/AdminHome'));
 
 
