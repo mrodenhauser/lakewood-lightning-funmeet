@@ -1,62 +1,79 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <script src="/scripts/register.js" type="application/javascript"></script>
-</head>
+<%- include('../partials/header.ejs') %>
 <body>
-<div class="form_wrapper">
-    <div class="form_container">
-        <div class="title_container">
-            <h2>Lakewood Fun Meet<br>All Events</h2>
-            <h3><%=Meet.MeetName%></h3>
-        </div>
-        <div class="row clearfix">
-            <div class="">
-                <input type="hidden" name="IndividualId" value="<%=Individual.IndividualId%>">
-                <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
-                    <div class="row clearfix">
-                        <p class="credit">Click any Event you are interested in signing up for.</p>
-                    </div><% for(var lcv=0; lcv < Events.length; lcv++) {%>
-                        <div class="row clearfix">
-                    <span class="credit">
-                        <% if(Events[lcv].IsTeamEvent === true) {%>
-                        <img src="/img/team-small.png" class="form_icon">
-                        <%} else {%>
-                        <img src="/img/user-small.png" class="form_icon">
-                        <%}%>
-                        <a href="/EventSignUp?EventId=<%=Events[lcv].EventId%>&IndividualId=<%=Individual.IndividualId%>">
-                           <%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%>
-                       </a> (<% if (parseInt(Events[lcv].AgeMax)) { %>
-                        <%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs
-                        <%} else { %><%=Events[lcv].AgeMin%> & up<%}%>)
-                        <% if(Individual.IsAdmin === true) {%>
-                            - <a href="/CreateHeat?EventId=<%=Events[lcv].EventId%>">Config Heats</a>
-                        <%}%>
-                    </span>
-                        </div>
-                <%} } else {%>
-                    <div class="row clearfix">
-                    <span class="credit">
-                        <p>There are no Events available to be signed up for. How Sad :(</p>
-                    </span>
-                    </div>
-                <%}%>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+        <div class="container-fluid">
+            <div class = "row">
+                <h2 class="mb-3">
+                                        <span class="col-sm-6">
+                                        Lakewood Fun Meet:
+                                        </span>
+                    <span class="col-sm-6">
+                                             Event List
+                                        </span>
+                </h2>
+                <h3><%=Meet.MeetName%> - <%=Meet.MeetBannerDescription%></h3>
             </div>
         </div>
     </div>
-    <br><br><br>
-    <div class="row clearfix">
-        <a href="/MeetEvents?IndividualId=<%=Individual.IndividualId%>" class="col_half">
-            <img src="/img/triangle-flag-small.png">
-        </a>
-        <a href="/Home?IndividualId=<%=Individual.IndividualId%>" class="bottom_middle">
-            <img src="/img/home-small.png">
-        </a>
-        <a href="/Login" class="bottom_right">
-            <img src="/img/square-new-window-small.png" >
-        </a>
+    <div class="container-fluid">
+        <input type="hidden" name="IndividualId" value="<%=Individual.IndividualId%>"/>
+        <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
+            <div class="row d-flex justify-content-center ">
+                <% for(var lcv=0; lcv < Events.length; lcv++) {%>
+                <div class="col-auto">
+                    <div class="card my-3" style="width: 20rem" >
+                        <div class="card-body">
+                            <h5 class="card-title"><%=Events[lcv]['EventDescription']%></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">
+                                <% if(Events[lcv].IsTeamEvent === true) {%>Team <%} else {%>Individual <%}%>Event
+                            </h6>
+                            <p class="card-text">
+                                <b>Distance: </b><%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%><br>
+                                <b>Ages: </b>
+                                <% if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMin)
+                                        && parseInt(Events[lcv].AgeMax) < 99 && parseInt(Events[lcv].AgeMin) > 0 ) { %>
+                                    <%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs
+                                <%} else if (parseInt(Events[lcv].AgeMin) && parseInt(Events[lcv].AgeMin) > 0) { %>
+                                    <%=Events[lcv].AgeMin%> & up
+                                <%} else if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMax) < 99) { %>
+                                    <%=Events[lcv].AgeMax%> & under
+                                <%} else { %>
+                                    All Ages
+                                <%}%>
+                                <% if(Individual.IsAdmin === true) {%>
+                                <br>
+                                <a href="/CreateHeat?EventId=<%=Events[lcv].EventId%>">Config Heats (Admin)</a>
+                                <%}%>
+                                <hr class="divider-horizontal-blurry" />
+                                <% if((Individual.Age < Events[lcv].AgeMin || Individual.Age > Events[lcv].AgeMax)){%>
+                                    <a href="/EventSignUp?EventId=<%=Events[lcv].EventId%>&IndividualId=<%=Individual.IndividualId%>"
+                                       class="btn btn-outline-light" data-mdb-ripple-color="dark" style="pointer-events: none">
+
+                                <%} else {%>
+                                <a href="/EventSignUp?EventId=<%=Events[lcv].EventId%>&IndividualId=<%=Individual.IndividualId%>" class="btn btn-primary" data-mdb-ripple-color="dark" >
+                                <% }%>
+                                    <% if(Events[lcv].IsTeamEvent === false) {%>I Wanna Do This!<%} else {%>My Team Wants to do this!<%}%>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--<hr class="divider-horizontal-blurry" />-->
+                <%} %> <!--for loop-->
+            </div>
+        <% } else {%>
+            <div class="row clearfix">
+            <span class="credit">
+                <p>There are no Events available to be signed up for. How Sad :(</p>
+            </span>
+            </div>
+        <%}%>
+        </div>
     </div>
-</div>
-</div>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>
