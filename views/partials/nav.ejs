@@ -15,33 +15,39 @@
           Menu
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <% if(typeof CurrentUser !== 'undefined'){ %>
+          <% if(typeof Individual !== 'undefined'){ %>
           <li>
-            <a class="dropdown-item" href="/Home?IndividualId=<%=CurrentUser.IndividualId%>">Home</a>
+            <a class="dropdown-item" href="/Home?IndividualId=<%=Individual.IndividualId%>">Home</a>
           </li>
           <li>
-            <a class="dropdown-item" href="/Register">Register</a>
+            <a class="dropdown-item" href="/MeetEvents?IndividualId=<%=Individual.IndividualId%>">Meet Events</a>
           </li>
-          <% if(CurrentUser.IsAdmin){%>
           <li>
-            <a class="nav-link" href="/MeetEvents?IndividualId=<%=CurrentUser.IndividualId%>">Meets</a>
+            <a class="dropdown-item" href="/CreateTeam?IndividualId=<%=Individual.IndividualId%>">Start a Team</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Event Definitions</a>
+          <!--<li>
+            <a class="dropdown-item" href="/MyEventList?IndividualId=<%=Individual.IndividualId%>">My Events</a>
+          </li>-->
+          <% if(Individual.IsAdmin){%>
+          <!--<li>
+            <a class="dropdown-item" href="/MeetEvents?IndividualId=<%=Individual.IndividualId%>">Meets (coming soon)</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Heats</a>
+          <li>
+            <a class="dropdown-item" href="#">Event Definitions (coming soon)</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Reports</a>
+          <li>
+            <a class="dropdown-item" href="#">Heats (coming soon)</a>
           </li>
+          <li>
+            <a class="dropdown-item" href="#">Reports (coming soon)</a>
+          </li>-->
           <%}%>
           <%} else {%>
           <li>
-            <a class="dropdown-item" href="#">Login</a>
+            <a class="dropdown-item" href="/Login">Login</a>
           </li>
           <li>
-            <a class="ndropdown-item" href="#">Register</a>
+            <a class="dropdown-item" href="/Register">Register</a>
           </li>
           <%}%>
 
@@ -51,7 +57,7 @@
     <div class="d-flex align-items-center">
 
       <!-- User -->
-      <%if (typeof CurrentUser !== 'undefined') {%>
+      <%if (typeof Individual !== 'undefined') {%>
         <a
                 class="dropdown-toggle d-flex align-items-center hidden-arrow"
                 href="#"
@@ -60,17 +66,23 @@
                 data-mdb-toggle="dropdown"
                 aria-expanded="false"
         >
-          <%= CurrentUser.FirstName %> <%= CurrentUser.LastName %>
+          <%= Individual.FirstName %> <%= Individual.LastName %>
         </a>
         <ul
                 class="dropdown-menu dropdown-menu-end"
                 aria-labelledby="navbarDropdownMenuLink"
         >
           <li>
-            <a class="dropdown-item" href="#">My profile</a>
+            <a class="dropdown-item" href="/MyIndividualEvents?IndividualId=<%=Individual.IndividualId%>">My Individual Events</a>
           </li>
           <li>
-            <a class="dropdown-item" href="#">Logout</a>
+            <a class="dropdown-item" href="/MyTeamEvents?IndividualId=<%=Individual.IndividualId%>">My Team Events</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/MyTeams?IndividualId=<%=Individual.IndividualId%>">My Teams</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="/Login">Logout</a>
           </li>
         </ul>
       <%}%>

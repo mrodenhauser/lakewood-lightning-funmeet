@@ -1,100 +1,131 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <script src="/scripts/register.js" type="application/javascript"></script>
-</head>
+<%- include('../partials/header.ejs') %>
 <body>
-<div class="form_wrapper">
-    <div class="form_container">
-        <div class="title_container">
-            <h2>Lakewood Fun Meet<br>Event Sign Up</h2>
-            <h3><%=Event.EventDescription%></h3>
-            <h4><%=Event.DisplayRules%></h4>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+        <div class="container-fluid">
+            <div class = "row">
+                <h2 class="mb-3">
+                                        <span class="col-sm-6">
+                                        Lakewood Fun Meet:
+                                        </span>
+                    <span class="col-sm-6">
+                                             Event Sign Up
+                                        </span>
+                </h2>
+            </div>
         </div>
+    </div>
+    <div class="container-fluid">
+        <div class="card border border-primary w-100 my-3" style="width: 20rem" >
+            <div class="card-body text-primary">
+                <h5 class="card-title"><%=Event.EventDescription%></h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    <% if(Event.IsTeamEvent === true) {%>Team <%} else {%>Individual <%}%>Event
+                </h6>
+                <p class="card-text">
+                    <% if(typeof Event.DisplayRules !== 'undefined' && Event.DisplayRules !== '') { %>
+                    <b>Rules: </b><%=Event.DisplayRules%>
+                    <hr class="divider-horizontal-blurry" />
+                    <%}%>
+                    <b>Distance: </b><%=Event.DistanceNum%><%=Event.DistanceUnit%><br>
+                    <b>Ages: </b>
+                    <% if (parseInt(Event.AgeMax) && parseInt(Event.AgeMin)
+                            && parseInt(Event.AgeMax) < 99 && parseInt(Event.AgeMin) > 0 ) { %>
+                    <%=Event.AgeMin %>-<%= Event.AgeMax %> yrs
+                    <%} else if (parseInt(Event.AgeMin) && parseInt(Event.AgeMin) > 0) { %>
+                    <%=Event.AgeMin%> & up
+                    <%} else if (parseInt(Event.AgeMax) && parseInt(Event.AgeMax) < 99) { %>
+                    <%=Event.AgeMax%> & under
+                    <%} else { %>
+                        All Ages
+                    <%}%>
+                    <% if(Individual.IsAdmin === true) {%>
+                    <br>
+                    <br>
+                    <a href="/CreateHeat?EventId=<%=Event.EventId%>">Config Heats (Admin)</a>
+                    <%}%>
+                </p>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <div class="col">
+                <form id="frmEventSignUp" action="/EventSignUp" method="post" onsubmit="submitScript(e);">
+                    <input type="hidden" name="IndividualId" value="<%=Individual.IndividualId%>">
+                    <input type="hidden" name="EventId" value="<%=Event.EventId%>">
+                    <input type="hidden" name="IsTeamEvent" value="<%=Event.IsTeamEvent%>">
+                    <input type="hidden" name="TeamCaptainId" value="<%=Individual.IndividualId%>">
+                    <% if(Event.IsTeamEvent) {%>
+                        <% if(typeof Teams !== 'undefined') {%>
+                            <% if(Teams.length > 0) {%>
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-auto">
+                                       <p>Team to Sign Up:
+                                            <select name="EventTeamId" id="selEventTeam<%=lcv%>">
+                                                <% for(var lcv=0; lcv < Teams.length; lcv++) {%>
+                                                <option value="<%=Teams[lcv].TeamId%>"><%=Teams[lcv].TeamName%></option>
+                                                <%}%>
+                                            </select>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col-6">
+                                        <button id="btnSignUp" class="btn btn-primary" type="submit" >Sign Up for Event</button>
+                                    </div>
+                                </div>
+                            <%} else { %>
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-6">
+                                    <a href="/CreateTeam?IndividualId=<%=Individual.IndividualId%>">Create a team</a>
+                                    first to register for the event.</span>
+                                </div>
+                            </div>
+                            <%}%>
+                        <%}%>
+                    <%} else { %>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-6">
+                            <button id="btnSignUp" class="btn btn-primary" type="submit" >Sign Up for Event</button>
+                        </div>
+                    </div>
+                    <%}%>
+                </form>
+            </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
         <% if(Event.IsTeamEvent === true) {%>
             <% if(typeof TeamCompetitors !== 'undefined' && TeamCompetitors.length > 0) {%>
-                <div class="row clearfix">
-                    <span class="credit">Teams Registered:</span>
-                </div>
+                <h5 class="mb-3">Teams Already Signed Up:</h5>
+                <ul>
                 <% for(var lcv=0; lcv < TeamCompetitors.length; lcv++) {%>
-                    <div class="row clearfix">
-                        <span class="credit"><%=TeamCompetitors[lcv].TeamName%></span>
-                        <%=TeamCompetitors[lcv].TeamTaunt%>
-                    </div>
+                    <li>
+                        <b><%=TeamCompetitors[lcv].TeamName%></b>
+                        <%if(typeof TeamCompetitors[lcv].TeamTaunt !== 'undefined' && TeamCompetitors[lcv].TeamTaunt !==''){ %>
+                         - <%=TeamCompetitors[lcv].TeamTaunt%>
+                        <%}%>
+                    </li>
                 <%}%>
+                </ul>
             <%} else {%>
-                <div class="row clearfix">
-                    <span class="credit">
-                        <p>No teams are currently registered for this event. Be the first!</p>
-                    </span>
-                </div>
+                <h5 class="mb-3">No teams have signed up for this event yet. Be the first!</h5>
             <%}%>
         <%} else {%>
             <% if(typeof IndividualCompetitors !== 'undefined' && IndividualCompetitors.length > 0) {%>
-                <div class="row clearfix">
-                    <span class="credit">Individuals Registered:</span>
-                </div>
-                <div class="row clearfix">
+                <h5 class="mb-3">Already Signed Up:</h5>
                     <ul>
-                <% for(var lcv=0; lcv < IndividualCompetitors.length; lcv++) {%>
-                        <li><%=IndividualCompetitors[lcv]['FirstName']%> <%=IndividualCompetitors[lcv]['LastName']%></li>
-                <%}%>
+                        <% for(var lcv=0; lcv < IndividualCompetitors.length; lcv++) {%>
+                                <li><%=IndividualCompetitors[lcv]['FirstName']%> <%=IndividualCompetitors[lcv]['LastName']%></li>
+                        <%}%>
                     </ul>
-                </div>
             <%} else {%>
-                <div class="row clearfix">
-                    <span class="credit">
-                        <p>No one is currently registered for this event. Be the first!</p>
-                    </span>
-                </div>
+                <h5 class="mb-3">No one has signed up for this event yet. Be the first!</h5>
             <%}%>
         <%}%>
-        <form id="frmEventSignUp" action="/EventSignUp" method="post" onsubmit="submitScript(e);">
-            <input type="hidden" name="IndividualId" value="<%=Registrant.IndividualId%>">
-            <input type="hidden" name="EventId" value="<%=Event.EventId%>">
-            <input type="hidden" name="IsTeamEvent" value="<%=Event.IsTeamEvent%>">
-            <input type="hidden" name="TeamCaptainId" value="<%=Registrant.IndividualId%>">
-        <% if(Event.IsTeamEvent) {%>
-            <% if(typeof Teams !== 'undefined') {%>
-                <% if(Teams.length > 0) {%>
-                    <div class="row clearfix">
-                        <span class="credit">
-                            <p>Pick a team to register:
-                                <select name="EventTeamId" id="selEventTeam<%=lcv%>">
-                                    <% for(var lcv=0; lcv < Teams.length; lcv++) {%>
-                                    <option value="<%=Teams[lcv].TeamId%>"><%=Teams[lcv].TeamName%></option>
-                                    <%}%>
-                                </select>
-                            </p>
-                        </span>
-                    </div>
-
-                    <input id="btnSignUp" class="button" type="submit" value="Sign Up for Event" />
-                <%} else { %>
-                    <div class="row clearfix">
-                        <span class="credit">
-                            <a href="/CreateTeam?IndividualId=<%=Registrant.IndividualId%>">Create a team</a>
-                            first to register for the event.</span>
-                    </div>
-                <%}%>
-            <%}%>
-        <%} else { %>
-            <input id="btnSignUp" class="button" type="submit" value="Sign Up for Event" />
-        <%}%>
-        </form>
     </div>
-    <br><br><br>
-    <div class="row clearfix">
-        <a href="/MeetEvents?IndividualId=<%=Registrant.IndividualId%>" class="col_half">
-            <img src="/img/triangle-flag-small.png">
-        </a>
-        <a href="/Home?IndividualId=<%=Registrant.IndividualId%>">
-            <img src="/img/home-small.png">
-        </a>
-        <a href="/Login" class="bottom_right">
-            <img src="/img/square-new-window-small.png" >
-        </a>
-    </div>
-</div>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>

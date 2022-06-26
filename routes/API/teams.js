@@ -13,18 +13,29 @@ router.get('/', async (req, res, next) => {
     let heatId = req.query['heatId'];
     let eventId = req.query['eventId'];
     let meetId = req.query['meetId'];
+    let individualId = req.query['individualId'];
 
-    if (validate.isInt(heatId) || validate.isInt(eventId) || validate.isInt(meetId)) {
-        team.getTeams(heatId, eventId, meetId)
+    if (validate.isInt(individualId)) {
+        team.getTeamsByTeamCaptain(individualId)
             .then(data => {
                 res.status(200).json(data);
             })
-            .catch(error =>{
+            .catch(error => {
                 exceptions.createGetErrorResponse(next, error);
             });
     } else {
-        next(createError(400,"Attempt to pull Teams without valid meetId, eventId, or heatId: "
-            + meetId + ", " + eventId + ", " + heatId, next));
+        if (validate.isInt(heatId) || validate.isInt(eventId) || validate.isInt(meetId)) {
+            team.getTeams(heatId, eventId, meetId)
+                .then(data => {
+                    res.status(200).json(data);
+                })
+                .catch(error => {
+                    exceptions.createGetErrorResponse(next, error);
+                });
+        } else {
+            next(createError(400, "Attempt to pull Teams without valid meetId, eventId, heatId or individualId: "
+                + meetId + ", " + eventId + ", " + heatId, next));
+        }
     }
 });
 

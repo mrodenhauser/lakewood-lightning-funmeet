@@ -13,8 +13,8 @@ body {
 }
 
 .form_icon{
-    width:25px;
-    height:25px;
+    width:15px;
+    height:15px;
     vertical-align: text-bottom;
 }
 
@@ -233,6 +233,35 @@ body {
     width: 7px;
     height: 20px;
     border-color: #000000;
+}
+
+.list_fa ul {
+    list-style: none;
+    padding: 0;
+}
+.list_fa li {
+    padding-left: 1.3em;
+}
+.list_fa-user-slash li:before {
+    content: "\f506"; /* FontAwesome Unicode */
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-left: -1.3em; /* same as padding-left set on li */
+    width: 1.3em; /* same as padding-left set on li */
+}
+.list_fa-user-alt li:before {
+    content: "\f406"; /* FontAwesome Unicode */
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-left: -1.3em; /* same as padding-left set on li */
+    width: 1.3em; /* same as padding-left set on li */
+}
+.list_fa-user-check li:before {
+    content: "\f4fc"; /* FontAwesome Unicode */
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-left: -1.3em; /* same as padding-left set on li */
+    width: 1.3em; /* same as padding-left set on li */
 }
 
 .radio_option label {

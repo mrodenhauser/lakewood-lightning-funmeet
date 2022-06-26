@@ -1,80 +1,142 @@
+<!DOCTYPE html>
 <html>
 <head>
   <%- include('../partials/header.ejs') %>
   <script src="/scripts/register.js" type="application/javascript"></script>
 </head>
 <body>
-  <%- include('../partials/nav.ejs') %>
-    <div class="p-5 text-center bg-light" style= "margin-top: 50px;">
-      <h2 class="mb-3">Lakewood Fun Meet: Register</h2>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+      <div class="container-fluid">
+        <div class = "row">
+          <h2 class="mb-3">
+                                      <span class="col-sm-6">
+                                      Lakewood Fun Meet:
+                                      </span>
+            <span class="col-sm-6">
+                                           Registration
+                                      </span>
+          </h2>
+        </div>
+      </div>
     </div>
     <p class="d-flex p-2"><a href="/Login">
-        Already Registered?
+        Already Registered? Login!
       </a>
     </p>
-    <form id="frmRegister" action="/register" method="post" onsubmit="submitScript(e);">
+    <form id="frmRegister" action="/register" method="post" onsubmit="return submitRegistration();">
       <div class="container-justify-evenly">
         <div class="row g-1">
           <div class="col">
             <span class=" p-2"><b>Kids can use their parent's email too!</b></span>
           </div>
         </div>
-        <div class="row g-1">
-          <div class="col">
+        <div class="row d-flex align-items-center mb-3">
+          <div class="input-group mb-3 col-auto">
+            <span class="input-group-text" id="emailSpan">@</span>
             <div class="form-outline">
-              <input id="iEmail" type="email" name="Email" id="email" class="form-control" required />
+              <input id="iEmail" type="email" name="Email" id="email" class="form-control" size="35" required
+                   <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['Email']%>" <%}%>
+                     aria-label="Email" aria-describedby="emailSpan"/>
               <label class="form-label" for="email">Email</label>
             </div>
           </div>
         </div>
-        <div class="row g-1">
-          <div class="col-sm-5">
-            <div class="form-outline">
-              <input id="iPassword1" type="password" name="Password" class="form-control" required />
-              <label class="form-label" for="iPassword1">Password</label>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row d-flex align-items-center mb-3" >
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="pwdSpan1"><i class="fas fa-key fa-lg"></i></span>
+                <div class="form-outline">
+                  <input id="iPassword1" type="password" name="Password1" class="form-control" required
+                         aria-label="Password" aria-describedby="pwdSpan1" size="10"/>
+                  <label class="form-label" for="iPassword1">Password</label>
+                </div>
             </div>
           </div>
-          <div class="col-sm-5">
-            <div class="form-outline">
-              <input id="iPassword2" type="password" name="Password" class="form-control" required />
-              <label class="form-label" for="iPassword2">Confirm Password</label>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="pwdSpan2"><i class="fas fa-key fa-lg"></i></span>
+              <div class="form-outline">
+                <input id="iPassword2" type="password" name="Password2" class="form-control" required
+                       aria-label="Password" aria-describedby="pwdSpan2" size="10"/>
+                <label class="form-label" for="iPassword2">Confirm Password</label>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row g-1">
-          <div class="col-sm-7">
+        <hr class="divider-horizontal-blurry" />
+        <div class="row d-flex align-items-center mb-3" >
+          <div class="col-7">
             <div class="form-outline">
-              <input id="iFirstName" type="text" name="FirstName" class="form-control" required/>
+              <input id="iFirstName" type="text" name="FirstName" class="form-control" required
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['FirstName']%>" <%}%> />
               <label class="form-label" for="iFirstName">First Name</label>
             </div>
           </div>
-          <div class="col-sm-5">
+          <div class="col-5">
             <div class="form-outline">
-              <input id="iNickName" type="text" name="NickName" class="form-control" />
-              <label class="form-label" for="iNickName">Nick Name (optional)</label>
+              <input id="iNickName" type="text" name="NickName" class="form-control"
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['NickName']%>" <%}%> />
+              <label class="form-label" for="iNickName">Nick Name (opt)</label>
             </div>
           </div>
         </div>
-        <div class="row g-1">
-          <div class="col-sm-9">
+        <div class="row d-flex align-items-center mb-3" >
+          <div class="col-9">
             <div class="form-outline">
-              <input id="iLastName" type="text" name="LastName" class="form-control" required />
+              <input id="iLastName" type="text" name="LastName" class="form-control" required
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['LastName']%>" <%}%> />
               <label class="form-label" for="iLastName">Last Name</label>
             </div>
           </div>
-          <div class="col-sm-3">
+          <div class="col-3">
             <div class="form-outline">
-              <input id="iAge" type="text" name="Age" minlength="1" maxlength="2" class="form-control" required />
+              <input id="iAge" type="number" name="Age" min="1" max="90" class="form-control" required
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['Age']%>" <%}%> />
               <label class="form-label" for="iAge">Age</label>
             </div>
           </div>
         </div>
-        <div class="row g-5">
-          <div class="col-sm-3">
-            <button type="submit" id="btnRegister" class="btn btn-primary btn-block mb-4" value="Register">Register</button>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row d-flex align-items-center mb-3">
+          <div class="col-12 text-center">
+            <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#importantModal">Register</button>
           </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="importantModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="importantModalLabel">Important</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h2>Please READ before saving!</h2>
+                <ul>
+                  <li><b>REMEMBER your password!</b> Keep it simple and/or write it down. The only way to reset will be to start over.</li>
+                  <li>Make sure your <b>email is somewhere we can contact you</b> if we need clarification.</li>
+                  <li>Make sure <b>Team Captains know how to spell your first & last name.</b> Nickname is just for fun :) </li>
+                  <li><b>Age will be use to limit what events you can sign up for</b>, so be accurate.</li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Let me rethink those answers...</button>
+                <button type="submit" class="btn btn-primary">Got it! All good!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12" style="color: red">
+          <% if (typeof RegistrationResult !== 'undefined') {%>
+          <p class="credit"><%=RegistrationResult%></p>
+          <% } %>
         </div>
       </div>
     </form>
+  <%- include('../partials/footer.ejs') %>
 </body>
 </html>

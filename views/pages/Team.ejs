@@ -1,85 +1,112 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <script src="/scripts/register.js" type="application/javascript"></script>
+    <%- include('../partials/header.ejs') %>
 </head>
 <body>
-<div class="form_wrapper">
-    <div class="form_container">
-        <div class="title_container">
-            <h2>Lakewood Fun Meet<br><%=Team.TeamName%></h2>
-            <h3><%=Team.TeamTaunt%></h3>
-        </div>
-        <div class="row clearfix">
-            <% if(typeof Members !== 'undefined' && Members.length > 0) {%>
-                <% for(var lcv=0; lcv < Members.length; lcv++) {%>
-                <div class="row clearfix">
-                    <span class="credit">
-                        <%if (Members[lcv]['IsTeamCaptain'] === true){%>
-                            <img src="/img/crown-small.png" class="form_icon"><b>
-                        <%} else {%>
-                            <img src="/img/user-small.png" class="form_icon">
-                        <%}%>
-                        <%=Members[lcv]['FirstName']%> <%=Members[lcv]['LastName']%>
-                        <%if (Members[lcv]['IsTeamCaptain'] === true){%></b><%}%>
-                    </span>
-                </div>
-                <%}%>
-
-            <%} else {%>
-                <div class="row clearfix">
-                <span class="credit">
-                    <p>This Team does not have an members</p>
-                </span>
-                </div>
-            <%}%>
-        </div>
-        <div class="row clearfix">
-            <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
-                <div class="row clearfix">
-                    <span class="credit">
-                        <p>
-                            <img src="/img/team-small.png" class="form_icon"> <%=Team.TeamName%> are currently registered for:
-                        </p>
-                    </span>
-                </div>
-                <% for(var lcv=0; lcv < Events.length; lcv++) {%>
-                <div class="row clearfix">
-                            <span class="credit">
-                               <b><%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%>
-                               </b> (<% if (parseInt(Events[lcv].AgeMax)) { %>
-                                (<%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs)
-                                <%} else { %> <%=Events[lcv].AgeMin%> & up<%}%>
-                                )
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-white"
+         style="background-image: url('/img/swim-lanes.gif');" >
+        <div class="container-fluid">
+            <div class = "row">
+                <h2 class="mb-3">
+                            <span class="col-sm-6">
+                            Lakewood Fun Meet:
                             </span>
-                </div>
-                <%}%>
-            <%} else {%>
-                <div class="row clearfix">
-                    <span class="credit">
-                        <p><%=Team.TeamName%> are not registered for any events.</p>
-                    </span>
-                </div>
-            <%}%>
-            <div class="row clearfix">
-                <span class="credit">
-                    <a href="/MeetEvents?IndividualId=<%=Team.TeamCaptain%>">See all events</a>
-                </span>
+                    <span class="col-sm-6">
+                                 View Team
+                            </span>
+                </h2>
             </div>
         </div>
     </div>
-    <br><br><br>
-    <div class="row clearfix">
-        <a href="/MeetEvents?IndividualId=<%=Team.TeamCaptain%>" class="col_half">
-            <img src="/img/triangle-flag-small.png">
-        </a>
-        <a href="/Home?IndividualId=<%=Team.TeamCaptain%>">
-            <img src="/img/home-small.png">
-        </a>
-        <a href="/Login" class="bottom_right">
-            <img src="/img/square-new-window-small.png" >
-        </a>
+    <div class="container-fluid">
+        <% if(typeof Teams !== 'undefined' && Teams.length > 1) {%>
+        <div class="row text-center">
+            <div class="col-10">
+                <select name="EventTeamId" id="selTeam" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <% for(var lcv=0; lcv < Teams.length; lcv++) {%>
+                    <option value="/Team?IndividualId=<%=Teams[lcv].TeamCaptain%>&TeamId=<%=Teams[lcv].TeamId%>"><%=Teams[lcv].TeamName%></option>
+                    <%}%>
+                </select>
+            </div>
+        </div>
+        <%}%>
+        <% if(typeof Team !== 'undefined' && typeof Events !== 'undefined') {%>
+        <div class="card">
+            <div class="card-header"><b><%=Team.TeamName%></b></div>
+            <div class="card-body">
+                <% if (Team.TeamTaunt !== ''){%>
+                <h5 class="card-title"><%=Team.TeamTaunt%>!</h5>
+                <%}%>
+                <p class="card-text">
+                    <% if(typeof Members !== 'undefined' && Members.length > 0) {%>
+                    <ul>
+                    <% for(var lcv=0; lcv < Members.length; lcv++) {%>
+                        <li>
+                            <%if (Members[lcv]['IsTeamCaptain'] === true){%>
+                                <i class="fas fa-user-ninja fa-lg"></i><b>
+                            <%} else {%>
+                                <i class="fas fa-user-alt fa-lg"></i>
+                            <%}%>
+                            <%=Members[lcv]['FirstName']%> <%=Members[lcv]['LastName']%>
+                            <%if (Members[lcv]['IsTeamCaptain'] === true){%></b><%}%>
+                        </li>
+                        <%}%>
+                    </ul>
+                    <%} else {%>
+                        This team does not have any members!
+                    <%}%>
+                </p>
+            </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <div class="card">
+            <div class="card-header"><b>Events</b></div>
+            <div class="card-body">
+                <% if(Events.length > 0) {%>
+                    <h5 class="card-title"><%=Team.TeamName%> are currently registered for:</h5>
+                <%}%>
+                <p class="card-text">
+                <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
+                    <ul>
+                        <% for(var lcv=0; lcv < Events.length; lcv++) {%>
+                        <li><b><%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%></b>
+                            <% if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMin)
+                                    && parseInt(Events[lcv].AgeMax) < 99 && parseInt(Events[lcv].AgeMin) > 0 ) { %>
+                            - <%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs
+                            <%} else if (parseInt(Events[lcv].AgeMin) && parseInt(Events[lcv].AgeMin) > 0) { %>
+                            - <%=Events[lcv].AgeMin%> & up
+                            <%} else if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMax) < 99) { %>
+                            <%=Events[lcv].AgeMax%> & under
+                            <%} else { %>
+                                - All Ages
+                            <%}%>
+                        </li>
+                        <%}%>
+                    </ul>
+                <%} else {%>
+                    <%=Team.TeamName%> are not registered for any events.
+                <%}%>
+                </p>
+            </div>
+        </div>
+        <br>
+        <%}%>
+        <% if(typeof Events !== 'undefined' && Events.length < 10) {%>
+        <!--<form action="/MeetEvents?IndividualId=<%=Individual.IndividualId%>" method="get">-->
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <a href="/MeetEvents?IndividualId=<%=Individual.IndividualId%>">
+                        <button type="submit" class="btn btn-primary btn-block mb-4">
+                            Sign up for some events!
+                        </button>
+                    </a>
+                </div>
+            </div>
+        <!--</form>-->
+        <%}%>
     </div>
-</div>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>

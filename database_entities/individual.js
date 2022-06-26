@@ -33,7 +33,7 @@ exports.create = async function createIndividual(individual){
                     validate.getOptStrElement(individual, 'DateOfBirth'),
                     validate.getOptStrElement(individual, 'NickName'),
                     validate.getOptStrElement(individual, 'Email'),
-                    secure.getHash(individual['Password'][0]),
+                    secure.getHash(individual['Password']),
                     validate.getOptStrElement(individual, 'SwimtopiaId')])
                 .then(data => {
                     successFunc(data);

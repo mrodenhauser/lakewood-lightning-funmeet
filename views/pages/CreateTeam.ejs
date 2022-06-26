@@ -1,149 +1,211 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <link href="/css/style.css" rel="stylesheet" type="text/css">
-</head>
+<%- include('../partials/header.ejs') %>
 <body>
-<div class="form_wrapper">
-  <div class="form_container">
-    <div class="title_container">
-      <h2>Lakewood Fun Meet<br>Create a Team</h2>
-    </div>
-    <div class="row clearfix">
-      <div class="">
-        <form id="frmCreateTeam" action="/CreateTeam" method="post" onsubmit="submitScript(e);">
-          <div class="row clearfix">
-            <div class="input_field"> <span><img src="/img/team-small.png" class="form_icon"></span>
-              <%if(typeof TeamName !== 'undefined' && TeamName !== ''){%>
-              <input type="text" name="TeamName" value="<%=TeamName%>" required />
-              <%}else{%>
-              <input type="text" name="TeamName" placeholder="Team Name (Keep it clean!)" required />
-              <%}%>
-            </div>
-          </div>
-          <div class="row clearfix">
-            <div class="input_field"> <span><img src="/img/team-small.png" class="form_icon"></span>
-              <%if(typeof TeamTaunt !== 'undefined' && TeamTaunt !== ''){%>
-              <input type="text" name="TeamTaunt" value="<%=TeamTaunt%>"/>
-              <%}else{%>
-              <input type="text" name="TeamTaunt" placeholder="Team Taunt (optional)"/>
-              <%}%>
-            </div>
-          </div>
-          <div class="row clearfix">
-              <p class="credit">By creating a team, you will become the Team Captain and can register the
-                team for events. Make sure to create a team with the right number of members for the Events you plan on
-                competing in. Oh, and make sure you have others' permission to be on your team :-)</p>
-          </div>
-          <div class="row clearfix">
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/crown-small.png" class="form_icon"></span>
-                <input type="text" name="FirstName" value="<%=TeamCaptain.FirstName%>" required readonly/>
-              </div>
-            </div>
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/crown-small.png" class="form_icon"></span>
-                <input type="text" name="LastName" value="<%=TeamCaptain.LastName%>" required readonly/>
-              </div>
-            </div>
-            <input type="hidden" name="IndividualId" value="<%=TeamCaptain.IndividualId%>">
-          </div>
-          <div class="row clearfix">
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 1){%>
-                  <input type="text" name="FirstName" value="<%=FirstNames[1]%>" required/>
-                <%} else {%>
-                  <input type="text" name="FirstName" placeholder="First Name" required/>
-                <%}%>
-              </div>
-            </div>
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 1){%>
-                  <input type="text" name="LastName" value="<%=LastNames[1]%>" required/>
-                <%} else {%>
-                  <input type="text" name="LastName" placeholder="Last Name" required/>
-                <%}%>
-              </div>
-            </div>
-            <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 1){%>
-            <input type="hidden" name="IndividualId" value="<%=IndividualIds[1]%>">
-            <%}else{%>
-            <input type="hidden" name="IndividualId">
-            <%}%>
-          </div>
-          <div class="row clearfix">
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 2){%>
-                <input type="text" name="FirstName" value="<%=FirstNames[2]%>" required/>
-                <%} else {%>
-                  <input type="text" name="FirstName" placeholder="First Name" required/>
-                <%}%>
-              </div>
-            </div>
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 2){%>
-                <input type="text" name="LastName" value="<%=LastNames[2]%>" required/>
-                <%} else {%>
-                  <input type="text" name="LastName" placeholder="Last Name" required/>
-                <%}%>
-              </div>
-            </div>
-            <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 2){%>
-            <input type="hidden" name="IndividualId" value="<%=IndividualIds[2]%>">
-            <%}else{%>
-              <input type="hidden" name="IndividualId">
-            <%}%>
-          </div>
-          <div class="row clearfix">
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 3){%>
-                <input type="text" name="FirstName" value="<%=FirstNames[3]%>" required/>
-                <%} else {%>
-                  <input type="text" name="FirstName" placeholder="First Name" required/>
-                <%}%>
-              </div>
-            </div>
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 3){%>
-                <input type="text" name="LastName" value="<%=LastNames[3]%>" required/>
-                <%} else {%>
-                  <input type="text" name="LastName" placeholder="Last Name" required/>
-                <%}%>
-              </div>
-            </div>
-            <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 3){%>
-            <input type="hidden" name="IndividualId" value="<%=IndividualIds[3]%>">
-            <%}else{%>
-              <input type="hidden" name="IndividualId">
-            <%}%>
-          </div>
-          <%if(typeof ValidationErrors !== 'undefined' && ValidationErrors !== ''){%>
-          <div class="row clearfix">
-            <p class="credit"><%=ValidationErrors%></p>
-          </div>
-          <%}%>
-          <input class="button" type="submit" value="Create Team" />
-        </form>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+      <div class="container-fluid">
+        <div class = "row">
+          <h2 class="mb-3">
+                                    <span class="col-sm-6">
+                                    Lakewood Fun Meet:
+                                    </span>
+            <span class="col-sm-6">
+                                         Create a Team
+                                    </span>
+          </h2>
+        </div>
       </div>
     </div>
-  </div>
-  <br><br><br>
-  <div class="row clearfix">
-    <a href="/MeetEvents?IndividualId=<%=TeamCaptain.IndividualId%>"  class="col_half">
-      <img src="/img/triangle-flag-small.png">
-    </a>
-    <a href="/Home?IndividualId=<%=TeamCaptain.IndividualId%>">
-      <img src="/img/home-small.png">
-    </a>
-    <a href="/Login" class="bottom_right">
-      <img src="/img/square-new-window-small.png" >
-    </a>
-  </div>
-</div>
+    <div class="container-fluid">
+      <form id="frmCreateTeam" action="/CreateTeam" method="post" autocomplete="off" onsubmit="submitScript(e);">
+        <div class="row d-flex justify-content-center ">
+          <div class="col-9">
+            <div class="input-group">
+              <span class="input-group-text" id="TeamNameSpan"><i class="fas fa-users fa-lg"></i></span>
+              <div class="form-outline">
+              <%if(typeof TeamName !== 'undefined' && TeamName !== ''){%>
+                <input type="text" id="TeamName" name="TeamName" class="form-control" required value="<%=TeamName%>" />
+              <%}else{%>
+                <input type="text" id="TeamName" name="TeamName" class="form-control" required
+                       data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="If you don't have a spiffy name, just list your first names."/>
+              <%}%>
+              <label class="form-label" for="TeamName">Team Name</label>
+            </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-9">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-users fa-lg"></i></span>
+              <div class="form-outline">
+                <%if(typeof TeamTaunt !== 'undefined' && TeamTaunt !== ''){%>
+                  <input type="text" id="TeamTaunt" name="TeamTaunt" class="form-control" value="<%=TeamTaunt%>" />
+                <%} else {%>
+                  <input type="text" id="TeamTaunt" name="TeamTaunt" class="form-control" data-mdb-toggle="tooltip"
+                         data-mdb-placement="bottom" title="Eat our bubbles, etc..."/>
+                <%}%>
+                <label class="form-label" for="TeamTaunt">Battle Cry! (optional)</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <p>Captain:</p>
+        <div class="row justify-content-center ">
+          <div class="col-6">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user-ninja fa-lg"></i></span>
+                <input type="text" name="FirstName" class="form-control" value="<%=Individual.FirstName%>" required readonly/>
+                <!--<label class="form-label" for="FirstName1"></label>-->
+              </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user-ninja fa-lg"></i></span>
+              <input type="text" name="LastName" class="form-control"  value="<%=Individual.LastName%>" required readonly/>
+                <!--<label class="form-label" for="FirstName1"></label>-->
+            </div>
+          </div>
+          <input type="hidden" name="IndividualId" value="<%=Individual.IndividualId%>">
+        </div>
+        <br>
+        <div class="row d-flex justify-content-center">
+          <div class="col-8">
+            <button type="button" class="btn btn-warning btn-block mb-4" data-mdb-toggle="modal" data-mdb-target="#captainModal">
+              Ready to be a Team Captain?
+            </button>
+            <div class="modal fade" id="captainModal" tabindex="-1" aria-labelledby="captainModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="captainModalLabel">Ready to be a Team Captain?</h5>
+                    <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Once created, you will be the team's Captain and will register your team for events.</p>
+                    <ul>
+                      <li><b>Swimmers must already be registered</b> for you to add them to your team.</li>
+                      <li>First & last names must be <b>spelled as they were registered</b> to be added. </li>
+                      <li>Create team(s) with the right number of members for the event(s) you plan on competing in.
+                        <b>Captains swim too!</b></li>
+                      <li>Make sure you have others' permission to be on your team, since <b>it could obligate them to
+                          (additional) donations.</b></li>
+                    </ul>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-mdb-dismiss="modal" >I got this !</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <p>Additional Members:</p>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-6">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 1){%>
+              <input type="text" id="FirstName1" name="FirstName" class="form-control"  value="<%=FirstNames[1]%>" required/>
+              <%} else {%>
+                <input type="text" id="FirstName1" name="FirstName" class="form-control"  placeholder="First Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group">
+              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 1){%>
+                <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                <input type="text" id="LastName1" name="LastName" class="form-control" value="<%=LastNames[1]%>" required/>
+              <%} else {%>
+                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+                <input type="text" id="LastName1" name="LastName" class="form-control" placeholder="Last Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 1){%>
+          <input type="hidden" name="IndividualId" value="<%=IndividualIds[1]%>">
+          <%}else{%>
+            <input type="hidden" name="IndividualId">
+          <%}%>
+        </div>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-6">
+            <div class="input-group">
+              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 2){%>
+                <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                <input type="text" id="FirstName2" name="FirstName" class="form-control"  value="<%=FirstNames[2]%>" required/>
+              <%} else {%>
+                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+                <input type="text" id="FirstName2" name="FirstName" class="form-control"  placeholder="First Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group">
+              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 2){%>
+                <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                <input type="text" id="LastName2" name="LastName" class="form-control" value="<%=LastNames[2]%>" required/>
+              <%} else {%>
+                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+                <input type="text" id="LastName2" name="LastName" class="form-control" placeholder="Last Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 2){%>
+          <input type="hidden" name="IndividualId" value="<%=IndividualIds[2]%>">
+          <%}else{%>
+            <input type="hidden" name="IndividualId">
+          <%}%>
+        </div>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-6">
+            <div class="input-group">
+              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 3){%>
+                <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                <input type="text" id="FirstName3" name="FirstName" class="form-control" value="<%=FirstNames[3]%>" required/>
+              <%} else {%>
+                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+                <input type="text" id="FirstName3" name="FirstName" class="form-control" placeholder="First Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 3){%>
+              <input type="text" id="LastName3" name="LastName" class="form-control"  value="<%=LastNames[3]%>" required/>
+              <%} else {%>
+                <input type="text" id="LastName3" name="LastName" class="form-control"  placeholder="Last Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 3){%>
+          <input type="hidden" name="IndividualId" value="<%=IndividualIds[3]%>">
+          <%}else{%>
+            <input type="hidden" name="IndividualId">
+          <%}%>
+        </div>
+        <%if(typeof ValidationErrors !== 'undefined' && ValidationErrors !== ''){%>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-12">
+            <p class="credit"><%=ValidationErrors%></p>
+          </div>
+        </div>
+        <%}%>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row d-flex justify-content-center ">
+          <div class="col-8">
+            <button type="submit" class="btn btn-primary btn-block mb-4">Create Team</button>
+          </div>
+        </div>
+      </form>
+    </div>
+<%- include('../partials/footer.ejs') %>
 </body>
 </html>

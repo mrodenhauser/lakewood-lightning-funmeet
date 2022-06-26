@@ -1,49 +1,68 @@
+<!DOCTYPE html>
 <html>
   <head>
     <%- include('../partials/header.ejs') %>
   </head>
   <body>
-  <div class="p-5 text-center bg-light" style= "margin-top: 50px;">
-    <h2 class="mb-3">Lakewood Fun Meet: Login</h2>
-  </div>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+      <div class="container-fluid">
+        <div class = "row">
+          <h2 class="mb-3">
+                                  <span class="col-sm-6">
+                                  Lakewood Fun Meet:
+                                  </span>
+            <span class="col-sm-6">
+                                       Home
+                                  </span>
+          </h2>
+        </div>
+      </div>
+    </div>
     <form id="frmLogin" action="/loginAttempt" method="post" >
       <!-- 2 column grid layout with text inputs for the first and last names -->
-      <div class="container-justify-evenly">
-        <div class="row " >
-          <div class="col-sm-5">
+      <div class="container-fluid">
+        <div class="row d-flex justify-content-center " >
+          <div class="col-5">
             <div class="form-outline">
-            <input type="text" name="FirstName" id="FirstName" class="form-control" required />
+              <input type="text" name="FirstName" id="FirstName" class="form-control" required />
             <label class="form-label" for="FirstName">First name</label>
             </div>
           </div>
-          <div class="col-sm-5">
+          <div class="col-5">
             <div class="form-outline">
               <input type="text" name="LastName" id="LastName" class="form-control" required />
               <label class="form-label" for="LastName">Last name</label>
             </div>
           </div>
         </div>
-
+        <hr class="divider-horizontal-blurry" />
         <!-- Password input -->
-        <div class="row " >
-          <div class="form-outline col-sm-5">
+        <div class="row d-flex justify-content-center " >
+          <div class="form-outline col-6">
             <div class="form-outline">
               <input type="password" name="Password"  id="Password" class="form-control" required />
               <label class="form-label" for="Password">Password</label>
             </div>
           </div>
         </div>
-
+        <hr class="divider-horizontal-blurry" />
         <!-- Submit button -->
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary btn-block mb-4" value="Login" >Login</button>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-6">
+            <button type="submit" class="btn btn-primary btn-block mb-4" value="Login" >Login</button>
+          </div>
         </div>
-        <div class="col-12" style="color: red">
+        <div class="row d-flex justify-content-center ">
+          <div class="col-5" style="color: red">
           <% if (typeof LoginResult !== 'undefined') {%>
             <p class="credit"><%=LoginResult%></p>
-            <% } %>
+          <% } %>
+          </div>
         </div>
       </div>
     </form>
+  <%- include('../partials/footer.ejs') %>
   </body>
 </html>
