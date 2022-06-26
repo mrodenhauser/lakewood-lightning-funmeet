@@ -21,86 +21,84 @@
         </div>
       </div>
     </div>
-    <p class="d-flex p-2"><a href="/Login">
-        Already Registered? Login!
-      </a>
-    </p>
     <form id="frmRegister" action="/register" method="post" onsubmit="return submitRegistration();">
       <div class="container-justify-evenly">
-        <div class="row g-1">
-          <div class="col">
-            <span class=" p-2"><b>Kids can use their parent's email too!</b></span>
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <p class="d-flex p-2"><a href="/Login">
+                Already Registered? Login!
+              </a>
+            </p>
           </div>
         </div>
-        <div class="row d-flex align-items-center mb-3">
-          <div class="input-group mb-3 col-auto">
-            <span class="input-group-text" id="emailSpan">@</span>
-            <div class="form-outline">
-              <input id="iEmail" type="email" name="Email" id="email" class="form-control" size="35" required
-                   <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['Email']%>" <%}%>
-                     aria-label="Email" aria-describedby="emailSpan"/>
-              <label class="form-label" for="email">Email</label>
-            </div>
-          </div>
-        </div>
-        <hr class="divider-horizontal-blurry" />
-        <div class="row d-flex align-items-center mb-3" >
-          <div class="col-6">
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="pwdSpan1"><i class="fas fa-key fa-lg"></i></span>
-                <div class="form-outline">
-                  <input id="iPassword1" type="password" name="Password1" class="form-control" required
-                         aria-label="Password" aria-describedby="pwdSpan1" size="10"/>
-                  <label class="form-label" for="iPassword1">Password</label>
-                </div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="pwdSpan2"><i class="fas fa-key fa-lg"></i></span>
-              <div class="form-outline">
-                <input id="iPassword2" type="password" name="Password2" class="form-control" required
-                       aria-label="Password" aria-describedby="pwdSpan2" size="10"/>
-                <label class="form-label" for="iPassword2">Confirm Password</label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="divider-horizontal-blurry" />
-        <div class="row d-flex align-items-center mb-3" >
+        <div class="row justify-content-center mx-2 mb-3" >
           <div class="col-7">
             <div class="form-outline">
               <input id="iFirstName" type="text" name="FirstName" class="form-control" required
-                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['FirstName']%>" <%}%> />
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['FirstName']%>" <%}%>
+                     data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="First & last name will be used for login and forming teams."/>
               <label class="form-label" for="iFirstName">First Name</label>
             </div>
           </div>
           <div class="col-5">
             <div class="form-outline">
               <input id="iNickName" type="text" name="NickName" class="form-control"
-                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['NickName']%>" <%}%> />
-              <label class="form-label" for="iNickName">Nick Name (opt)</label>
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['NickName']%>" <%}%>
+                     data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="A.K.A. is just for fun and will show on circle in and heat sheets." />
+              <label class="form-label" for="iNickName">A.K.A. (opt)</label>
             </div>
           </div>
         </div>
-        <div class="row d-flex align-items-center mb-3" >
+        <div class="row justify-content-center mx-2 mb-3" >
           <div class="col-9">
             <div class="form-outline">
               <input id="iLastName" type="text" name="LastName" class="form-control" required
-                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['LastName']%>" <%}%> />
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['LastName']%>" <%}%>
+                     data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Will be used for login and joining teams." />
               <label class="form-label" for="iLastName">Last Name</label>
             </div>
           </div>
           <div class="col-3">
             <div class="form-outline">
               <input id="iAge" type="number" name="Age" min="1" max="90" class="form-control" required
-                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['Age']%>" <%}%> />
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['Age']%>" <%}%>
+                     data-mdb-toggle="tooltip" data-mdb-placement="bottom" title="Will be used to qualify swimmers for age-limited events." />
               <label class="form-label" for="iAge">Age</label>
             </div>
           </div>
         </div>
         <hr class="divider-horizontal-blurry" />
-        <div class="row d-flex align-items-center mb-3">
+        <div class="row justify-content-center mx-2" >
+          <div class="col-6">
+            <div class="form-outline">
+              <input id="iPassword1" type="password" name="Password1" class="form-control" required
+                     aria-label="Password" aria-describedby="pwdSpan1" data-mdb-toggle="tooltip" data-mdb-placement="bottom"
+                     title="Keep it simple and do not forget. We do NOT currently have the ability to reset easily."/>
+              <label class="form-label" for="iPassword1">Password</label>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-outline">
+              <input id="iPassword2" type="password" name="Password2" class="form-control" required
+                     aria-label="Password" aria-describedby="pwdSpan2" />
+              <label class="form-label" for="iPassword2">Confirm Password</label>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row justify-content-center mx-2">
+          <div class="col-auto">
+            <div class="form-outline">
+              <input id="iEmail" type="email" name="Email" id="email" class="form-control" required
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['Email']%>" <%}%>
+                     aria-label="Email" aria-describedby="emailSpan" data-mdb-toggle="tooltip" data-mdb-placement="bottom"
+                     title="Email address does not need to be unique per swimmer. Kids can use their parent's email too. This is just for contact in case we need clarification." />
+              <label class="form-label" for="email">Email - example@somewhere.com</label>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row justify-content-center mx-2 mb-3">
           <div class="col-12 text-center">
             <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#importantModal">Register</button>
           </div>
