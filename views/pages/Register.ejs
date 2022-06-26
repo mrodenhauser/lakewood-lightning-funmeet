@@ -1,75 +1,142 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <link href="/css/style.css" rel="stylesheet" type="text/css">
+  <%- include('../partials/header.ejs') %>
   <script src="/scripts/register.js" type="application/javascript"></script>
 </head>
 <body>
-<div class="form_wrapper">
-  <div class="form_container">
-    <div class="title_container">
-      <h2>Lakewood Fun Meet<br>Competitor Registration</h2>
-    </div>
-    <div class="row clearfix">
-      <div class="">
-        <form id="frmRegister" action="/register" method="post" onsubmit="submitScript(e);">
-          <div class="row clearfix">
-            <span class="credit"><b>Kids can use their parent's email too!</b></span>
-          </div>
-          <div class="input_field"> <span><img src="/img/email-small.png" class="form_icon"></span>
-            <input id="iEmail" type="email" name="Email" placeholder="Email" required />
-          </div>
-          <div class="input_field"> <span><img src="/img/key-small.png" class="form_icon"></span>
-            <input id="iPassword1" type="password" name="Password" placeholder="Password" required />
-          </div>
-          <div class="input_field"> <span><img src="/img/key-small.png" class="form_icon"></span>
-            <input id="iPassword2" type="password" name="Password" placeholder="Re-type Password" required />
-          </div>
-          <div class="row clearfix">
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <input id="iFirstName" type="text" name="FirstName" placeholder="First Name" required/>
-              </div>
-            </div>
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <input id="iNickName" type="text" name="NickName" placeholder="Nick Name" />
-              </div>
-            </div>
-           </div>
-            <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-              <input id="iLastName" type="text" name="LastName" placeholder="Last Name" required />
-            </div>
-          <div class="row clearfix">
-          <div class="col_third">
-            <div class="input_field"> <span><img src="/img/hourglass-small.png" class="form_icon"></span>
-              <input id="iAge" type="text" name="Age" minlength="1" maxlength="2"  placeholder="Age" required />
-            </div>
-          </div>
-          <div class="col_two_thirds">
-            <div class="input_field"> <span><img src="/img/calendar-small.png" class="form_icon"></span>
-              <input id="iDateOfBirth" type="text" name="DateOfBirth" placeholder="Date Of Birth - MM/DD/YYYY" />
-            </div>
-          </div>
-          </div>
-          <div class="row clearfix">
-            <div class="input_field">
-              <p class="credit">Date of Birth is optional and it is recommended that you use an approximation. It is
-                unnecessary for swimmers well above the age cutoff(s), as this is merely to know an accurate age for
-                event qualification. If a Date of Birth is not provided, the swimmer will simply be considered one year
-                older on this date each year. </p>
-            </div>
-          </div>
-          <input id="btnRegister" class="button" type="submit" value="Register" />
-        </form>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+      <div class="container-fluid">
+        <div class = "row">
+          <h2 class="mb-3">
+                                      <span class="col-sm-6">
+                                      Lakewood Fun Meet:
+                                      </span>
+            <span class="col-sm-6">
+                                           Registration
+                                      </span>
+          </h2>
+        </div>
       </div>
     </div>
-    <div class="row clearfix">
-      <p class="credit"><a href="/Login">
-          <img src="/img/home-small.png">
-        </a>
-      </p>
-    </div>
-  </div>
-</div>
+    <p class="d-flex p-2"><a href="/Login">
+        Already Registered? Login!
+      </a>
+    </p>
+    <form id="frmRegister" action="/register" method="post" onsubmit="return submitRegistration();">
+      <div class="container-justify-evenly">
+        <div class="row g-1">
+          <div class="col">
+            <span class=" p-2"><b>Kids can use their parent's email too!</b></span>
+          </div>
+        </div>
+        <div class="row d-flex align-items-center mb-3">
+          <div class="input-group mb-3 col-auto">
+            <span class="input-group-text" id="emailSpan">@</span>
+            <div class="form-outline">
+              <input id="iEmail" type="email" name="Email" id="email" class="form-control" size="35" required
+                   <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['Email']%>" <%}%>
+                     aria-label="Email" aria-describedby="emailSpan"/>
+              <label class="form-label" for="email">Email</label>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row d-flex align-items-center mb-3" >
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="pwdSpan1"><i class="fas fa-key fa-lg"></i></span>
+                <div class="form-outline">
+                  <input id="iPassword1" type="password" name="Password1" class="form-control" required
+                         aria-label="Password" aria-describedby="pwdSpan1" size="10"/>
+                  <label class="form-label" for="iPassword1">Password</label>
+                </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="pwdSpan2"><i class="fas fa-key fa-lg"></i></span>
+              <div class="form-outline">
+                <input id="iPassword2" type="password" name="Password2" class="form-control" required
+                       aria-label="Password" aria-describedby="pwdSpan2" size="10"/>
+                <label class="form-label" for="iPassword2">Confirm Password</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row d-flex align-items-center mb-3" >
+          <div class="col-7">
+            <div class="form-outline">
+              <input id="iFirstName" type="text" name="FirstName" class="form-control" required
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['FirstName']%>" <%}%> />
+              <label class="form-label" for="iFirstName">First Name</label>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="form-outline">
+              <input id="iNickName" type="text" name="NickName" class="form-control"
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['NickName']%>" <%}%> />
+              <label class="form-label" for="iNickName">Nick Name (opt)</label>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex align-items-center mb-3" >
+          <div class="col-9">
+            <div class="form-outline">
+              <input id="iLastName" type="text" name="LastName" class="form-control" required
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['LastName']%>" <%}%> />
+              <label class="form-label" for="iLastName">Last Name</label>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-outline">
+              <input id="iAge" type="number" name="Age" min="1" max="90" class="form-control" required
+                      <% if (typeof PreviousInput !== 'undefined') { %> value="<%=PreviousInput['Age']%>" <%}%> />
+              <label class="form-label" for="iAge">Age</label>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row d-flex align-items-center mb-3">
+          <div class="col-12 text-center">
+            <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#importantModal">Register</button>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="importantModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="importantModalLabel">Important</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <h2>Please READ before saving!</h2>
+                <ul>
+                  <li><b>REMEMBER your password!</b> Keep it simple and/or write it down. The only way to reset will be to start over.</li>
+                  <li>Make sure your <b>email is somewhere we can contact you</b> if we need clarification.</li>
+                  <li>Make sure <b>Team Captains know how to spell your first & last name.</b> Nickname is just for fun :) </li>
+                  <li><b>Age will be used to limit what events you can sign up for</b>, so be accurate.</li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Let me rethink those answers...</button>
+                <button type="submit" class="btn btn-primary">Got it! All good!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12" style="color: red">
+          <% if (typeof RegistrationResult !== 'undefined') {%>
+          <p class="credit"><%=RegistrationResult%></p>
+          <% } %>
+        </div>
+      </div>
+    </form>
+  <%- include('../partials/footer.ejs') %>
 </body>
 </html>

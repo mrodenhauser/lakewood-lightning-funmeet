@@ -1,29 +1,63 @@
+<!DOCTYPE html>
 <html>
-<head>
-    <link href="/css/style.css" rel="stylesheet" type="text/css">
-    <script src="/scripts/register.js" type="application/javascript"></script>
-</head>
+<%- include('../partials/header.ejs') %>
 <body>
-<div class="form_wrapper">
-    <div class="form_container">
-        <div class="title_container">
-            <h2>Lakewood Fun Meet<br> My <%= EventsType %> Events</h2>
-            <h3><%= Individual.FirstName %> <%= Individual.LastName %>'s Events</h3>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+        <div class="container-fluid">
+            <div class = "row">
+                <h2 class="mb-3">
+                    <span class="col-sm-6">Lakewood Fun Meet:</span>
+                    <span class="col-sm-6">
+                        <% if(IsWithdrawal){%>
+                            <%=EventsType%> Event Withdrawal
+                        <%} else {%>
+                            My <%=EventsType%> Events
+                        <%}%>
+                    </span>
+                </h2>
+            </div>
         </div>
-        <div class="row clearfix">
-            <div class="">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <% if(IsWithdrawal === true){%>
+                    <h2>Withdrawal feature coming soon, don't worry!</h2>
+                    <h6>(click and it breaks)</h6>
+                <%}%>
+            </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <div class="row">
+            <% if(IsWithdrawal === true) { %>
+            <div class="col list_fa list_fa-user-slash">
+            <%} else {%>
+            <div class="col list_fa list_fa-user-check">
+            <%}%>
                 <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
+                    <ul class="list_fa">
                     <% for(var lcv=0; lcv < Events.length; lcv++) {%>
-                    <div class="row clearfix">
-                            <span class="credit">
-                               <b><%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%>
-                               </b> (<% if (parseInt(Events[lcv].AgeMax)) { %>
-                                (<%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs)
-                                <%} else { %> <%=Events[lcv].AgeMin%> & up<%}%>
-                                )
-                            </span>
-                    </div>
+                        <li>
+                            <b>
+                                <% if(IsWithdrawal === true) { %><a href="\EventWithdrawal?IndividualId=<%=Individual.IndividualId%>&EventId=<%=Events[lcv].EventId%>"><%}%>
+                                <%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%>
+                                <% if(IsWithdrawal === true) { %></a><%}%>
+                            </b>
+                            <% if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMin)
+                                    && parseInt(Events[lcv].AgeMax) < 99 && parseInt(Events[lcv].AgeMin) > 0 ) { %>
+                            - <%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs
+                            <%} else if (parseInt(Events[lcv].AgeMin) && parseInt(Events[lcv].AgeMin) > 0) { %>
+                            - <%=Events[lcv].AgeMin%> & up
+                            <%} else if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMax) < 99) { %>
+                            - <%=Events[lcv].AgeMax%> & under
+                            <%} else { %>
+                              - All Ages
+                            <%}%>
+                        </li>
                     <%}%>
+                    </ul>
                 <%} else {%>
                     <div class="row clearfix">
                     <span class="credit">
@@ -34,18 +68,6 @@
             </div>
         </div>
     </div>
-    <br><br><br>
-    <div class="row clearfix">
-        <a href="/MeetEvents?IndividualId=<%=Individual.IndividualId%>" class="col_half">
-            <img src="/img/triangle-flag-small.png">
-        </a>
-        <a href="/Home?IndividualId=<%=Individual.IndividualId%>">
-            <img src="/img/home-small.png">
-        </a>
-        <a href="/Login" class="bottom_right">
-            <img src="/img/square-new-window-small.png" >
-        </a>
-    </div>
-</div>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>

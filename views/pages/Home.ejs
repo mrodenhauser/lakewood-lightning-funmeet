@@ -1,79 +1,188 @@
+<!DOCTYPE html>
 <html>
-<%- include header.ejs %>
+<%- include('../partials/header.ejs') %>
 <body>
-<%- include nav.ejs%>
-    <div class="container">
-        <div class="p-5 text-center bg-light" style= "margin-top: 50px;">
-            <h2 class="mb-3">Lakewood Fun Meet - Registration Home</h2>
-            <h3 class="mb-3">Welcome <%= CurrentUser.FirstName %> <%= CurrentUser.LastName %>!</h3>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <p class="card-text">
-                    You are registered for <%= CurrentUser.IndividualEventCount %> events as an individual.
-                </p>
-                <a href="/MyIndividualEvents?IndividualId=<%=CurrentUser.IndividualId%>" class="card-link">
-                    View my individual events</a>
-                <a href="#" class="card-link">Withdraw from events</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <p class="card-text">
-                    You are registered for <%=CurrentUser.TeamEventCount%> events as part of a team.
-                </p>
-                <a href="/MyTeamEvents?IndividualId=<%= CurrentUser.IndividualId %>" class="card-link">
-                    View my team events</a>
-                <a href="#" class="card-link">Withdraw from events</a>
-            </div>
-        </div>
-        <% if((parseInt(CurrentUser.IndividualEventCount) + parseInt(CurrentUser.TeamEventCount)) < 5) {%>
-        <div class="d-flex p-2">
-            You can register for <%=( 5 - (parseInt(CurrentUser.IndividualEventCount) + parseInt(CurrentUser.TeamEventCount)))%> more events.
-        </div>
-        <div class="px-4">
-            <div class="row gx-5">
-                <div class="col">
-                    <div class="p-3">
-                        <a href="/MeetEvents?IndividualId=<%=CurrentUser.IndividualId%>">
-                            <button class="btn btn-primary">Register for an Event</button>
-                        </a>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="p-3">
-                        <a href="/CreateTeam?IndividualId=<%=CurrentUser.IndividualId%>">
-                            <button class="btn btn-info">Start a Team</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-                <% } else {%>
-                <div class="row clearfix">
-                    <span class="credit">
-                        <b>You have reached your <%= (parseInt(CurrentUser.IndividualEventCount) + parseInt(CurrentUser.TeamEventCount)) %>
-                            event maximum!</b>
-                    </span>
-                </div>
-                <% }%>
-                <% if(CurrentUser.IsAdmin === true) {%>
-                <div class="row clearfix">
-                    <a><button class="button">Create an Event"</button></a>
-                </div>
-                <div class="row clearfix">
-                    <a><button class="button">Define an Event Type"</button></a>
-                </div>
-                <div class="row clearfix">
-                    <p class="credit">An Event Type is a reusable definition for what is the same about the event across
-                        instances of it.  If the rules, stroke, or team structure needs to change, a new Event Type must
-                        be created. However, if those are all the same, but only the age range or distance needs to be
-                        changed, you can reuse that Event Type any number of times to schedule actual events.
-                    </p>
-                </div>
-                <% }%>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+        <div class="container-fluid">
+            <div class = "row">
+                <h2 class="mb-3">
+                                <span class="col-sm-6">
+                                Lakewood Fun Meet:
+                                </span>
+                    <span class="col-sm-6">
+                                     Home
+                                </span>
+                </h2>
+                <% if (typeof Meet !== 'undefined'){%>
+                <h3><%=Meet.MeetName%> - <%=Meet.MeetBannerDescription%></h3>
+                <%}%>
             </div>
         </div>
     </div>
+    <div class="container">
+        <% if((parseInt(Individual.IndividualEventCount) + parseInt(Individual.TeamEventCount)) < 10) {%>
+        <div class="row g-1">
+            <div class="col-12">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-mdb-toggle="modal" data-mdb-target="#charityModal">
+                    Attention! This year's Fun Meet is a for Charity. Please click for details.
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="charityModal" tabindex="-1" aria-labelledby="charityModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="charityModalLabel">Fun Meet Charity Info</h5>
+                                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <b>This year's Fun Meet is for the Adamec family!</b>
+                                <p>Donations will go to assist the Adamec family as Matt continues his battle with
+                                    glioblastoma, a rare and aggressive brain cancer. All proceeds will go directly to
+                                    the Adamecs. Thank you for supporting a beloved Lighting family!
+                                    <a href="https://www.facebook.com/AdamecsArmy/">Click here to read about our cause.</a></p>
+
+                                <p>We have a recommended donation amount of <b>$25 per person</b>, which covers 3
+                                    events/competitions and food. We'd ask that if you plan on competing in more than 3
+                                    events to consider donating a little extra.</p>
+
+                                <p>Donations can be made via Paypal to LWF.Lightning.Swim@gmail.com. If you prefer, we
+                                    can of course accept cash or check at the meet.</p>
+
+                                <p>There will also be raffle tickets available for purchase at the meet.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" data-mdb-dismiss="modal" class="btn btn-primary">Cool!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%if(parseInt(Individual.IndividualEventCount) + parseInt(Individual.TeamEventCount) > 0) {%>
+        <br>
+        <div class="row g-1">
+            <div class="col-12">
+                <div class="text-primary text-center">
+                    <p>You've registered for <%=(parseInt(Individual.IndividualEventCount) + parseInt(Individual.TeamEventCount))%> events.
+                    Please consider making a donation
+                    <% if(parseInt(Individual.IndividualEventCount) + parseInt(Individual.TeamEventCount) > 3) {%>
+                        <b> greater than $25 </b>
+                    <%} else { %>
+                    in the suggested amount of $25
+                    <%}%>
+                        via Paypal to LWF.Lightning.Swim@gmail.com, which will go towards assisting the
+                        <a class="text-warning" style="text-decoration: underline" href="https://www.facebook.com/AdamecsArmy/">Ademic family</a> in their time of need.
+
+                </div>
+            </div>
+        </div>
+        <%}%>
+        <div class="row g-1">
+            <div class="col">
+                <div class="p-3">
+                    <a href="/MeetEvents?IndividualId=<%=Individual.IndividualId%>">
+                        <button class="btn btn-primary" style="height: 4rem">Browse Events</button>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-3">
+                    <a href="/CreateTeam?IndividualId=<%=Individual.IndividualId%>">
+                        <button class="btn btn-primary" style="height: 4rem">Start a Team</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <% } else {%>
+        <div class="row text-primary text-center">
+            <span>
+                <b>You have reached your <%= (parseInt(Individual.IndividualEventCount) + parseInt(Individual.TeamEventCount)) %>
+                    event maximum!</b>
+            </span>
+        </div>
+        <% }%>
+        <hr class="divider-horizontal-blurry" />
+        <div class="card border border-primary text-center">
+            <div class="card-body text-primary">
+                <h5 class="card-title">You are registered for <%= Individual.IndividualEventCount %> events as an individual.</h5>
+                <p class="card-text">
+                    <% if(typeof IndividualEvents !== 'undefined' && IndividualEvents.length > 0) {%>
+                    <ul>
+                        <% for(var lcv=0; lcv < IndividualEvents.length; lcv++) {%>
+                        <li>
+                            <b><%=IndividualEvents[lcv]['EventDescription']%> <%=IndividualEvents[lcv].DistanceNum%><%=IndividualEvents[lcv].DistanceUnit%></b>
+                            <% if (parseInt(IndividualEvents[lcv].AgeMax) && parseInt(IndividualEvents[lcv].AgeMin)
+                                    && parseInt(IndividualEvents[lcv].AgeMax) < 99 && parseInt(IndividualEvents[lcv].AgeMin) > 0 ) { %>
+                            - <%=IndividualEvents[lcv].AgeMin %>-<%= IndividualEvents[lcv].AgeMax %> yrs
+                            <%} else if (parseInt(IndividualEvents[lcv].AgeMin) && parseInt(IndividualEvents[lcv].AgeMin) > 0) { %>
+                            - <%=IndividualEvents[lcv].AgeMin%> & up
+                            <%} else if (parseInt(IndividualEvents[lcv].AgeMax) && parseInt(IndividualEvents[lcv].AgeMax) < 99) { %>
+                            - <%=IndividualEvents[lcv].AgeMax%> & under
+                            <%} else { %>
+                            - All Ages
+                            <%}%>
+                        </li>
+                        <%}%>
+                    </ul>
+                <a href="/MyIndividualEvents?IndividualId=<%=Individual.IndividualId%>&ForWithdrawal=1" class="btn btn-primary">Withdraw from events</a>
+                <%}%>
+                </p>
+            </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <div class="card border border-primary text-center" >
+            <div class="card-body text-primary">
+                <h5 class="card-title">You are registered for <%=Individual.TeamEventCount%> events as part of a team.</h5>
+                <p class="card-text">
+                    <% if(typeof TeamEvents !== 'undefined' && TeamEvents.length > 0) {%>
+                <ul>
+                    <% for(var lcv=0; lcv < TeamEvents.length; lcv++) {%>
+                    <li>
+                        <b><%=TeamEvents[lcv]['EventDescription']%> <%=TeamEvents[lcv].DistanceNum%><%=TeamEvents[lcv].DistanceUnit%></b>
+                        <% if (parseInt(TeamEvents[lcv].AgeMax) && parseInt(TeamEvents[lcv].AgeMin)
+                                && parseInt(TeamEvents[lcv].AgeMax) < 99 && parseInt(TeamEvents[lcv].AgeMin) > 0 ) { %>
+                        - <%=TeamEvents[lcv].AgeMin %>-<%= TeamEvents[lcv].AgeMax %> yrs
+                        <%} else if (parseInt(TeamEvents[lcv].AgeMin) && parseInt(TeamEvents[lcv].AgeMin) > 0) { %>
+                        - <%=TeamEvents[lcv].AgeMin%> & up
+                        <%} else if (parseInt(TeamEvents[lcv].AgeMax) && parseInt(TeamEvents[lcv].AgeMax) < 99) { %>
+                        - <%=TeamEvents[lcv].AgeMax%> & under
+                        <%} else { %>
+                            All Ages
+                        <%}%>
+                    </li>
+                    <%}%>
+                </ul>
+                <a href="/MyTeamEvents?IndividualId=<%=Individual.IndividualId%>&ForWithdrawal=1" class="btn btn-primary">Withdraw my team from events</a>
+                <%}%>
+                </p>
+            </div>
+        </div>
+        <% if(Individual.IsAdmin === true) {%>
+            <hr class="divider-horizontal-blurry" />
+            <div class="p-3 mb-2 bg-warning bg-gradient text-dark">
+                Administrative Section - Proceed with Caution!
+            </div>
+            <br>
+            <div class="row clearfix">
+                <a><button class="btn btn-warning">Create an Event</button></a>
+            </div>
+            <br>
+            <div class="row clearfix">
+                <a><button class="btn btn-warning">Define an Event Type</button></a>
+            </div>
+            <div class="row clearfix">
+                <p class="credit">An Event Type is a reusable definition for what is the same about the event across
+                    instances of it.  If the rules, stroke, or team structure needs to change, a new Event Type must
+                    be created. However, if those are all the same, but only the age range or distance needs to be
+                    changed, you can reuse that Event Type any number of times to schedule actual events.
+                </p>
+            </div>
+        <% }%>
+    </div>
+    <%- include('../partials/footer.ejs') %>
 </body>
 </html>

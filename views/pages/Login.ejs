@@ -1,48 +1,68 @@
+<!DOCTYPE html>
 <html>
-<head>
-  <link href="/css/style.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="form_wrapper">
-  <div class="form_container">
-    <div class="title_container">
-      <h2>Lakewood Fun Meet<br>Competitor Registration</h2>
-    </div>
-    <div class="row clearfix">
-      <div class="">
-        <form id="frmLogin" action="/loginAttempt" method="post" onsubmit="submitScript(e);">
-          <!-- <div class="input_field"> <span><img src="/img/email-small.png" class="form_icon"></span>
-            <input type="email" name="email" placeholder="Email" required />
-          </div>
-          <span class="credit"><b>OR</b></span> -->
-          <div class="row clearfix">
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <input type="text" name="FirstName"  placeholder="First Name" required/>
-              </div>
-            </div>
-            <div class="col_half">
-              <div class="input_field"> <span><img src="/img/user-small.png" class="form_icon"></span>
-                <input type="text" name="LastName"  placeholder="Last Name" required />
-              </div>
-            </div>
-          </div>
-          <div class="row clearfix">
-            <div class="input_field"> <span><img src="/img/key-small.png" class="form_icon"></span>
-              <input type="password" name="Password" placeholder="Password" required />
-            </div>
-          </div>
-          <div class="row clearfix">
-            <div class="input_field"><% if (typeof LoginResult !== 'undefined') {%>
-              <p class="credit"><%=LoginResult%></p>
-              <% } %>
-            </div>
-          </div>
-          <input class="button" type="submit" value="Login" />
-        </form>
+  <head>
+    <%- include('../partials/header.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/nav.ejs') %>
+    <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
+         style="background-image: url('/img/swim-lanes.gif');" >
+      <div class="container-fluid">
+        <div class = "row">
+          <h2 class="mb-3">
+                                  <span class="col-sm-6">
+                                  Lakewood Fun Meet:
+                                  </span>
+            <span class="col-sm-6">
+                                       Home
+                                  </span>
+          </h2>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</body>
+    <form id="frmLogin" action="/loginAttempt" method="post" >
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="container-fluid">
+        <div class="row d-flex justify-content-center " >
+          <div class="col-5">
+            <div class="form-outline">
+              <input type="text" name="FirstName" id="FirstName" class="form-control" required />
+            <label class="form-label" for="FirstName">First name</label>
+            </div>
+          </div>
+          <div class="col-5">
+            <div class="form-outline">
+              <input type="text" name="LastName" id="LastName" class="form-control" required />
+              <label class="form-label" for="LastName">Last name</label>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <!-- Password input -->
+        <div class="row d-flex justify-content-center " >
+          <div class="form-outline col-6">
+            <div class="form-outline">
+              <input type="password" name="Password"  id="Password" class="form-control" required />
+              <label class="form-label" for="Password">Password</label>
+            </div>
+          </div>
+        </div>
+        <hr class="divider-horizontal-blurry" />
+        <!-- Submit button -->
+        <div class="row d-flex justify-content-center ">
+          <div class="col-6">
+            <button type="submit" class="btn btn-primary btn-block mb-4" value="Login" >Login</button>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-5" style="color: red">
+          <% if (typeof LoginResult !== 'undefined') {%>
+            <p class="credit"><%=LoginResult%></p>
+          <% } %>
+          </div>
+        </div>
+      </div>
+    </form>
+  <%- include('../partials/footer.ejs') %>
+  </body>
 </html>

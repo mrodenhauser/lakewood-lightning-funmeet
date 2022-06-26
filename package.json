@@ -7,7 +7,7 @@
   },
   "main": "routes/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "test": "node test.js"
   },
   "dependencies": {

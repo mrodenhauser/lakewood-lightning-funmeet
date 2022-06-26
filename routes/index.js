@@ -66,26 +66,36 @@ router.post('/Register',async(req, res, next) => {
     let individualJson = req.body;
 
     if(!individualJson['FirstName'])
-        validationErrors += 'First Name is required. ';
+        validationErrors += 'First Name is required.<br>';
 
     if(!individualJson['LastName'])
-        validationErrors += 'Last Name is required. ';
+        validationErrors += 'Last Name is required.<br>';
 
     if(!individualJson['Age'] || !validations.isInt(individualJson['Age']))
-        validationErrors += 'Age is required. ';
+        validationErrors += 'Age is required. <br>';
     else individualJson['AgeOnInsert'] = individualJson['Age'];
+
+    if(individualJson['Password1'] !== individualJson['Password2']){
+        validationErrors += 'Passwords do not match.';
+    }
+    else individualJson['Password'] = individualJson['Password1'];
 
     if(validationErrors === '')
         dbIndividual.create(individualJson)
             .then(data => {
-                res.status(200).render('pages/Home', data );
+                res.status(200).render('pages/Home',  {
+                    Individual: data
+                }  );
             })
             .catch(error =>{
                 exHandlers.createGetErrorResponse(next, error);
 
             });
     else {
-        next(createError(validationErrors, next));
+        res.status(200).render('pages/Register', {
+            RegistrationResult: validationErrors,
+            PreviousInput: individualJson
+        });
     }
 });
 
@@ -113,7 +123,9 @@ router.post('/LoginAttempt',async(req, res) => {
     if(validationErrors === '')
         dbIndividual.getIndividualForLogin(firstName, lastName, passwordHash)
             .then(data => {
-                res.status(200).render('pages/Home', data );
+                res.status(200).render('pages/Home',  {
+                    Individual: data
+                }  );
             })
             .catch(error =>{
                 console.warn(firstName + ", " + lastName + " made an unsuccessful login attempt. " + error.message);
@@ -127,23 +139,71 @@ router.post('/LoginAttempt',async(req, res) => {
 
 router.get('/Home',async(req, res, next) => {
 
+    let meetId = req.query['MeetId'];
     let individualId = req.query['IndividualId'];
     let individualJson = req.body;
+
+
+    let iPromise = dbIndividual.getById(individualId);
+    let iePromise = dbEvent.getIndividualEventsByIndividual(individualId);
+    let tePromise = dbEvent.getTeamEventsByIndividual(individualId);
+
 
     if (individualJson && validations.isInt(individualJson['IndividualId'])
         && individualJson['FirstName'] && individualJson['LastName'])
     {
-        req.query['IndividualId'] = individualJson['IndividualId'];
-        res.render('pages/Home', individualJson )
+        let meet;
+        if (!validations.isInt(meetId)) {
+            console.warn("No Meet Id specified, assuming latest. ");
+            let meets = await dbMeet.getMeets();
+            if (Array.isArray(meets) && meets.length > 0) {
+                meet = meets[0]; //ordered by CreateDtm DESC
+                meetId = meet.MeetId;
+            } else {
+                res.status(404).send("There are no Meets defined");
+            }
+        } else {
+            meet = await dbMeet.getById(meetId);
+        }
+
+        Promise.all([iePromise,tePromise])
+            .then(eventsData => {
+
+                let individualEvents = eventsData[0];
+                let teamEvents = eventsData[1];
+
+                req.query['IndividualId'] = individualJson['IndividualId'];
+                res.render('pages/Home', {
+                    Individual: individualJson,
+                    IndividualEvents: individualEvents,
+                    TeamEvents: teamEvents,
+                    Meet: meet
+                });
+            })
+            .catch(error =>{
+                exHandlers.createGetErrorResponse(next, "Could not load the Events due to a server error. "
+                    + error);
+            });
     }
     else{
         if (validations.isInt(individualId)){
-            dbIndividual.getById(individualId)
-                .then(data => {
-                    res.render('pages/Home', data );
+            Promise.all([iPromise, iePromise,tePromise])
+                .then(individualAndEventData => {
+
+                    individualJson = individualAndEventData[0];
+                    let individualEvents = individualAndEventData[1];
+                    let teamEvents = individualAndEventData[2];
+
+                    req.query['IndividualId'] = individualJson['IndividualId'];
+                    res.render('pages/Home', {
+                        Individual: individualJson,
+                        IndividualEvents: individualEvents,
+                        TeamEvents: teamEvents,
+
+                    });
                 })
                 .catch(error =>{
-                    exHandlers.createGetErrorResponse(next, "Could not load the Individual due to a server error. "
+                    exHandlers.createGetErrorResponse(next, "Could not load the Individuals and/or Events due to a server error. "
                         + error);
                 });
         }
@@ -157,7 +217,7 @@ router.get('/Home',async(req, res, next) => {
 router.get('/MyIndividualEvents',async(req, res, next) => {
 
     let individualId = req.query['IndividualId'];
-    //let curIndividual;
+    let forWithdrawal = (req.query['ForWithdrawal'] === '1');
 
     if (validations.isInt(individualId)){
 
@@ -171,7 +231,8 @@ router.get('/MyIndividualEvents',async(req, res, next) => {
                 res.render('pages/MyEventList', {
                     EventsType: "Individual",
                     Individual: curIndividual,
-                    Events: events
+                    Events: events,
+                    IsWithdrawal: forWithdrawal
                 });
             })
             .catch(error =>{
@@ -188,7 +249,7 @@ router.get('/MyIndividualEvents',async(req, res, next) => {
 router.get('/MyTeamEvents',async(req, res, next) => {
 
     let individualId = req.query['IndividualId'];
-    //let curIndividual;
+    let forWithdrawal = (req.query['ForWithdrawal'] === '1');
 
     if (validations.isInt(individualId)){
 
@@ -202,7 +263,8 @@ router.get('/MyTeamEvents',async(req, res, next) => {
                 res.render('pages/MyEventList', {
                     EventsType: "Team",
                     Individual: curIndividual,
-                    Events: events
+                    Events: events,
+                    IsWithdrawal: forWithdrawal
                 });
             })
             .catch(error =>{
@@ -219,7 +281,7 @@ router.get('/MyTeamEvents',async(req, res, next) => {
 router.get('/MeetEvents',async(req, res, next) => {
 
     let meetId = req.query['MeetId'];
-    let individualId = req.query["IndividualId"];
+    let individualId = req.query['IndividualId'];
 
 
     if(!validations.isInt(individualId)){
@@ -274,7 +336,7 @@ router.get('/CreateTeam',async(req, res, next) => {
             dbIndividual.getById(individualId)
                 .then(data => {
                     res.render('pages/CreateTeam',
-                        { TeamCaptain: data });
+                        { Individual: data });
                 })
                 .catch(error =>{
                     exHandlers.createGetErrorResponse(next, "Could not load the Individual due to a server error. "
@@ -364,6 +426,57 @@ router.get('/Team',async(req, res, next) => {
     }
 });
 
+router.get('/MyTeams', async(req,res,next) =>{
+
+    let individualId = req.query['IndividualId'];
+
+    if (validations.isInt(individualId)) {
+
+        Promise.all([
+            dbIndividual.getById(individualId),
+            dbTeam.getTeamsByTeamCaptain(individualId)])
+
+            .then(([individual,teams]) => {
+
+                if(typeof teams !== 'undefined' && teams.length > 0) {
+                    let teamId = teams[0].TeamId;
+
+                    Promise.all([
+                        dbTeam.getById(teamId),
+                        dbIndividual.getIndividuals(teamId),
+                        dbEvent.getTeamEventsByTeam(teamId)])
+
+                        .then(([team, members, events]) => {
+                            res.render('pages/Team', {
+                                Individual: individual,
+                                Teams: teams,
+                                Team: team,
+                                Members: members,
+                                Events: events
+                            });
+                        })
+                        .catch(error => {
+                            exHandlers.createGetErrorResponse(next, "Could not load the team due to a server error. "
+                                + error.message);
+                            console.error(error);
+                        });
+                } else {
+                    res.render('pages/Team', {
+                        Individual: individual,
+                    });
+                }
+            })
+            .catch(error => {
+                exHandlers.createGetErrorResponse(next, "Could not load the team due to a server error. "
+                    + error.message);
+                console.error(error);
+            });
+    } else {
+        console.warn("There was an attempt to load team with an invalid individualId or teamId");
+        res.status(400).redirect('/Login');
+    }
+});
+
 router.get('/CreateHeat',async(req, res, next) => {
 
     let eventId = req.query['EventId'];
@@ -371,11 +484,13 @@ router.get('/CreateHeat',async(req, res, next) => {
 
     if (validations.isInt(eventId)) {
         Promise.all([
+            dbIndividual.getById(individualId),
             dbEvent.getById(eventId),
             dbIndividual.getIndividualsForHeatAssignment(eventId),
             dbTeam.getTeamsForHeatAssignment(eventId)])
-            .then(([event, individuals, teams]) => {
+            .then(([curIndividual, event, individuals, teams]) => {
                 let data =  {
+                    Individual: curIndividual,
                     AdminId: individualId,
                     Event: event,
                     Individuals: individuals,
@@ -460,7 +575,7 @@ router.get('/EventSignUp',async(req, res, next) => {
             .then(([individual,teamsByCaptain,event,competingIndividuals,competingTeams]) => {
                 res.status(200).render('pages/EventSignUp',
                     {
-                        Registrant: individual,
+                        Individual: individual,
                         Teams: teamsByCaptain,
                         Event: event,
                         IndividualCompetitors: competingIndividuals,
