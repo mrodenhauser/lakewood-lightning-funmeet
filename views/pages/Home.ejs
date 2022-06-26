@@ -15,6 +15,9 @@
                                      Home
                                 </span>
                 </h2>
+                <% if (typeof Meet !== 'undefined'){%>
+                <h3><%=Meet.MeetName%> - <%=Meet.MeetBannerDescription%></h3>
+                <%}%>
             </div>
         </div>
     </div>
@@ -49,10 +52,10 @@
                                 <p>Donations can be made via Paypal to LWF.Lightning.Swim@gmail.com. If you prefer, we
                                     can of course accept cash or check at the meet.</p>
 
-                                <p>There will also be raffle ticketsavailable for purchase at the meet.</p>
+                                <p>There will also be raffle tickets available for purchase at the meet.</p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary">Let's raise some cash!</button>
+                                <button type="button" data-mdb-dismiss="modal" class="btn btn-primary">Cool!</button>
                             </div>
                         </div>
                     </div>
@@ -65,11 +68,11 @@
             <div class="col-12">
                 <div class="text-primary text-center">
                     <p>You've registered for <%=(parseInt(Individual.IndividualEventCount) + parseInt(Individual.TeamEventCount))%> events.
-                    Please make a donation of
+                    Please consider making a donation
                     <% if(parseInt(Individual.IndividualEventCount) + parseInt(Individual.TeamEventCount) > 3) {%>
                         <b> greater than $25 </b>
                     <%} else { %>
-                    $25 (or more)
+                    in the suggested amount of $25
                     <%}%>
                         via Paypal to LWF.Lightning.Swim@gmail.com, which will go towards assisting the
                         <a class="text-warning" style="text-decoration: underline" href="https://www.facebook.com/AdamecsArmy/">Ademic family</a> in their time of need.

@@ -92,6 +92,12 @@
             </div>
         </div>
         <br>
+        <%} else { %>
+        <div class="row text-center">
+            <div class="col-10">
+                <h5>You don't appear to be on any teams</h5>
+            </div>
+        </div>
         <%}%>
         <% if(typeof Events !== 'undefined' && Events.length < 10) {%>
         <!--<form action="/MeetEvents?IndividualId=<%=Individual.IndividualId%>" method="get">-->

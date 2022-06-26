@@ -139,6 +139,7 @@ router.post('/LoginAttempt',async(req, res) => {
 
 router.get('/Home',async(req, res, next) => {
 
+    let meetId = req.query['MeetId'];
     let individualId = req.query['IndividualId'];
     let individualJson = req.body;
 
@@ -151,6 +152,20 @@ router.get('/Home',async(req, res, next) => {
     if (individualJson && validations.isInt(individualJson['IndividualId'])
         && individualJson['FirstName'] && individualJson['LastName'])
     {
+        let meet;
+        if (!validations.isInt(meetId)) {
+            console.warn("No Meet Id specified, assuming latest. ");
+            let meets = await dbMeet.getMeets();
+            if (Array.isArray(meets) && meets.length > 0) {
+                meet = meets[0]; //ordered by CreateDtm DESC
+                meetId = meet.MeetId;
+            } else {
+                res.status(404).send("There are no Meets defined");
+            }
+        } else {
+            meet = await dbMeet.getById(meetId);
+        }
+
         Promise.all([iePromise,tePromise])
             .then(eventsData => {
 
@@ -162,7 +177,7 @@ router.get('/Home',async(req, res, next) => {
                     Individual: individualJson,
                     IndividualEvents: individualEvents,
                     TeamEvents: teamEvents,
-
+                    Meet: meet
                 });
             })
             .catch(error =>{
@@ -446,8 +461,9 @@ router.get('/MyTeams', async(req,res,next) =>{
                             console.error(error);
                         });
                 } else {
-                    console.warn("There was an attempt to navigate to MyTeams for individualId that does not own any");
-                    res.status(404).redirect('pages/home?IndividualId=' + individualId);
+                    res.render('pages/Team', {
+                        Individual: individual,
+                    });
                 }
             })
             .catch(error => {
