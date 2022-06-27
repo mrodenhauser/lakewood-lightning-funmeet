@@ -96,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="238">
+              <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -566,11 +566,18 @@
       <option name="project" value="LOCAL" />
       <updated>1656295725895</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Attempt #2 to fix to SSL DB connection issue">
+      <created>1656296210747</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1656296210747</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="621362000" />
+    <option name="totallyTimeSpent" value="621891000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -655,7 +662,8 @@
     <MESSAGE value="Fixed small grammatical error" />
     <MESSAGE value="Fixed several display issues and ability to make teams of 4-6." />
     <MESSAGE value="Attempted fix to SSL DB connection issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempted fix to SSL DB connection issue" />
+    <MESSAGE value="Attempt #2 to fix to SSL DB connection issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempt #2 to fix to SSL DB connection issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1095,8 +1103,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="238">
+          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
         </state>
       </provider>
     </entry>
