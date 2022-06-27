@@ -329,7 +329,7 @@ router.get('/CreateTeam',async(req, res, next) => {
         && individualJson['FirstName'] && individualJson['LastName'])
     {
         req.query['IndividualId'] = individualJson['IndividualId'];
-        res.status(200).render('pages/createTeam', { TeamCaptain: individualJson });
+        res.status(200).render('pages/createTeam', { Individual: individualJson });
     }
     else{
         if (validations.isInt(individualId)){
@@ -369,7 +369,7 @@ router.post('/CreateTeam',async(req, res, next) => {
         let team = {
             TeamName: teamName,
             TeamTaunt: teamTaunt,
-            TeamCaptain: {
+            Individual: {
                 FirstName: teamCaptainFirstName,
                 LastName: teamCaptainLastName,
                 IndividualId: teamCaptainIndividualId
@@ -379,7 +379,7 @@ router.post('/CreateTeam',async(req, res, next) => {
             IndividualIds: individualIds,
             ValidationErrors: validationErrors
         };
-        res.status(400).render('pages/CreateTeam', team);
+        res.status(400).render('pages/CreateTeam?', team);
     }
     else {
         dbTeam.createAddMembers(teamName, teamTaunt, teamCaptainIndividualId, individualIds)

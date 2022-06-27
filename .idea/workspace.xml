@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bc5bc77-4a9f-4153-99d4-3c60eb887eae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/CreateTeam.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/CreateTeam.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="101" column="47" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+            <state relative-caret-position="918">
+              <caret line="367" column="34" lean-forward="true" selection-start-line="367" selection-start-column="34" selection-end-line="367" selection-end-column="34" />
               <folding>
                 <element signature="n#!!block;n#validateTeamAndGetIds#0" />
                 <element signature="e#2999#4171#0" />
@@ -30,7 +30,6 @@
                 <element signature="e#8286#9345#0" />
                 <element signature="e#9401#10448#0" />
                 <element signature="e#10502#11739#0" />
-                <element signature="e#11793#12838#0" />
                 <element signature="e#20510#21935#0" />
                 <element signature="e#19313#21390#0" />
               </folding>
@@ -72,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="220" column="113" selection-start-line="220" selection-start-column="113" selection-end-line="220" selection-end-column="113" />
+            <state relative-caret-position="2629">
+              <caret line="192" column="113" selection-start-line="192" selection-start-column="113" selection-end-line="192" selection-end-column="113" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -239,11 +238,11 @@
         <option value="$PROJECT_DIR$/views/pages/MeetEventList.ejs" />
         <option value="$PROJECT_DIR$/views/partials/nav.ejs" />
         <option value="$PROJECT_DIR$/views/pages/Team.ejs" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/pages/Home.ejs" />
         <option value="$PROJECT_DIR$/views/pages/Register.ejs" />
         <option value="$PROJECT_DIR$/database.js" />
         <option value="$PROJECT_DIR$/views/pages/CreateTeam.ejs" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
       </list>
     </option>
   </component>
@@ -581,11 +580,25 @@
       <option name="project" value="LOCAL" />
       <updated>1656298616436</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Removed Required on team members 5 &amp; 6 (so you can make min of 4)">
+      <created>1656333535859</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1656333535859</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Removed Required on team members 5, not just 6 (oops)">
+      <created>1656333800115</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1656333800115</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="622678000" />
+    <option name="totallyTimeSpent" value="623798000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -598,6 +611,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1574" height="1415" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19713728" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -613,7 +627,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3309804" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50158983" side_tool="true" weight="0.39750585" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960598" visible="true" weight="0.32735777" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960598" weight="0.32735777" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -671,7 +685,9 @@
     <MESSAGE value="Attempted fix to SSL DB connection issue" />
     <MESSAGE value="Attempt #2 to fix to SSL DB connection issue" />
     <MESSAGE value="Added ability to use STANDARD tier database when env configs are present" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ability to use STANDARD tier database when env configs are present" />
+    <MESSAGE value="Removed Required on team members 5 &amp; 6 (so you can make min of 4)" />
+    <MESSAGE value="Removed Required on team members 5, not just 6 (oops)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed Required on team members 5, not just 6 (oops)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1062,25 +1078,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="101" column="47" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
-          <folding>
-            <element signature="n#!!block;n#validateTeamAndGetIds#0" />
-            <element signature="e#2999#4171#0" />
-            <element signature="e#4222#5379#0" />
-            <element signature="e#5427#8224#0" />
-            <element signature="e#8286#9345#0" />
-            <element signature="e#9401#10448#0" />
-            <element signature="e#10502#11739#0" />
-            <element signature="e#11793#12838#0" />
-            <element signature="e#20510#21935#0" />
-            <element signature="e#19313#21390#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/Register.ejs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -1108,10 +1105,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="220" column="113" selection-start-line="220" selection-start-column="113" selection-end-line="220" selection-end-column="113" />
+        <state relative-caret-position="2629">
+          <caret line="192" column="113" selection-start-line="192" selection-start-column="113" selection-end-line="192" selection-end-column="113" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="367" column="34" lean-forward="true" selection-start-line="367" selection-start-column="34" selection-end-line="367" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!block;n#validateTeamAndGetIds#0" />
+            <element signature="e#2999#4171#0" />
+            <element signature="e#4222#5379#0" />
+            <element signature="e#5427#8224#0" />
+            <element signature="e#8286#9345#0" />
+            <element signature="e#9401#10448#0" />
+            <element signature="e#10502#11739#0" />
+            <element signature="e#20510#21935#0" />
+            <element signature="e#19313#21390#0" />
           </folding>
         </state>
       </provider>
