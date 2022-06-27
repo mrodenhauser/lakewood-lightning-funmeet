@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bc5bc77-4a9f-4153-99d4-3c60eb887eae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/pages/CreateTeam.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/CreateTeam.ejs" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -41,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/pages/Register.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="38" column="134" selection-start-line="38" selection-start-column="134" selection-end-line="38" selection-end-column="134" />
+            <state relative-caret-position="459">
+              <caret line="39" column="75" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#7;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -72,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="86" column="93" selection-start-line="86" selection-start-column="93" selection-end-line="86" selection-end-column="93" />
+            <state relative-caret-position="476">
+              <caret line="220" column="113" selection-start-line="220" selection-start-column="113" selection-end-line="220" selection-end-column="113" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -93,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+            <state relative-caret-position="187">
+              <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -241,9 +241,9 @@
         <option value="$PROJECT_DIR$/views/pages/Team.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/pages/Home.ejs" />
-        <option value="$PROJECT_DIR$/views/pages/CreateTeam.ejs" />
         <option value="$PROJECT_DIR$/views/pages/Register.ejs" />
         <option value="$PROJECT_DIR$/database.js" />
+        <option value="$PROJECT_DIR$/views/pages/CreateTeam.ejs" />
       </list>
     </option>
   </component>
@@ -255,8 +255,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
-    <option name="width" value="2366" />
-    <option name="height" value="2111" />
+    <option name="y" value="-11" />
+    <option name="width" value="2361" />
+    <option name="height" value="2123" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -573,11 +574,18 @@
       <option name="project" value="LOCAL" />
       <updated>1656296210747</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added ability to use STANDARD tier database when env configs are present">
+      <created>1656298616436</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1656298616436</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="621891000" />
+    <option name="totallyTimeSpent" value="622678000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -589,10 +597,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1577" height="1407" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="-7" width="1574" height="1415" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19675325" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19713728" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -606,7 +613,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3309804" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50158983" side_tool="true" weight="0.39750585" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960598" visible="true" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960598" visible="true" weight="0.32735777" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -663,7 +670,8 @@
     <MESSAGE value="Fixed several display issues and ability to make teams of 4-6." />
     <MESSAGE value="Attempted fix to SSL DB connection issue" />
     <MESSAGE value="Attempt #2 to fix to SSL DB connection issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attempt #2 to fix to SSL DB connection issue" />
+    <MESSAGE value="Added ability to use STANDARD tier database when env configs are present" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ability to use STANDARD tier database when env configs are present" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1073,20 +1081,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="86" column="93" selection-start-line="86" selection-start-column="93" selection-end-line="86" selection-end-column="93" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/Register.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="38" column="134" selection-start-line="38" selection-start-column="134" selection-end-line="38" selection-end-column="134" />
+        <state relative-caret-position="459">
+          <caret line="39" column="75" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#7;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1103,8 +1101,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+        <state relative-caret-position="187">
+          <caret line="11" column="60" selection-start-line="11" selection-start-column="60" selection-end-line="11" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="220" column="113" selection-start-line="220" selection-start-column="113" selection-end-line="220" selection-end-column="113" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

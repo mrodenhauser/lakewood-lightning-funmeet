@@ -218,10 +218,10 @@
             <div class="input-group">
               <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 5){%>
               <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
-              <input type="text" id="FirstName3" name="FirstName" class="form-control" value="<%=FirstNames[5]%>" required/>
+              <input type="text" id="FirstName3" name="FirstName" class="form-control" value="<%=FirstNames[5]%>"/>
               <%} else {%>
                 <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-                <input type="text" id="FirstName3" name="FirstName" class="form-control" placeholder="First Name" required/>
+                <input type="text" id="FirstName3" name="FirstName" class="form-control" placeholder="First Name"/>
               <%}%>
             </div>
           </div>
@@ -229,9 +229,9 @@
             <div class="input-group">
               <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
               <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 5){%>
-              <input type="text" id="LastName3" name="LastName" class="form-control"  value="<%=LastNames[5]%>" required/>
+              <input type="text" id="LastName3" name="LastName" class="form-control"  value="<%=LastNames[5]%>"/>
               <%} else {%>
-                <input type="text" id="LastName3" name="LastName" class="form-control"  placeholder="Last Name" required/>
+                <input type="text" id="LastName3" name="LastName" class="form-control"  placeholder="Last Name"/>
               <%}%>
             </div>
           </div>
