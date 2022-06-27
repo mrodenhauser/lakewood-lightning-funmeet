@@ -22,8 +22,6 @@
       <form id="frmCreateTeam" action="/CreateTeam" method="post" autocomplete="off" onsubmit="submitScript(e);">
         <div class="row d-flex justify-content-center ">
           <div class="col-9">
-            <div class="input-group">
-              <span class="input-group-text" id="TeamNameSpan"><i class="fas fa-users fa-lg"></i></span>
               <div class="form-outline">
               <%if(typeof TeamName !== 'undefined' && TeamName !== ''){%>
                 <input type="text" id="TeamName" name="TeamName" class="form-control" required value="<%=TeamName%>" />
@@ -33,23 +31,19 @@
               <%}%>
               <label class="form-label" for="TeamName">Team Name</label>
             </div>
-            </div>
           </div>
         </div>
         <br>
         <div class="row d-flex justify-content-center ">
           <div class="col-9">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-users fa-lg"></i></span>
-              <div class="form-outline">
-                <%if(typeof TeamTaunt !== 'undefined' && TeamTaunt !== ''){%>
-                  <input type="text" id="TeamTaunt" name="TeamTaunt" class="form-control" value="<%=TeamTaunt%>" />
-                <%} else {%>
-                  <input type="text" id="TeamTaunt" name="TeamTaunt" class="form-control" data-mdb-toggle="tooltip"
-                         data-mdb-placement="bottom" title="Eat our bubbles, etc..."/>
-                <%}%>
-                <label class="form-label" for="TeamTaunt">Battle Cry! (optional)</label>
-              </div>
+            <div class="form-outline">
+              <%if(typeof TeamTaunt !== 'undefined' && TeamTaunt !== ''){%>
+                <input type="text" id="TeamTaunt" name="TeamTaunt" class="form-control" value="<%=TeamTaunt%>" />
+              <%} else {%>
+                <input type="text" id="TeamTaunt" name="TeamTaunt" class="form-control" data-mdb-toggle="tooltip"
+                       data-mdb-placement="bottom" title="Eat our bubbles, etc..."/>
+              <%}%>
+              <label class="form-label" for="TeamTaunt">Battle Cry! (optional)</label>
             </div>
           </div>
         </div>
@@ -90,7 +84,7 @@
                     <ul>
                       <li><b>Swimmers must already be registered</b> for you to add them to your team.</li>
                       <li>First & last names must be <b>spelled as they were registered</b> to be added. </li>
-                      <li>Create team(s) with the right number of members for the event(s) you plan on competing in.
+                      <li>Create team(s) with the right number of members (typically 4 or 6) for the event(s) you plan on competing in.
                         <b>Captains swim too!</b></li>
                       <li>Make sure you have others' permission to be on your team, since <b>it could obligate them to
                           (additional) donations.</b></li>
@@ -187,6 +181,62 @@
           </div>
           <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 3){%>
           <input type="hidden" name="IndividualId" value="<%=IndividualIds[3]%>">
+          <%}else{%>
+            <input type="hidden" name="IndividualId">
+          <%}%>
+        </div>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-6">
+            <div class="input-group">
+              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 4){%>
+              <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+              <input type="text" id="FirstName4" name="FirstName" class="form-control" value="<%=FirstNames[4]%>" required/>
+              <%} else {%>
+                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+                <input type="text" id="FirstName4" name="FirstName" class="form-control" placeholder="First Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 4){%>
+              <input type="text" id="LastName4" name="LastName" class="form-control"  value="<%=LastNames[4]%>" required/>
+              <%} else {%>
+                <input type="text" id="LastName4" name="LastName" class="form-control"  placeholder="Last Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 4){%>
+          <input type="hidden" name="IndividualId" value="<%=IndividualIds[4]%>">
+          <%}else{%>
+            <input type="hidden" name="IndividualId">
+          <%}%>
+        </div>
+        <div class="row d-flex justify-content-center ">
+          <div class="col-6">
+            <div class="input-group">
+              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 5){%>
+              <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+              <input type="text" id="FirstName3" name="FirstName" class="form-control" value="<%=FirstNames[5]%>" required/>
+              <%} else {%>
+                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+                <input type="text" id="FirstName3" name="FirstName" class="form-control" placeholder="First Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
+              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 5){%>
+              <input type="text" id="LastName3" name="LastName" class="form-control"  value="<%=LastNames[5]%>" required/>
+              <%} else {%>
+                <input type="text" id="LastName3" name="LastName" class="form-control"  placeholder="Last Name" required/>
+              <%}%>
+            </div>
+          </div>
+          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 5){%>
+          <input type="hidden" name="IndividualId" value="<%=IndividualIds[5]%>">
           <%}else{%>
             <input type="hidden" name="IndividualId">
           <%}%>

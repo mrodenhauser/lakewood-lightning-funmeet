@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bc5bc77-4a9f-4153-99d4-3c60eb887eae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/Home.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/Home.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/MeetEventList.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/MeetEventList.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/pages/Team.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/pages/Team.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/partials/nav.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/partials/nav.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database.js" beforeDir="false" afterPath="$PROJECT_DIR$/database.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,161 +16,120 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.45861298">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/routes/index.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1836">
-                  <caret line="467" column="12" selection-start-line="467" selection-start-column="12" selection-end-line="467" selection-end-column="12" />
-                  <folding>
-                    <element signature="n#!!block;n#validateTeamAndGetIds#0" />
-                    <element signature="e#2999#4171#0" />
-                    <element signature="e#5427#7639#0" />
-                    <element signature="e#7701#8674#0" />
-                    <element signature="e#8730#9691#0" />
-                    <element signature="e#9745#10982#0" />
-                    <element signature="e#11036#12081#0" />
-                    <element signature="e#12136#13621#0" />
-                    <element signature="e#13669#14721#0" />
-                    <element signature="e#14775#15948#0" />
-                    <element signature="e#16003#17777#0" />
-                    <element signature="e#17832#19257#0" />
-                    <element signature="e#19313#21390#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/database_entities/event.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="963">
-                  <caret line="58" selection-start-line="58" selection-end-line="58" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/pages/Register.ejs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="2074">
-                  <caret line="122" column="41" selection-start-line="122" selection-start-column="41" selection-end-line="122" selection-end-column="41" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/database_entities/team.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="98" selection-start-line="98" selection-end-line="98" />
-                  <folding>
-                    <element signature="e#277#1848#0" />
-                    <element signature="e#1937#2700#0" />
-                    <element signature="e#2756#3701#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/routes/API/teams.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="18" column="25" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="34" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/pages/Team.ejs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="97" column="55" selection-start-line="97" selection-start-column="55" selection-end-line="97" selection-end-column="55" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2046">
-                  <caret line="48" column="83" selection-start-line="48" selection-start-column="83" selection-end-line="48" selection-end-column="83" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/partials/nav.ejs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="561">
-                  <caret line="84" column="61" lean-forward="true" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/pages/MyEventList.ejs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="36" column="54" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/public/css/style.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="640">
-                  <caret line="258" column="1" lean-forward="true" selection-start-line="258" selection-start-column="1" selection-end-line="258" selection-end-column="19" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="48" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/views/pages/MeetEventList.ejs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="17" selection-end-column="77" />
-                  <folding>
-                    <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/views/pages/Home.ejs">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="52" column="67" lean-forward="true" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
-                  <folding>
-                    <element signature="n#style#0;n#a#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#a#0;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#button#0;n#a#0;n#div#0;n#div#1;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="101" column="47" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+              <folding>
+                <element signature="n#!!block;n#validateTeamAndGetIds#0" />
+                <element signature="e#2999#4171#0" />
+                <element signature="e#4222#5379#0" />
+                <element signature="e#5427#8224#0" />
+                <element signature="e#8286#9345#0" />
+                <element signature="e#9401#10448#0" />
+                <element signature="e#10502#11739#0" />
+                <element signature="e#11793#12838#0" />
+                <element signature="e#20510#21935#0" />
+                <element signature="e#19313#21390#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/pages/Register.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="38" column="134" selection-start-line="38" selection-start-column="134" selection-end-line="38" selection-end-column="134" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#7;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/databaseOperations.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/pages/Team.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1122">
+              <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="86" column="93" selection-start-line="86" selection-start-column="93" selection-end-line="86" selection-end-column="93" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/partials/nav.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/database.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/pages/Home.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="794">
+              <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="794">
+              <caret line="50" column="60" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/pages/MeetEventList.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="27" column="40" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -268,7 +223,6 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/public/scripts/login.js" />
-        <option value="$PROJECT_DIR$/database.js" />
         <option value="$PROJECT_DIR$/views/pages/index.html" />
         <option value="$PROJECT_DIR$/views/partials/footer.ejs" />
         <option value="$PROJECT_DIR$/public/scripts/register.js" />
@@ -278,17 +232,18 @@
         <option value="$PROJECT_DIR$/views/pages/AdminHome.ejs" />
         <option value="$PROJECT_DIR$/views/pages/EventSignUp.ejs" />
         <option value="$PROJECT_DIR$/views/pages/Login.ejs" />
-        <option value="$PROJECT_DIR$/views/pages/CreateTeam.ejs" />
         <option value="$PROJECT_DIR$/routes/API/teams.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/views/pages/MyEventList.ejs" />
-        <option value="$PROJECT_DIR$/views/pages/Register.ejs" />
         <option value="$PROJECT_DIR$/views/pages/MeetEventList.ejs" />
         <option value="$PROJECT_DIR$/views/partials/nav.ejs" />
         <option value="$PROJECT_DIR$/views/pages/Team.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/views/pages/Home.ejs" />
+        <option value="$PROJECT_DIR$/views/pages/CreateTeam.ejs" />
+        <option value="$PROJECT_DIR$/views/pages/Register.ejs" />
+        <option value="$PROJECT_DIR$/database.js" />
       </list>
     </option>
   </component>
@@ -298,10 +253,10 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
-    <option name="width" value="2165" />
-    <option name="height" value="2123" />
+    <option name="width" value="2366" />
+    <option name="height" value="2111" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -322,6 +277,11 @@
               <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
               <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
               <item name="database_entities" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
@@ -386,19 +346,19 @@
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\repos\lakewood-lightning-funmeet\views\partials" />
-      <recent name="C:\repos\lakewood-lightning-funmeet\public\scripts" />
-      <recent name="C:\repos\node-js-getting-started\views\pages" />
-      <recent name="C:\repos\node-js-getting-started\public\scripts" />
-      <recent name="C:\repos\node-js-getting-started\public\scss" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\repos\node-js-getting-started\public" />
       <recent name="C:\repos\node-js-getting-started\public\img" />
       <recent name="C:\repos\node-js-getting-started\scss" />
       <recent name="C:\repos\node-js-getting-started" />
       <recent name="C:\repos\node-js-getting-started\routes\API" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\repos\lakewood-lightning-funmeet\views\partials" />
+      <recent name="C:\repos\lakewood-lightning-funmeet\public\scripts" />
+      <recent name="C:\repos\node-js-getting-started\views\pages" />
+      <recent name="C:\repos\node-js-getting-started\public\scripts" />
+      <recent name="C:\repos\node-js-getting-started\public\scss" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -592,11 +552,32 @@
       <option name="project" value="LOCAL" />
       <updated>1656218879904</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Fixed several display issues and ability to make teams of 4-6.">
+      <created>1656278774060</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1656278774060</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Attempted fix to SSL DB connection issue">
+      <created>1656295725895</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1656295725895</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Attempt #2 to fix to SSL DB connection issue">
+      <created>1656296210747</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1656296210747</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="613618000" />
+    <option name="totallyTimeSpent" value="621891000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -608,24 +589,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
+    <frame x="-7" y="0" width="1577" height="1407" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11938534" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19675325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32735777" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3257989" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49841017" visible="true" weight="0.39750585" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49841017" weight="0.39750585" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3289166" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3309804" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50158983" side_tool="true" weight="0.39750585" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960598" weight="0.32969603" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960598" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -679,7 +660,10 @@
     <MESSAGE value="Doing MDB5 UI refactoring" />
     <MESSAGE value="Refactored UI to MDB5, many UI features that did not need API or DB changes, that's next" />
     <MESSAGE value="Fixed small grammatical error" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed small grammatical error" />
+    <MESSAGE value="Fixed several display issues and ability to make teams of 4-6." />
+    <MESSAGE value="Attempted fix to SSL DB connection issue" />
+    <MESSAGE value="Attempt #2 to fix to SSL DB connection issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attempt #2 to fix to SSL DB connection issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -727,31 +711,26 @@
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/public/scripts/register.js</url>
           <line>7</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="408" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/routes/index.js</url>
           <line>286</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="419" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/routes/index.js</url>
           <line>146</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="422" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/index.js</url>
           <line>432</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="424" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/index.js</url>
           <line>464</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="426" />
         </line-breakpoint>
       </breakpoints>
@@ -892,28 +871,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/scripts/login.js" />
-    <entry file="file://$PROJECT_DIR$/public/MDB-src/js/bootstrap/src/dom/data.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/MDB-src/scss/mdb.free.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/MDB-src/js/mdb.free.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/MDB-src/js/bootstrap/src/dom/data.js" />
+    <entry file="file://$PROJECT_DIR$/public/MDB-src/scss/mdb.free.scss" />
+    <entry file="file://$PROJECT_DIR$/public/MDB-src/js/mdb.free.js" />
     <entry file="file://$PROJECT_DIR$/scss/index.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/MDB-src/js/mdb/dom/data.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/MDB-src/js/mdb/dom/data.js" />
     <entry file="file://$PROJECT_DIR$/public/scripts/home.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -943,15 +907,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/security">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/databaseOperations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="34" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="44" />
+        <state relative-caret-position="694">
+          <caret line="52" column="5" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1012,13 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="47" column="57" selection-start-line="47" selection-start-column="57" selection-end-line="47" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database_entities/team.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1034,7 +984,7 @@
     <entry file="file://$PROJECT_DIR$/routes/API/teams.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="18" column="25" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="34" />
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1042,13 +992,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="55" column="48" lean-forward="true" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1073,68 +1016,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/Register.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2074">
-          <caret line="122" column="41" selection-start-line="122" selection-start-column="41" selection-end-line="122" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/MeetEventList.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="17" selection-end-column="77" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/partials/nav.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="84" column="61" lean-forward="true" selection-start-line="84" selection-start-column="61" selection-end-line="84" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/Team.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="97" column="55" selection-start-line="97" selection-start-column="55" selection-end-line="97" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1836">
-          <caret line="467" column="12" selection-start-line="467" selection-start-column="12" selection-end-line="467" selection-end-column="12" />
-          <folding>
-            <element signature="n#!!block;n#validateTeamAndGetIds#0" />
-            <element signature="e#2999#4171#0" />
-            <element signature="e#5427#7639#0" />
-            <element signature="e#7701#8674#0" />
-            <element signature="e#8730#9691#0" />
-            <element signature="e#9745#10982#0" />
-            <element signature="e#11036#12081#0" />
-            <element signature="e#12136#13621#0" />
-            <element signature="e#13669#14721#0" />
-            <element signature="e#14775#15948#0" />
-            <element signature="e#16003#17777#0" />
-            <element signature="e#17832#19257#0" />
-            <element signature="e#19313#21390#0" />
-          </folding>
+        <state relative-caret-position="595">
+          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/Home.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="52" column="67" lean-forward="true" selection-start-line="52" selection-start-column="67" selection-end-line="52" selection-end-column="67" />
+        <state relative-caret-position="794">
+          <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="794">
+          <caret line="50" column="60" selection-start-line="50" selection-start-column="60" selection-end-line="50" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/MeetEventList.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="40" selection-start-line="27" selection-start-column="37" selection-end-line="27" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/Team.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#a#0;n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#a#0;n#div#0;n#div#1;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="101" column="47" selection-start-line="101" selection-start-column="47" selection-end-line="101" selection-end-column="47" />
+          <folding>
+            <element signature="n#!!block;n#validateTeamAndGetIds#0" />
+            <element signature="e#2999#4171#0" />
+            <element signature="e#4222#5379#0" />
+            <element signature="e#5427#8224#0" />
+            <element signature="e#8286#9345#0" />
+            <element signature="e#9401#10448#0" />
+            <element signature="e#10502#11739#0" />
+            <element signature="e#11793#12838#0" />
+            <element signature="e#20510#21935#0" />
+            <element signature="e#19313#21390#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="86" column="93" selection-start-line="86" selection-start-column="93" selection-end-line="86" selection-end-column="93" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/Register.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="38" column="134" selection-start-line="38" selection-start-column="134" selection-end-line="38" selection-end-column="134" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#7;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/databaseOperations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
         </state>
       </provider>
     </entry>
