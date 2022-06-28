@@ -3,6 +3,7 @@ const express = require('express');
 //const cool = require('cool-ascii-faces');
 //const createError = require('http-errors');
 const path = require('path');
+
 const PORT = process.env.PORT || 5000
 
 const indexApiRouter = require('./routes/API/index');
@@ -17,6 +18,9 @@ const teamsApiRouter = require('./routes/API/teams');
 const indexRouter = require('./routes/index');
 
 const app = express();
+
+require('dotenv').config();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
@@ -49,6 +53,7 @@ app.get('/home', (req, res) => res.render('pages/Home'));
 app.get('/', (req, res) => res.render('pages/Register'));
 app.get('/event-list', (req, res) => res.render('pages/MeetEventList'));
 app.get('/admin-home', (req, res) => res.render('pages/AdminHome'));
+//app.get('/CreateTeam', (req, res) => res.render('pages/CreateTeam'));
 
 
 // catch 404 and forward to error handler
