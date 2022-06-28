@@ -41,9 +41,9 @@ async function validateTeamAndGetIds(teamCaptainFirstName, teamCaptainLastName, 
                 if (!individualIds || !Array.isArray(individualIds)) {
                     validationErrors += "Didn't get an array of individualIds. ";
                 } else {
-                    if (individualIds[lcv] === '' && (firstNames[lcv] !== '' || lastNames[lcv] !== '')) {
+                    if (individualIds[lcv] === '' && (firstNames[lcv].trim() !== '' || lastNames[lcv].trim() !== '')) {
                         try {
-                            let matches = await dbIndividual.getIndividualsByNames(firstNames[lcv], lastNames[lcv]);
+                            let matches = await dbIndividual.getIndividualsByNames(firstNames[lcv].trim(), lastNames[lcv].trim());
                             if (Array.isArray(matches) && matches.length > 0) {
                                 individualIds[lcv] = matches[0]['IndividualId'];
                             } else {
@@ -359,14 +359,14 @@ router.get('/CreateTeam',async(req, res, next) => {
 
 router.post('/CreateTeam',async(req, res, next) => {
 
-    let teamName = req.body['TeamName'];
-    let teamTaunt = req.body['TeamTaunt'];
+    let teamName = req.body['TeamName'].trim();
+    let teamTaunt = req.body['TeamTaunt'].trim();
     let firstNames = req.body['FirstName'];
     let lastNames = req.body['LastName'];
     let individualIds = req.body['IndividualId'];
 
-    let teamCaptainFirstName = firstNames[0];
-    let teamCaptainLastName = lastNames[0];
+    let teamCaptainFirstName = firstNames[0].trim();
+    let teamCaptainLastName = lastNames[0].trim();
     let teamCaptainIndividualId = individualIds[0];
 
     let  validationErrors = await validateTeamAndGetIds(teamCaptainFirstName, teamCaptainLastName,
