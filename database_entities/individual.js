@@ -27,12 +27,12 @@ exports.create = async function createIndividual(individual){
         try {
             db.createNewEntity(
                 'fCreateIndividual',
-                [individual['FirstName'],
-                    individual['LastName'],
-                    parseInt(individual['AgeOnInsert']),
+                [individual['FirstName'].trim(),
+                    individual['LastName'].trim(),
+                    parseInt(individual['AgeOnInsert'].trim()),
                     validate.getOptStrElement(individual, 'DateOfBirth'),
-                    validate.getOptStrElement(individual, 'NickName'),
-                    validate.getOptStrElement(individual, 'Email'),
+                    validate.getOptStrElement(individual, 'NickName').trim(),
+                    validate.getOptStrElement(individual, 'Email').trim(),
                     secure.getHash(individual['Password']),
                     validate.getOptStrElement(individual, 'SwimtopiaId')])
                 .then(data => {
