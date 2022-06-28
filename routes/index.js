@@ -28,7 +28,7 @@ async function validateTeamAndGetIds(teamCaptainFirstName, teamCaptainLastName, 
         validationErrors += 'Must have at least two team members to make a team';
     } else {
         for (let lcv = firstNames.length-1; lcv > 0; lcv--){ //trim the end if less than 6 members.
-            if(firstNames[lcv].trim() === '' && lastNames[lcv].trim() === ''){
+            if(firstNames[lcv] === '' && lastNames[lcv] === ''){
                 firstNames.splice(lcv);
                 lastNames.splice(lcv);
                 individualIds.splice(lcv);

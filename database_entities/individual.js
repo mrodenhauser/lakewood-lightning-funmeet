@@ -29,10 +29,10 @@ exports.create = async function createIndividual(individual){
                 'fCreateIndividual',
                 [individual['FirstName'].trim(),
                     individual['LastName'].trim(),
-                    parseInt(individual['AgeOnInsert'].trim()),
+                    parseInt(individual['AgeOnInsert'].trim(),
                     validate.getOptStrElement(individual, 'DateOfBirth'),
-                    validate.getOptStrElement(individual, 'NickName').trim(),
-                    validate.getOptStrElement(individual, 'Email').trim(),
+                    validate.getOptStrElement(individual, 'NickName'),
+                    validate.getOptStrElement(individual, 'Email')),
                     secure.getHash(individual['Password']),
                     validate.getOptStrElement(individual, 'SwimtopiaId')])
                 .then(data => {
