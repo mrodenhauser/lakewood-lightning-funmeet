@@ -27,6 +27,13 @@ async function validateTeamAndGetIds(teamCaptainFirstName, teamCaptainLastName, 
     if (!(firstNames && Array.isArray(firstNames) && firstNames.length > 1)) {
         validationErrors += 'Must have at least two team members to make a team';
     } else {
+        for (let lcv = firstNames.length-1; lcv > 0; lcv--){ //trim the end if less than 6 members.
+            if(firstNames[lcv] === '' && lastNames[lcv] === ''){
+                firstNames.splice(lcv);
+                lastNames.splice(lcv);
+                individualIds.splice(lcv);
+            }
+        } //note: this SHOULD work for removing individuals from the MIDDLE of the array because someone left a spot blank, but as of writing this, that is untested.
         for (let lcv = 0; lcv < firstNames.length; lcv++) {
             if (!lastNames || !Array.isArray(lastNames) || lastNames.length < (lcv + 1)) {
                 validationErrors += "Every Team Member must have a first and last name!";
@@ -34,7 +41,7 @@ async function validateTeamAndGetIds(teamCaptainFirstName, teamCaptainLastName, 
                 if (!individualIds || !Array.isArray(individualIds)) {
                     validationErrors += "Didn't get an array of individualIds. ";
                 } else {
-                    if (individualIds[lcv] === '') {
+                    if (individualIds[lcv] === '' && (firstNames[lcv] !== '' || lastNames[lcv] !== '')) {
                         try {
                             let matches = await dbIndividual.getIndividualsByNames(firstNames[lcv], lastNames[lcv]);
                             if (Array.isArray(matches) && matches.length > 0) {
@@ -48,7 +55,7 @@ async function validateTeamAndGetIds(teamCaptainFirstName, teamCaptainLastName, 
                                 + '. It may have been a server error, but verify that the person has already ' +
                                 'registered, and double check the spelling.';
                         }
-                    } else if (!validations.isInt(individualIds[lcv])) {
+                    } else if ((firstNames[lcv] !== '' || lastNames[lcv] !== '') && !validations.isInt(individualIds[lcv])) {
                         validationErrors += 'Create Team form was pre-populated with invalid Individual IDs. ' +
                             'Try starting over.';
                     }
@@ -329,13 +336,13 @@ router.get('/CreateTeam',async(req, res, next) => {
         && individualJson['FirstName'] && individualJson['LastName'])
     {
         req.query['IndividualId'] = individualJson['IndividualId'];
-        res.status(200).render('pages/createTeam', { Individual: individualJson });
+        res.status(200).render('pages/CreateTeam', { Individual: individualJson });
     }
     else{
         if (validations.isInt(individualId)){
             dbIndividual.getById(individualId)
                 .then(data => {
-                    res.render('pages/CreateTeam',
+                    res.status(200).render('pages/CreateTeam',
                         { Individual: data });
                 })
                 .catch(error =>{
@@ -379,7 +386,7 @@ router.post('/CreateTeam',async(req, res, next) => {
             IndividualIds: individualIds,
             ValidationErrors: validationErrors
         };
-        res.status(400).render('pages/CreateTeam?', team);
+        res.status(400).render('pages/CreateTeam', team);
     }
     else {
         dbTeam.createAddMembers(teamName, teamTaunt, teamCaptainIndividualId, individualIds)
