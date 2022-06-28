@@ -27,8 +27,8 @@ exports.create = async function createIndividual(individual){
         try {
             db.createNewEntity(
                 'fCreateIndividual',
-                [individual['FirstName'],
-                    individual['LastName'],
+                [individual['FirstName'].trim(),
+                    individual['LastName'].trim(),
                     parseInt(individual['AgeOnInsert']),
                     validate.getOptStrElement(individual, 'DateOfBirth'),
                     validate.getOptStrElement(individual, 'NickName'),
