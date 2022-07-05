@@ -292,7 +292,13 @@ router.post('/MyIndividualEvents', async (req,res,next) => {
     let withdrawalEventId;
 
     if(typeof (withdrawalSelectionIndex) !== 'undefined' && validations.isInt(withdrawalSelectionIndex)){
-        withdrawalEventId = withdrawalEventIds[parseInt(withdrawalSelectionIndex)]; //last element
+        if(Array.isArray(withdrawalEventIds)){
+            withdrawalEventId = withdrawalEventIds[parseInt(withdrawalSelectionIndex)]; //last element
+        }
+        else {
+            withdrawalEventId = withdrawalEventIds;
+        }
+
     }
 
     if (validations.isInt(individualId) && validations.isInt(withdrawalEventId)){
