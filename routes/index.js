@@ -66,6 +66,36 @@ async function validateTeamAndGetIds(teamCaptainFirstName, teamCaptainLastName, 
     return validationErrors;
 }
 
+async function validateTeamAndIds(teamCaptainIndividualId, individualIds) {
+
+    let validationErrors = '';
+
+    if (!teamCaptainIndividualId)
+        validationErrors += 'Team Captain Individual Id is required. ';
+
+    //trim  blank entries off the end of the list. This should work for blanks in the middle list too.
+    for (let lcv = individualIds.length - 1; lcv > 0; lcv--) {
+        if (individualIds[lcv] === 0) {
+            individualIds.splice(lcv);
+            //lcv--;
+        }
+    }
+
+    if (!(individualIds && Array.isArray(individualIds) && individualIds.length > 1)) {
+        validationErrors += 'Must have at least two team members to make a team. ';
+    }
+
+    for (let lcv1 = 0; lcv1 < individualIds.length; lcv1++) {
+        for (let lcv2 = lcv1 + 1; lcv2 < individualIds.length; lcv2++) {
+            if (lcv1 !== lcv2 && individualIds[lcv1] === individualIds[lcv2]) {
+                validationErrors += 'Duplicate team members were selected. '
+            }
+        }
+    }
+
+    return validationErrors;
+}
+
 router.post('/Register',async(req, res, next) => {
 
     let validationErrors = '';
@@ -253,6 +283,55 @@ router.get('/MyIndividualEvents',async(req, res, next) => {
     }
 });
 
+router.post('/MyIndividualEvents', async (req,res,next) => {
+
+    let individualId = req.body.IndividualId;
+    let withdrawalSelectionIndex = req.body.withdrawalSelectionIndex;
+    let withdrawalEventIds = req.body.withdrawalEventIds;
+
+    let withdrawalEventId;
+
+    if(typeof (withdrawalSelectionIndex) !== 'undefined' && validations.isInt(withdrawalSelectionIndex)){
+        if(Array.isArray(withdrawalEventIds)){
+            withdrawalEventId = withdrawalEventIds[parseInt(withdrawalSelectionIndex)]; //last element
+        }
+        else {
+            withdrawalEventId = withdrawalEventIds;
+        }
+
+    }
+
+    if (validations.isInt(individualId) && validations.isInt(withdrawalEventId)){
+
+        //this is what we SHOULD be doing....but I don't have the exact error handling syntax figured out, so I'm
+        //continuing this inappropriate pattern of interacting directly with the DB files given my current timeline.
+        //req.delete('/API/Individuals/' +individualId+ '/EventId/' +eventId)
+        //    .catch( res => {
+        //        res.redirect('/Login/')
+        //    });
+
+        Promise.all([dbIndividual.getById(parseInt(individualId)),dbIndividual.removeFromEvent(parseInt(withdrawalEventId),parseInt(individualId))])
+            .then(data => {
+                let curIndividual = data[0];
+                let events = data[1];
+                res.render('pages/MyEventList', {
+                    EventsType: "Individual",
+                    Individual: curIndividual,
+                    Events: events,
+                    IsWithdrawal: true
+                });
+            })
+            .catch(error => {
+                exHandlers.createGetErrorResponse(next, "Could not remove the individual from the event. "
+                    + error);
+            });
+    }
+    else{
+        next(createError("There was an attempt to post a change to MyIndividualEvents without an IndividualId or EventId", next));
+        res.redirect('/Login');
+    }
+});
+
 router.get('/MyTeamEvents',async(req, res, next) => {
 
     let individualId = req.query['IndividualId'];
@@ -284,6 +363,81 @@ router.get('/MyTeamEvents',async(req, res, next) => {
         res.redirect('/Login');
     }
 });
+
+router.post('/MyTeamEvents', async (req,res,next) => {
+
+    let individualId = req.body.IndividualId;
+    let withdrawalSelectionIndex = req.body.withdrawalSelectionIndex;
+    let withdrawalEventIds = req.body.withdrawalEventIds;
+
+    let withdrawalEventId;
+
+    if(typeof (withdrawalSelectionIndex) !== 'undefined' && validations.isInt(withdrawalSelectionIndex)){
+        withdrawalEventId = parseInt(withdrawalEventIds[parseInt(withdrawalSelectionIndex)]); //last element
+    }
+
+    if (validations.isInt(individualId) && validations.isInt(withdrawalEventId)){
+
+        //this is what we SHOULD be doing....but I don't have the exact error handling syntax figured out, so I'm
+        //continuing this inappropriate pattern of interacting directly with the DB files given my current timeline.
+        //req.delete('/API/Individuals/' +individualId+ '/EventId/' +eventId)
+        //    .catch( res => {
+        //        res.redirect('/Login/')
+        //    });
+
+        let teamId = 0;
+
+        //have to figure out the team ID because I designed this wrong....this could have the potential bug of someone
+        //being the team captain of two teams doing the same event, but I really shouldn't be allowing that anyway.
+        dbTeam.getTeamsByTeamCaptain(parseInt(individualId))
+            .then(teamsData => {
+                for(let lcv1 = 0; lcv1 < teamsData.length; lcv1++) {
+                    dbEvent.getTeamEventsByTeam(teamsData[lcv1].TeamId)
+                        .then(eventsData => {
+                            for (let lcv2 = 0; lcv2 < eventsData.length; lcv2++){
+                                if (eventsData[lcv2].EventId === withdrawalEventId){
+                                    teamId = teamsData[lcv2].TeamId;
+                                }
+                            }
+
+                            if(teamId > 0) {
+                                Promise.all([dbIndividual.getById(parseInt(individualId)), dbTeam.removeFromEvent(parseInt(withdrawalEventId), teamId)])
+                                    .then(data => {
+                                        let curIndividual = data[0];
+                                        let events = data[1];
+                                        res.render('pages/MyEventList', {
+                                            EventsType: "Team",
+                                            Individual: curIndividual,
+                                            Events: events,
+                                            IsWithdrawal: true
+                                        });
+                                    })
+                                    .catch(error => {
+                                        exHandlers.createGetErrorResponse(next, "Could not remove the team from the event. "
+                                            + error);
+                                    });
+                            }
+                        })
+                        .catch(error => {
+                            exHandlers.createGetErrorResponse(next, "Could not remove the team from the event, because we could not load the events the team is signed up for. "
+                                + error);
+                        });
+                }
+            })
+            .catch(error => {
+                exHandlers.createGetErrorResponse(next, "Could not remove the team from the event because we couldn't look up the team by captain."
+                    + error);
+            });
+
+
+    }
+    else{
+        next(createError("There was an attempt to post a change to MyTeamEvents without an IndividualId or EventId", next));
+        res.redirect('/Login');
+    }
+});
+
+
 
 router.get('/MeetEvents',async(req, res, next) => {
 
@@ -340,10 +494,17 @@ router.get('/CreateTeam',async(req, res, next) => {
     }
     else{
         if (validations.isInt(individualId)){
-            dbIndividual.getById(individualId)
+
+            let pIndividual = dbIndividual.getById(individualId);
+            let pIndividuals = dbIndividual.getActiveIndividuals(individualId);
+
+
+            Promise.all([pIndividual,pIndividuals])
                 .then(data => {
-                    res.status(200).render('pages/CreateTeam',
-                        { Individual: data });
+                    res.status(200).render('pages/CreateTeam',{
+                            Individual: data[0],
+                            Individuals: data[1]
+                    });
                 })
                 .catch(error =>{
                     exHandlers.createGetErrorResponse(next, "Could not load the Individual due to a server error. "
@@ -361,40 +522,41 @@ router.post('/CreateTeam',async(req, res, next) => {
 
     let teamName = req.body['TeamName'].trim();
     let teamTaunt = req.body['TeamTaunt'].trim();
-    let firstNames = req.body['FirstName'];
-    let lastNames = req.body['LastName'];
-    let individualIds = req.body['IndividualId'];
+    let selectedIndividualIds = req.body['SelectedIndividualIds'];
+    let teamCaptainFirstName = req.body['TeamCaptainFirstName'].trim();
+    let teamCaptainLastName = req.body['TeamCaptainLastName'].trim();
 
-    let teamCaptainFirstName = firstNames[0].trim();
-    let teamCaptainLastName = lastNames[0].trim();
-    let teamCaptainIndividualId = individualIds[0];
+    let teamCaptainIndividualId = selectedIndividualIds[0];
 
-    let  validationErrors = await validateTeamAndGetIds(teamCaptainFirstName, teamCaptainLastName,
-        teamCaptainIndividualId, firstNames, lastNames, individualIds);
+    let validationErrors = await validateTeamAndIds(teamCaptainIndividualId,selectedIndividualIds)
 
-    if (validationErrors !== '') {
-        let team = {
-            TeamName: teamName,
-            TeamTaunt: teamTaunt,
-            Individual: {
-                FirstName: teamCaptainFirstName,
-                LastName: teamCaptainLastName,
-                IndividualId: teamCaptainIndividualId
-            },
-            FirstNames: firstNames,
-            LastNames: lastNames,
-            IndividualIds: individualIds,
-            ValidationErrors: validationErrors
-        };
-        res.status(400).render('pages/CreateTeam', team);
-    }
-    else {
-        dbTeam.createAddMembers(teamName, teamTaunt, teamCaptainIndividualId, individualIds)
+    if (validationErrors === '') {
+        dbTeam.createAddMembers(teamName, teamTaunt, teamCaptainIndividualId, selectedIndividualIds)
             .then(result => {
                 res.status(200).redirect('/Team?TeamId=' + result['TeamId'] +
                     '&IndividualId=' + teamCaptainIndividualId);
             })
             .catch(error => {
+                next(createError(500, error, next));
+            });
+    } else {
+        dbIndividual.getActiveIndividuals(teamCaptainIndividualId)
+            .then(individuals => {
+                let team = {
+                    TeamName: teamName,
+                    TeamTaunt: teamTaunt,
+                    Individual: {
+                        FirstName: teamCaptainFirstName,
+                        LastName: teamCaptainLastName,
+                        IndividualId: teamCaptainIndividualId
+                    },
+                    Individuals: individuals,
+                    SelectedIndividualIds: selectedIndividualIds,
+                    ValidationErrors: validationErrors
+                };
+                res.status(400).render('pages/CreateTeam', team);
+            })
+            .catch( error => {
                 next(createError(500, error, next));
             });
     }

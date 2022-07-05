@@ -22,8 +22,8 @@ if(process.env.HEROKU_POSTGRESQL_NAVY_URL || process.env.MAX_DB_CONNS) { //runni
     config = {
         promiseLib: Promise,
         connectionString: process.env.DATABASE_URL,
-        max: process.env.MAX_DB_CONNS || 5,
-        ssl: {rejectUnauthorized: false} //comment this out if you want to hit a local DB (that doesn't use SSL)
+        max: 5,
+        ssl: {rejectUnauthorized: false} //comment this out if you want to hit a local DB (that doesn't have SSL setup)
     };
 }
 

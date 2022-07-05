@@ -78,8 +78,7 @@ router.post('/:individualId/Events/:eventId',async(req, res, next) => {
         individual.addToEvent(eventId, individualId)
             .then(data => {
                     res.status(201).json(data);
-                }
-            )
+            })
             .catch(error => {
                 res.status(500).send('Could not Save the individual due to a server error: ' + error);
 
@@ -89,6 +88,28 @@ router.post('/:individualId/Events/:eventId',async(req, res, next) => {
         next(createError(400, "Couldn't add the individual to the event because of invalid inputs(" + individualId +
             ", " + eventId + "). ", next));
     }
+});
+
+/*POST add an Individual to an Event via association made in body (JSON) */
+router.delete('/:individualId/Events/:eventId',async(req, res, next) => {
+    let eventId = req.params['eventId'];
+    let individualId = req.params['individualId'];
+
+    if (validate.isInt(individualId) && validate.isInt(eventId)){
+
+        let pRemoveIndividual = individual.removeFromEvent(eventId,individualId);
+        let pGetIndividual = individual.getById(individualId);
+
+        Promise.all([pGetIndividual,pRemoveIndividual])
+            .then(data => {
+                res.status(201).json(data);
+            })
+            .catch(error => {
+                res.status(500).send("Could not remove the individual from the event. " + error);
+            });
+    }
+    else{
+        next(createError(400, "There was an attempt to delete an Individual Event without an IndividualId or EventId", next));}
 });
 
 

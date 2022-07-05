@@ -171,6 +171,20 @@ exports.addToEvent = async function addTeamToEvent(eventId, teamId) {
     });
 };
 
+exports.removeFromEvent = async function removeIndividualFromEvent(eventId, teamId) {
+    return new Promise ((successFunc,rejectFunc) => {
+        db.removeEntityFromGroup(
+            'fRemoveTeamFromEvent',
+            [parseInt(eventId), parseInt(teamId)])
+            .then(data => {
+                successFunc(data);
+            })
+            .catch(error => {
+                rejectFunc(error);
+            });
+    })
+};
+
 exports.addToHeat = async function addTeamToHeat(heatId, teamId) {
 
     return new Promise((successFunc,rejectedFunc) => {

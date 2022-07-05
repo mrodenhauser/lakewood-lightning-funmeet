@@ -48,23 +48,22 @@
           </div>
         </div>
         <hr class="divider-horizontal-blurry" />
-        <p>Captain:</p>
         <div class="row justify-content-center ">
-          <div class="col-6">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-user-ninja fa-lg"></i></span>
-                <input type="text" name="FirstName" class="form-control" value="<%=Individual.FirstName%>" required readonly/>
-                <!--<label class="form-label" for="FirstName1"></label>-->
-              </div>
-          </div>
-          <div class="col-6">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-user-ninja fa-lg"></i></span>
-              <input type="text" name="LastName" class="form-control"  value="<%=Individual.LastName%>" required readonly/>
-                <!--<label class="form-label" for="FirstName1"></label>-->
+            <div class="col-auto">
+                <p>Captain:</p>
             </div>
-          </div>
-          <input type="hidden" name="IndividualId" value="<%=Individual.IndividualId%>">
+            <div class="col-auto">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user-ninja fa-lg"></i></span>
+                    <select name="SelectedIndividualIds" id="TeamMate1" class="form-control" contenteditable="false">
+                        <option value="<%=Individual.IndividualId%>" selected >
+                            <%=Individual.FirstName%> <%=Individual.LastName%>
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <input type="hidden" name="TeamCaptainFirstName" value="<%=Individual.FirstName%>">
+            <input type="hidden" name="TeamCaptainLastName" value="<%=Individual.LastName%>">
         </div>
         <br>
         <div class="row d-flex justify-content-center">
@@ -99,148 +98,86 @@
           </div>
         </div>
         <hr class="divider-horizontal-blurry" />
-        <p>Additional Members:</p>
-        <div class="row d-flex justify-content-center ">
-          <div class="col-6">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 1){%>
-              <input type="text" id="FirstName1" name="FirstName" class="form-control"  value="<%=FirstNames[1]%>" required/>
-              <%} else {%>
-                <input type="text" id="FirstName1" name="FirstName" class="form-control"  placeholder="First Name" required/>
-              <%}%>
+        <%if (typeof Individuals !== 'undefined') {%>
+            <p>Additional Members:</p>
+            <div class="row justify-content-evenly ">
+              <div class="col-auto mb-3">
+                  <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                      <select name="SelectedIndividualIds" id="TeamMate1" >
+                          <option disabled value="0"
+                                  <% if (typeof SelectedIndividualIds === "undefined" || parseInt(SelectedIndividualIds[1]) === 0) {%> selected<%}%>>
+                              Pick a swimmer...</option>
+                          <% for ( var lcv =0; lcv < Individuals.length; lcv++ ){%>
+                          <option value="<%=Individuals[lcv].IndividualId%>"
+                                  <% if (typeof SelectedIndividualIds !== "undefined" && parseInt(SelectedIndividualIds[1]) === Individuals[lcv].IndividualId) {%>selected<%}%>>
+                              <%=Individuals[lcv].FirstName%> <%=Individuals[lcv].LastName%></option>
+                          <% }%>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-auto mb-3">
+                  <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                      <select name="SelectedIndividualIds" id="TeamMate2" >
+                          <option disabled value="0"
+                                  <% if (typeof SelectedIndividualIds === "undefined" || parseInt(SelectedIndividualIds[2]) === 0) {%> selected<%}%>>
+                                    Pick a swimmer...</option>
+                          <% for ( var lcv =0; lcv < Individuals.length; lcv++ ){%>
+                          <option value="<%=Individuals[lcv].IndividualId%>"
+                                  <% if (typeof SelectedIndividualIds !== "undefined" && parseInt(SelectedIndividualIds[2]) === Individuals[lcv].IndividualId) {%>selected<%}%>>
+                              <%=Individuals[lcv].FirstName%> <%=Individuals[lcv].LastName%></option>
+                          <% }%>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-auto mb-3">
+                  <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                      <select name="SelectedIndividualIds" id="TeamMate3"  >
+                          <option disabled value="0"
+                                  <% if (typeof SelectedIndividualIds === "undefined" || parseInt(SelectedIndividualIds[3]) === 0) {%> selected<%}%>>
+                              Pick a swimmer...</option>
+                          <% for ( var lcv =0; lcv < Individuals.length; lcv++ ){%>
+                          <option value="<%=Individuals[lcv].IndividualId%>"
+                                  <% if (typeof SelectedIndividualIds !== "undefined" && parseInt(SelectedIndividualIds[3]) === Individuals[lcv].IndividualId) {%>selected<%}%>>
+                              <%=Individuals[lcv].FirstName%> <%=Individuals[lcv].LastName%></option>
+                          <% }%>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-auto mb-3">
+                  <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                      <select name="SelectedIndividualIds" id="TeamMate4" >
+                          <option disabled value="0"
+                                  <% if (typeof SelectedIndividualIds === "undefined" || parseInt(SelectedIndividualIds[4]) === 0) {%> selected<%}%>>
+                              Pick a swimmer...</option>
+                          <% for ( var lcv =0; lcv < Individuals.length; lcv++ ){%>
+                          <option value="<%=Individuals[lcv].IndividualId%>"
+                                  <% if (typeof SelectedIndividualIds !== "undefined" && parseInt(SelectedIndividualIds[4]) === Individuals[lcv].IndividualId) {%>selected<%}%>>
+                              <%=Individuals[lcv].FirstName%> <%=Individuals[lcv].LastName%></option>
+                          <% }%>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-auto mb-3">
+                  <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
+                      <select name="SelectedIndividualIds" id="TeamMate5">
+                          <option disabled value="0"
+                                  <% if (typeof SelectedIndividualIds === "undefined" || parseInt(SelectedIndividualIds[5]) === 0) {%> selected<%}%>>
+                              Pick a swimmer...</option>
+                          <% for ( var lcv =0; lcv < Individuals.length; lcv++ ){%>
+                          <option value="<%=Individuals[lcv].IndividualId%>"
+                                  <% if (typeof SelectedIndividualIds !== "undefined" && parseInt(SelectedIndividualIds[5]) === Individuals[lcv].IndividualId) {%>selected<%}%>>
+                              <%=Individuals[lcv].FirstName%> <%=Individuals[lcv].LastName%></option>
+                          <% }%>
+                      </select>
+                  </div>
+              </div>
             </div>
-          </div>
-          <div class="col-6">
-            <div class="input-group">
-              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 1){%>
-                <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
-                <input type="text" id="LastName1" name="LastName" class="form-control" value="<%=LastNames[1]%>" required/>
-              <%} else {%>
-                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-                <input type="text" id="LastName1" name="LastName" class="form-control" placeholder="Last Name" required/>
-              <%}%>
-            </div>
-          </div>
-          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 1){%>
-          <input type="hidden" name="IndividualId" value="<%=IndividualIds[1]%>">
-          <%}else{%>
-            <input type="hidden" name="IndividualId">
-          <%}%>
-        </div>
-        <div class="row d-flex justify-content-center ">
-          <div class="col-6">
-            <div class="input-group">
-              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 2){%>
-                <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
-                <input type="text" id="FirstName2" name="FirstName" class="form-control"  value="<%=FirstNames[2]%>" required/>
-              <%} else {%>
-                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-                <input type="text" id="FirstName2" name="FirstName" class="form-control"  placeholder="First Name" required/>
-              <%}%>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="input-group">
-              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 2){%>
-                <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
-                <input type="text" id="LastName2" name="LastName" class="form-control" value="<%=LastNames[2]%>" required/>
-              <%} else {%>
-                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-                <input type="text" id="LastName2" name="LastName" class="form-control" placeholder="Last Name" required/>
-              <%}%>
-            </div>
-          </div>
-          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 2){%>
-          <input type="hidden" name="IndividualId" value="<%=IndividualIds[2]%>">
-          <%}else{%>
-            <input type="hidden" name="IndividualId">
-          <%}%>
-        </div>
-        <div class="row d-flex justify-content-center ">
-          <div class="col-6">
-            <div class="input-group">
-              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 3){%>
-                <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
-                <input type="text" id="FirstName3" name="FirstName" class="form-control" value="<%=FirstNames[3]%>" required/>
-              <%} else {%>
-                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-                <input type="text" id="FirstName3" name="FirstName" class="form-control" placeholder="First Name" required/>
-              <%}%>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 3){%>
-              <input type="text" id="LastName3" name="LastName" class="form-control"  value="<%=LastNames[3]%>" required/>
-              <%} else {%>
-                <input type="text" id="LastName3" name="LastName" class="form-control"  placeholder="Last Name" required/>
-              <%}%>
-            </div>
-          </div>
-          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 3){%>
-          <input type="hidden" name="IndividualId" value="<%=IndividualIds[3]%>">
-          <%}else{%>
-            <input type="hidden" name="IndividualId">
-          <%}%>
-        </div>
-        <div class="row d-flex justify-content-center ">
-          <div class="col-6">
-            <div class="input-group">
-              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 4){%>
-              <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
-              <input type="text" id="FirstName4" name="FirstName" class="form-control" value="<%=FirstNames[4]%>"/>
-              <%} else {%>
-                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-                <input type="text" id="FirstName4" name="FirstName" class="form-control" placeholder="First Name"/>
-              <%}%>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 4){%>
-              <input type="text" id="LastName4" name="LastName" class="form-control"  value="<%=LastNames[4]%>"/>
-              <%} else {%>
-                <input type="text" id="LastName4" name="LastName" class="form-control"  placeholder="Last Name"/>
-              <%}%>
-            </div>
-          </div>
-          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 4){%>
-          <input type="hidden" name="IndividualId" value="<%=IndividualIds[4]%>">
-          <%}else{%>
-            <input type="hidden" name="IndividualId">
-          <%}%>
-        </div>
-        <div class="row d-flex justify-content-center ">
-          <div class="col-6">
-            <div class="input-group">
-              <%if(typeof FirstNames !== 'undefined' && Array.isArray(FirstNames) && FirstNames.length > 5){%>
-              <span class="input-group-text"><i class="fas fa-user-check fa-lg"></i></span>
-              <input type="text" id="FirstName3" name="FirstName" class="form-control" value="<%=FirstNames[5]%>"/>
-              <%} else {%>
-                <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-                <input type="text" id="FirstName3" name="FirstName" class="form-control" placeholder="First Name"/>
-              <%}%>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="input-group">
-              <span class="input-group-text"><i class="fas fa-user-plus fa-lg"></i></span>
-              <%if(typeof LastNames !== 'undefined' && Array.isArray(LastNames) && LastNames.length > 5){%>
-              <input type="text" id="LastName3" name="LastName" class="form-control"  value="<%=LastNames[5]%>"/>
-              <%} else {%>
-                <input type="text" id="LastName3" name="LastName" class="form-control"  placeholder="Last Name"/>
-              <%}%>
-            </div>
-          </div>
-          <%if(typeof IndividualIds !== 'undefined' && Array.isArray(IndividualIds) && IndividualIds.length > 5){%>
-          <input type="hidden" name="IndividualId" value="<%=IndividualIds[5]%>">
-          <%}else{%>
-            <input type="hidden" name="IndividualId">
-          <%}%>
-        </div>
+        <%}%>
         <%if(typeof ValidationErrors !== 'undefined' && ValidationErrors !== ''){%>
         <div class="row d-flex justify-content-center ">
           <div class="col-12">
