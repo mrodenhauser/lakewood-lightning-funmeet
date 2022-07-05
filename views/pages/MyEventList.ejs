@@ -5,7 +5,7 @@
     <%- include('../partials/nav.ejs') %>
     <div class="bg-image p-5 text-center shadow-2-strong rounded mb-5 text-black"
          style="background-image: url('/img/swim-lanes.gif');" >
-        <div class="container-fluid">
+        <div class="container">
             <div class = "row">
                 <h2 class="mb-3">
                     <span class="col-sm-6">Lakewood Fun Meet:</span>
@@ -20,54 +20,78 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <% if(IsWithdrawal === true){%>
-                    <h2>Withdrawal feature coming soon, don't worry!</h2>
-                    <h6>(click and it breaks)</h6>
-                <%}%>
-            </div>
-        </div>
-        <hr class="divider-horizontal-blurry" />
-        <div class="row">
-            <% if(IsWithdrawal === true) { %>
-            <div class="col list_fa list_fa-user-slash">
-            <%} else {%>
-            <div class="col list_fa list_fa-user-check">
-            <%}%>
-                <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
-                    <ul class="list_fa">
-                    <% for(var lcv=0; lcv < Events.length; lcv++) {%>
-                        <li>
-                            <b>
-                                <% if(IsWithdrawal === true) { %><a href="\EventWithdrawal?IndividualId=<%=Individual.IndividualId%>&EventId=<%=Events[lcv].EventId%>"><%}%>
-                                <%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%>
-                                <% if(IsWithdrawal === true) { %></a><%}%>
-                            </b>
-                            <% if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMin)
-                                    && parseInt(Events[lcv].AgeMax) < 99 && parseInt(Events[lcv].AgeMin) > 0 ) { %>
-                            - <%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs
-                            <%} else if (parseInt(Events[lcv].AgeMin) && parseInt(Events[lcv].AgeMin) > 0) { %>
-                            - <%=Events[lcv].AgeMin%> & up
-                            <%} else if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMax) < 99) { %>
-                            - <%=Events[lcv].AgeMax%> & under
-                            <%} else { %>
-                              - All Ages
-                            <%}%>
-                        </li>
+    <form <% if(EventsType === 'Individual') {%>
+            action="/MyIndividualEvents"
+            <%} else { %>
+            action="/MyTeamEvents"
+            <%}%> method="POST" autocomplete="off">
+        <input type="hidden" name="IndividualId" value="<%=Individual.IndividualId%>">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <% if(IsWithdrawal === true){%>
+                        <h2>Select the event you would like to withdrawal from</h2>
                     <%}%>
-                    </ul>
-                <%} else {%>
-                    <div class="row clearfix">
-                    <span class="credit">
-                        <p>You are not registered for any <%= EventsType %> events. How sad :(</p>
-                    </span>
-                    </div>
-                <%}%>
+                </div>
             </div>
+            <hr class="divider-horizontal-blurry" />
+            <% if(typeof Events !== 'undefined' && Events.length > 0) {%>
+                <% for(var lcv=0; lcv < Events.length; lcv++) {%>
+                    <div class="row justify-content-start">
+                        <%if (IsWithdrawal === true) {%>
+                            <div class="col-1">
+                                <input type="hidden" name="withdrawalEventIds" value="<%=Events[lcv].EventId%>">
+                                <input type="radio" name="withdrawalSelectionIndex" value="<%=lcv%>" class="check"  id="withdrawalEventIndex-<%=lcv%>" autocomplete="off"  />
+                                <!--<label class="btn btn-primary" for="btn-check-withdrawal-<%=lcv%>"><i class="fas fa-user-alt-slash"></i></label>-->
+                            </div>
+                        <% } %>
+                        <div class="col-11">
+                        <b><%=Events[lcv]['EventDescription']%> <%=Events[lcv].DistanceNum%><%=Events[lcv].DistanceUnit%></b>
+                        <% if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMin)
+                                && parseInt(Events[lcv].AgeMax) < 99 && parseInt(Events[lcv].AgeMin) > 0 ) { %>
+                        - <%=Events[lcv].AgeMin %>-<%= Events[lcv].AgeMax %> yrs
+                        <%} else if (parseInt(Events[lcv].AgeMin) && parseInt(Events[lcv].AgeMin) > 0) { %>
+                        - <%=Events[lcv].AgeMin%> & up
+                        <%} else if (parseInt(Events[lcv].AgeMax) && parseInt(Events[lcv].AgeMax) < 99) { %>
+                        - <%=Events[lcv].AgeMax%> & under
+                        <%} else { %>
+                          - All Ages
+                        <%}%>
+                        </div>
+                    </div>
+                <hr class="divider-horizontal-blurry" />
+                <%}%>
+                <%if(IsWithdrawal === true) { %>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">Withdrawal from event :(</button>
+                    </div>
+                </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="withdrawalModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="withdrawalModalLabel">Withdrawal from this event?</h5>
+                                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">This will remove you/your team as a competitor from the selected events</div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Whoops! Never mind!</button>
+                                <button type="submit" class="btn btn-primary">Yes, I'm sure.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+            <%} else {%>
+                <div class="row" >
+                    <div class="col">
+                        <p>You are not registered for any <%= EventsType %> events. How sad :(</p>
+                    </div>
+                </div>
+            <%}%>
         </div>
-    </div>
+    </form>
     <%- include('../partials/footer.ejs') %>
 </body>
 </html>

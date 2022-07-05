@@ -256,8 +256,15 @@ body {
     margin-left: -1.3em; /* same as padding-left set on li */
     width: 1.3em; /* same as padding-left set on li */
 }
-.list_fa-user-check li:before {
-    content: "\f4fc"; /* FontAwesome Unicode */
+.list_fa-ind-event li:before {
+    content: "\f406"; /* FontAwesome Unicode */
+    font-family: FontAwesome;
+    display: inline-block;
+    margin-left: -1.3em; /* same as padding-left set on li */
+    width: 1.3em; /* same as padding-left set on li */
+}
+.list_fa-team-event li:before {
+    content: "\f0c0"; /* FontAwesome Unicode */
     font-family: FontAwesome;
     display: inline-block;
     margin-left: -1.3em; /* same as padding-left set on li */
