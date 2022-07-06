@@ -106,8 +106,8 @@
         </div>
         <% }%>
         <hr class="divider-horizontal-blurry" />
-        <div class="card border border-primary text-center">
-            <div class="card-body text-primary">
+        <div class="card border border-primary ">
+            <div class="card-body text-primary list_fa-ind-event">
                 <h5 class="card-title">You are registered for <%= Individual.IndividualEventCount %> events as an individual.</h5>
                 <p class="card-text">
                     <% if(typeof IndividualEvents !== 'undefined' && IndividualEvents.length > 0) {%>
@@ -134,8 +134,8 @@
             </div>
         </div>
         <hr class="divider-horizontal-blurry" />
-        <div class="card border border-primary text-center" >
-            <div class="card-body text-primary">
+        <div class="card border border-primary ">
+            <div class="card-body text-primary list_fa-team-event">
                 <h5 class="card-title">You are registered for <%=Individual.TeamEventCount%> events as part of a team.</h5>
                 <p class="card-text">
                     <% if(typeof TeamEvents !== 'undefined' && TeamEvents.length > 0) {%>

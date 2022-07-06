@@ -57,7 +57,21 @@ exports.addToEvent = async function addIndividualToEvent(eventId, individualId) 
                 successFunc(data);
             })
             .catch(error => {
-                 rejectFunc(error);
+                rejectFunc(error);
+            });
+    })
+};
+
+exports.removeFromEvent = async function removeIndividualFromEvent(eventId, individualId) {
+    return new Promise ((successFunc,rejectFunc) => {
+        db.removeEntityFromGroup(
+            'fRemoveIndividualFromEvent',
+            [parseInt(eventId), parseInt(individualId)])
+            .then(data => {
+                successFunc(data);
+            })
+            .catch(error => {
+                rejectFunc(error);
             });
     })
 };
@@ -174,6 +188,40 @@ exports.getIndividuals = async function getIndividuals(teamId, heatId, eventId, 
                     }
                 }
             }
+        } catch (error) {
+            console.error(error);
+            rejectedFunc(error);
+        }
+    });
+};
+
+exports.getActiveIndividuals = async function getIndividuals(exceptIndividualId, sinceDtm) {
+    return new Promise((successFunc,rejectedFunc) => {
+        try {
+
+            if(!validate.isInt(exceptIndividualId)){
+                exceptIndividualId = 0;
+            }
+
+            if(!validate.isDate(sinceDtm)){
+                if(typeof process.env.ACTIVE_USER_MIN_DATE !== 'undefined') {
+                    sinceDtm = new Date(process.env.ACTIVE_USER_MIN_DATE);
+                }
+                else{
+                    sinceDtm = new Date();
+                    let sinceYear = sinceDtm.getUTCFullYear() - 1;
+                    let sinceMonth = sinceDtm.getUTCMonth() - 1;
+                    sinceDtm.setUTCFullYear(sinceYear,sinceMonth);
+                }
+            }
+
+            db.searchEntities('fGetActiveIndividuals', [exceptIndividualId, sinceDtm])
+                    .then(data => {
+                        successFunc(data);
+                    })
+                    .catch(error => {
+                        rejectedFunc(error);
+                    }) ;
         } catch (error) {
             console.error(error);
             rejectedFunc(error);

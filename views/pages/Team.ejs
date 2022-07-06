@@ -26,16 +26,17 @@
             <div class="col-10">
                 <select name="EventTeamId" id="selTeam" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                     <% for(var lcv=0; lcv < Teams.length; lcv++) {%>
-                    <option value="/Team?IndividualId=<%=Teams[lcv].TeamCaptain%>&TeamId=<%=Teams[lcv].TeamId%>"><%=Teams[lcv].TeamName%></option>
+                    <option value="/MyTeams?IndividualId=<%=Teams[lcv].TeamCaptain%>&TeamId=<%=Teams[lcv].TeamId%>"
+                    <%if(Teams[lcv].TeamId === Team.TeamId){%> selected <%}%>><%=Teams[lcv].TeamName%></option>
                     <%}%>
                 </select>
             </div>
         </div>
         <%}%>
         <% if(typeof Team !== 'undefined' && typeof Events !== 'undefined') {%>
-        <div class="card">
-            <div class="card-header"><b><%=Team.TeamName%></b></div>
-            <div class="card-body">
+        <div class="card border-primary ">
+            <div class="card-header text-primary "><b><%=Team.TeamName%></b></div>
+            <div class="card-body text-primary list_fa-user-alt">
                 <% if (Team.TeamTaunt !== ''){%>
                 <h5 class="card-title"><%=Team.TeamTaunt%>!</h5>
                 <%}%>
@@ -44,11 +45,7 @@
                     <ul>
                     <% for(var lcv=0; lcv < Members.length; lcv++) {%>
                         <li>
-                            <%if (Members[lcv]['IsTeamCaptain'] === true){%>
-                                <i class="fas fa-user-ninja fa-lg"></i><b>
-                            <%} else {%>
-                                <i class="fas fa-user-alt fa-lg"></i>
-                            <%}%>
+                            <%if (Members[lcv]['IsTeamCaptain'] === true){%><b><%}%>
                             <%=Members[lcv]['FirstName']%> <%=Members[lcv]['LastName']%>
                             <%if (Members[lcv]['IsTeamCaptain'] === true){%></b><%}%>
                         </li>

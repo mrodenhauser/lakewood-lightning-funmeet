@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bc5bc77-4a9f-4153-99d4-3c60eb887eae" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database_entities/individual.js" beforeDir="false" afterPath="$PROJECT_DIR$/database_entities/individual.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -20,17 +20,40 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="564">
-              <caret line="393" column="16" selection-start-line="393" selection-start-column="16" selection-end-line="393" selection-end-column="16" />
+            <state relative-caret-position="646">
+              <caret line="298" column="51" selection-start-line="298" selection-start-column="51" selection-end-line="298" selection-end-column="51" />
               <folding>
+                <element signature="n#!!block;n#validateTeamAndGetIds#0" />
+                <element signature="n#!!block;n#validateTeamAndIds#0" />
+                <element signature="e#2999#4171#0" />
                 <element signature="e#4222#5379#0" />
                 <element signature="e#5427#8224#0" />
                 <element signature="e#8286#9345#0" />
                 <element signature="e#9401#10448#0" />
                 <element signature="e#10502#11739#0" />
+                <element signature="e#14426#15478#0" />
+                <element signature="e#17453#18626#0" />
+                <element signature="e#18681#20455#0" />
                 <element signature="e#20510#21935#0" />
-                <element signature="e#19313#21390#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/databaseOperations.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="70" selection-start-line="70" selection-end-line="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/pages/MyEventList.ejs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="765">
+              <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -38,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database_entities/team.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+            <state relative-caret-position="272">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="e#277#1848#0" />
                 <element signature="e#1937#2700#0" />
@@ -49,14 +72,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/pages/Register.ejs">
+        <entry file="file://$PROJECT_DIR$/views/pages/Team.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="39" column="75" selection-start-line="39" selection-start-column="75" selection-end-line="39" selection-end-column="75" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#7;n#div#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="310">
+              <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="538">
+              <caret line="267" column="29" lean-forward="true" selection-start-line="267" selection-start-column="29" selection-end-line="267" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -64,17 +92,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/database_entities/individual.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/validations.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+            <state relative-caret-position="634">
+              <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
+              <folding>
+                <element signature="e#231#676#0" />
+                <element signature="e#1760#2106#0" />
+                <element signature="e#2173#2519#0" />
+                <element signature="e#3694#4158#0" />
+                <element signature="e#6302#6972#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -82,8 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2629">
-              <caret line="192" column="113" selection-start-line="192" selection-start-column="113" selection-end-line="192" selection-end-column="113" />
+            <state relative-caret-position="425">
+              <caret line="153" column="98" selection-start-line="153" selection-start-column="98" selection-end-line="153" selection-end-column="98" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -92,37 +118,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/pages/Home.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="69" column="140" selection-start-line="69" selection-start-column="140" selection-end-line="69" selection-end-column="140" />
+            <state relative-caret-position="765">
+              <caret line="161" column="19" selection-start-line="161" selection-start-column="19" selection-end-line="161" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -198,7 +197,6 @@
         <option value="$PROJECT_DIR$/routes/API/eventDefinitions.js" />
         <option value="$PROJECT_DIR$/views/pages/login.ejs" />
         <option value="$PROJECT_DIR$/views/pages/team.ejs" />
-        <option value="$PROJECT_DIR$/lib/databaseOperations.js" />
         <option value="$PROJECT_DIR$/views/pages/createHeat.ejs" />
         <option value="$PROJECT_DIR$/views/pages/myEventList.ejs" />
         <option value="$PROJECT_DIR$/views/pages/home.ejs" />
@@ -209,7 +207,6 @@
         <option value="$PROJECT_DIR$/database_entities/meet.js" />
         <option value="$PROJECT_DIR$/database_entities/eventDefinition.js" />
         <option value="$PROJECT_DIR$/routes/API/heatSheets.js" />
-        <option value="$PROJECT_DIR$/routes/API/individuals.js" />
         <option value="$PROJECT_DIR$/routes/API/meets.js" />
         <option value="$PROJECT_DIR$/database_entities/heatSheet.js" />
         <option value="$PROJECT_DIR$/routes/API/index.js" />
@@ -227,21 +224,23 @@
         <option value="$PROJECT_DIR$/views/pages/EventSignUp.ejs" />
         <option value="$PROJECT_DIR$/views/pages/Login.ejs" />
         <option value="$PROJECT_DIR$/routes/API/teams.js" />
-        <option value="$PROJECT_DIR$/public/css/style.css" />
-        <option value="$PROJECT_DIR$/views/pages/MyEventList.ejs" />
         <option value="$PROJECT_DIR$/views/pages/MeetEventList.ejs" />
         <option value="$PROJECT_DIR$/views/partials/nav.ejs" />
-        <option value="$PROJECT_DIR$/views/pages/Team.ejs" />
         <option value="$PROJECT_DIR$/views/pages/Register.ejs" />
-        <option value="$PROJECT_DIR$/views/pages/CreateTeam.ejs" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/routes/API/individuals.js" />
+        <option value="$PROJECT_DIR$/lib/validations.js" />
+        <option value="$PROJECT_DIR$/lib/databaseOperations.js" />
+        <option value="$PROJECT_DIR$/database_entities/team.js" />
+        <option value="$PROJECT_DIR$/database_entities/individual.js" />
         <option value="$PROJECT_DIR$/database.js" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/views/pages/CreateTeam.ejs" />
+        <option value="$PROJECT_DIR$/public/css/style.css" />
+        <option value="$PROJECT_DIR$/views/pages/Team.ejs" />
         <option value="$PROJECT_DIR$/views/pages/Home.ejs" />
-        <option value="$PROJECT_DIR$/database_entities/team.js" />
+        <option value="$PROJECT_DIR$/views/pages/MyEventList.ejs" />
         <option value="$PROJECT_DIR$/routes/index.js" />
-        <option value="$PROJECT_DIR$/lib/validations.js" />
-        <option value="$PROJECT_DIR$/database_entities/individual.js" />
       </list>
     </option>
   </component>
@@ -253,9 +252,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="2361" />
-    <option name="height" value="2123" />
+    <option name="width" value="2141" />
+    <option name="height" value="2111" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -280,7 +278,24 @@
             <path>
               <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
               <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+              <item name="API" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
@@ -292,6 +307,12 @@
               <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lakewood-lightning-fun-meet" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lakewood-lightning-funmeet" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -594,11 +615,25 @@
       <option name="project" value="LOCAL" />
       <updated>1656385011564</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="pretty sure I got the trim logic right">
+      <created>1656387769491</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1656387769491</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Implemented drop-downs for building teams, Individual withdrawals and almost done with team withdrawals">
+      <created>1656992114150</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1656992114150</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="638519000" />
+    <option name="totallyTimeSpent" value="698773000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -610,23 +645,24 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1574" height="1415" extended-state="0" />
+    <frame x="-7" y="0" width="1427" height="1407" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19713728" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21798562" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32735777" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3257989" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49841017" visible="true" weight="0.39750585" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32705882" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49841017" visible="true" weight="0.27058825" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3309804" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50158983" side_tool="true" weight="0.39750585" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960598" weight="0.32735777" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49960598" weight="0.32705882" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -664,8 +700,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Initial commit...working version from 2021" />
-    <MESSAGE value="Added logic for backup credentials" />
     <MESSAGE value="Added better logic for backup credentials" />
     <MESSAGE value="Fixed package.json start" />
     <MESSAGE value="updated backup connection" />
@@ -689,19 +723,16 @@
     <MESSAGE value="Trying to squash some createTeam bugs" />
     <MESSAGE value="Fixed create team issues and added connection logic" />
     <MESSAGE value="Added some .trim() logic...gonna test in TST" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some .trim() logic...gonna test in TST" />
+    <MESSAGE value="pretty sure I got the trim logic right" />
+    <MESSAGE value="Implemented drop-downs for building teams, Individual withdrawals and almost done with team withdrawals" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented drop-downs for building teams, Individual withdrawals and almost done with team withdrawals" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>388</line>
-          <option name="timeStamp" value="350" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>498</line>
+          <line>660</line>
           <option name="timeStamp" value="366" />
         </line-breakpoint>
         <line-breakpoint type="javascript">
@@ -741,41 +772,8 @@
         </line-breakpoint>
         <line-breakpoint type="javascript">
           <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>293</line>
+          <line>447</line>
           <option name="timeStamp" value="419" />
-        </line-breakpoint>
-        <line-breakpoint type="javascript">
-          <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>153</line>
-          <option name="timeStamp" value="422" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>439</line>
-          <option name="timeStamp" value="424" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>471</line>
-          <option name="timeStamp" value="426" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>374</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="428" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>393</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="431" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/database_entities/team.js</url>
-          <line>79</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="442" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/index.js</url>
@@ -784,16 +782,70 @@
           <option name="timeStamp" value="443" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/database_entities/individual.js</url>
-          <line>34</line>
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>421</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="444" />
+          <option name="timeStamp" value="478" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/database_entities/individual.js</url>
-          <line>38</line>
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>427</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="445" />
+          <option name="timeStamp" value="479" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/lib/databaseOperations.js</url>
+          <line>161</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="491" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>544</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="497" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>394</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="502" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>391</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="503" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>402</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="508" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>403</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="511" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>397</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="513" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>415</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="515" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/routes/index.js</url>
+          <line>405</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="517" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -852,14 +904,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/API/events.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tsconfig.json" />
     <entry file="file://$PROJECT_DIR$/test.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -962,21 +1006,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/API/individuals.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="112" column="68" selection-start-line="112" selection-start-column="68" selection-end-line="112" selection-end-column="68" />
-          <folding>
-            <element signature="e#484#1202#0" />
-            <element signature="e#1303#1819#0" />
-            <element signature="e#1909#2422#0" />
-            <element signature="e#2572#3229#0" />
-            <element signature="e#3364#3745#0" />
-            <element signature="e#3880#4448#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1026,20 +1055,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="258" column="1" lean-forward="true" selection-start-line="258" selection-start-column="1" selection-end-line="258" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/MyEventList.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="36" column="54" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database_entities/event.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="963">
@@ -1061,48 +1076,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/Team.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="66" column="27" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="27" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/databaseOperations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="27" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/pages/Home.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="69" column="140" selection-start-line="69" selection-start-column="140" selection-end-line="69" selection-end-column="140" />
         </state>
       </provider>
     </entry>
@@ -1117,34 +1094,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/routes/API/heats.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/API/events.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/validations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/API/individuals.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="99" column="51" lean-forward="true" selection-start-line="99" selection-start-column="43" selection-end-line="99" selection-end-column="58" />
+          <folding>
+            <element signature="e#484#1202#0" />
+            <element signature="e#1303#1819#0" />
+            <element signature="e#1909#2422#0" />
+            <element signature="e#3364#3745#0" />
+            <element signature="e#3880#4448#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="118" selection-start-line="25" selection-start-column="118" selection-end-line="25" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/views/pages/CreateTeam.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2629">
-          <caret line="192" column="113" selection-start-line="192" selection-start-column="113" selection-end-line="192" selection-end-column="113" />
+        <state relative-caret-position="425">
+          <caret line="153" column="98" selection-start-line="153" selection-start-column="98" selection-end-line="153" selection-end-column="98" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/validations.js">
+    <entry file="file://$PROJECT_DIR$/public/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="49" column="33" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
+        <state relative-caret-position="538">
+          <caret line="267" column="29" lean-forward="true" selection-start-line="267" selection-start-column="29" selection-end-line="267" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/Team.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database_entities/individual.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+        <state relative-caret-position="634">
+          <caret line="66" column="8" selection-start-line="66" selection-start-column="8" selection-end-line="66" selection-end-column="8" />
+          <folding>
+            <element signature="e#231#676#0" />
+            <element signature="e#1760#2106#0" />
+            <element signature="e#2173#2519#0" />
+            <element signature="e#3694#4158#0" />
+            <element signature="e#6302#6972#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/databaseOperations.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="70" selection-start-line="70" selection-end-line="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/Home.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="161" column="19" selection-start-line="161" selection-start-column="19" selection-end-line="161" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database_entities/team.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
+        <state relative-caret-position="272">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
           <folding>
             <element signature="e#277#1848#0" />
             <element signature="e#1937#2700#0" />
@@ -1152,18 +1200,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/pages/MyEventList.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="63" column="42" selection-start-line="63" selection-start-column="42" selection-end-line="63" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="393" column="16" selection-start-line="393" selection-start-column="16" selection-end-line="393" selection-end-column="16" />
+        <state relative-caret-position="646">
+          <caret line="298" column="51" selection-start-line="298" selection-start-column="51" selection-end-line="298" selection-end-column="51" />
           <folding>
+            <element signature="n#!!block;n#validateTeamAndGetIds#0" />
+            <element signature="n#!!block;n#validateTeamAndIds#0" />
+            <element signature="e#2999#4171#0" />
             <element signature="e#4222#5379#0" />
             <element signature="e#5427#8224#0" />
             <element signature="e#8286#9345#0" />
             <element signature="e#9401#10448#0" />
             <element signature="e#10502#11739#0" />
+            <element signature="e#14426#15478#0" />
+            <element signature="e#17453#18626#0" />
+            <element signature="e#18681#20455#0" />
             <element signature="e#20510#21935#0" />
-            <element signature="e#19313#21390#0" />
           </folding>
         </state>
       </provider>
