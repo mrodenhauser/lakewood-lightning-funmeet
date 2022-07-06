@@ -122,13 +122,16 @@ exports.getIndividualEventsByIndividual = async function (individualId) {
     });
 };
 
-exports.getTeamEventsByIndividual = async function (individualId) {
+exports.getTeamEventsByIndividual = async function (individualId, captainOnly) {
     return new Promise((successFunc,rejectFunc) =>
     {
+        if (typeof captainOnly === 'undefined' || !validate.isBoolean(captainOnly)){
+            captainOnly = false;
+        }
         try {
             db.searchEntities(
                 'fGetTeamEventsByIndividualId',
-                parseInt(individualId))
+                [parseInt(individualId),captainOnly])
                 .then(data => {
                     successFunc(data);
                 })

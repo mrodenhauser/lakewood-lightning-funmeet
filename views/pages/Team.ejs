@@ -26,7 +26,8 @@
             <div class="col-10">
                 <select name="EventTeamId" id="selTeam" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                     <% for(var lcv=0; lcv < Teams.length; lcv++) {%>
-                    <option value="/Team?IndividualId=<%=Teams[lcv].TeamCaptain%>&TeamId=<%=Teams[lcv].TeamId%>"><%=Teams[lcv].TeamName%></option>
+                    <option value="/MyTeams?IndividualId=<%=Teams[lcv].TeamCaptain%>&TeamId=<%=Teams[lcv].TeamId%>"
+                    <%if(Teams[lcv].TeamId === Team.TeamId){%> selected <%}%>><%=Teams[lcv].TeamName%></option>
                     <%}%>
                 </select>
             </div>

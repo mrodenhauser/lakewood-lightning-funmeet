@@ -340,7 +340,7 @@ router.get('/MyTeamEvents',async(req, res, next) => {
     if (validations.isInt(individualId)){
 
         let ciPromise = dbIndividual.getById(individualId);
-        let iePromise = dbEvent.getTeamEventsByIndividual(individualId);
+        let iePromise = dbEvent.getTeamEventsByIndividual(individualId, forWithdrawal);
 
         Promise.all([ciPromise,iePromise])
             .then(data => {
@@ -372,11 +372,15 @@ router.post('/MyTeamEvents', async (req,res,next) => {
 
     let withdrawalEventId;
 
-    if(typeof (withdrawalSelectionIndex) !== 'undefined' && validations.isInt(withdrawalSelectionIndex)){
+    if(typeof (withdrawalEventIds) !== "undefined" && Array.isArray(withdrawalEventIds) &&
+      typeof (withdrawalSelectionIndex) !== 'undefined' && validations.isInt(withdrawalSelectionIndex)){
         withdrawalEventId = parseInt(withdrawalEventIds[parseInt(withdrawalSelectionIndex)]); //last element
     }
+    else{
+        withdrawalEventId = parseInt(withdrawalEventIds);
+    }
 
-    if (validations.isInt(individualId) && validations.isInt(withdrawalEventId)){
+    if (validations.isInt(individualId) && withdrawalEventId){
 
         //this is what we SHOULD be doing....but I don't have the exact error handling syntax figured out, so I'm
         //continuing this inappropriate pattern of interacting directly with the DB files given my current timeline.
@@ -389,47 +393,41 @@ router.post('/MyTeamEvents', async (req,res,next) => {
 
         //have to figure out the team ID because I designed this wrong....this could have the potential bug of someone
         //being the team captain of two teams doing the same event, but I really shouldn't be allowing that anyway.
-        dbTeam.getTeamsByTeamCaptain(parseInt(individualId))
-            .then(teamsData => {
-                for(let lcv1 = 0; lcv1 < teamsData.length; lcv1++) {
-                    dbEvent.getTeamEventsByTeam(teamsData[lcv1].TeamId)
-                        .then(eventsData => {
-                            for (let lcv2 = 0; lcv2 < eventsData.length; lcv2++){
-                                if (eventsData[lcv2].EventId === withdrawalEventId){
-                                    teamId = teamsData[lcv2].TeamId;
-                                }
-                            }
+        let teamsData = await dbTeam.getTeamsByTeamCaptain(parseInt(individualId))
+        for(let lcv1 = 0; lcv1 < teamsData.length; lcv1++) {
+            let eventsData = await dbEvent.getTeamEventsByTeam(teamsData[lcv1].TeamId)
+            for (let lcv2 = 0; lcv2 < eventsData.length; lcv2++) {
+                if (eventsData[lcv2].EventId === withdrawalEventId) {
+                    teamId = teamsData[lcv1].TeamId;
 
-                            if(teamId > 0) {
-                                Promise.all([dbIndividual.getById(parseInt(individualId)), dbTeam.removeFromEvent(parseInt(withdrawalEventId), teamId)])
-                                    .then(data => {
-                                        let curIndividual = data[0];
-                                        let events = data[1];
-                                        res.render('pages/MyEventList', {
-                                            EventsType: "Team",
-                                            Individual: curIndividual,
-                                            Events: events,
-                                            IsWithdrawal: true
-                                        });
-                                    })
-                                    .catch(error => {
-                                        exHandlers.createGetErrorResponse(next, "Could not remove the team from the event. "
-                                            + error);
-                                    });
-                            }
-                        })
-                        .catch(error => {
-                            exHandlers.createGetErrorResponse(next, "Could not remove the team from the event, because we could not load the events the team is signed up for. "
-                                + error);
-                        });
+                    //stop iterating through both loops after completing this iteration
+                    lcv1 = teamsData.length;
+                    lcv2 = eventsData.length
                 }
-            })
-            .catch(error => {
-                exHandlers.createGetErrorResponse(next, "Could not remove the team from the event because we couldn't look up the team by captain."
-                    + error);
-            });
+            }
 
-
+            if (teamId > 0) {
+                Promise.all([dbIndividual.getById(parseInt(individualId)), dbTeam.removeFromEvent(parseInt(withdrawalEventId), teamId)])
+                    .then(data => {
+                        let curIndividual = data[0];
+                        let events = data[1];
+                        res.render('pages/MyEventList', {
+                            EventsType: "Team",
+                            Individual: curIndividual,
+                            Events: events,
+                            IsWithdrawal: true
+                        });
+                    })
+                    .catch(error => {
+                        exHandlers.createAddCreateErrorResponse(next, "Could not remove the team from the event. "
+                            + error);
+                    });
+            }
+        }
+        if(teamId = 0) {
+            //if we get here...that means we somehow never got a match at the team-to-event level
+            exHandlers.createGetErrorResponse(next, "Unable to find the team event registered for by the individual as a team captain. ");
+        }
     }
     else{
         next(createError("There was an attempt to post a change to MyTeamEvents without an IndividualId or EventId", next));
@@ -598,6 +596,7 @@ router.get('/Team',async(req, res, next) => {
 router.get('/MyTeams', async(req,res,next) =>{
 
     let individualId = req.query['IndividualId'];
+    let qsTeamId = req.query['TeamId'];
 
     if (validations.isInt(individualId)) {
 
@@ -609,6 +608,11 @@ router.get('/MyTeams', async(req,res,next) =>{
 
                 if(typeof teams !== 'undefined' && teams.length > 0) {
                     let teamId = teams[0].TeamId;
+                    if(typeof qsTeamId !== 'undefined' && validations.isInt(qsTeamId)){
+                        teamId = parseInt(qsTeamId);
+                    }
+
+
 
                     Promise.all([
                         dbTeam.getById(teamId),
