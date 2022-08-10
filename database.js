@@ -14,7 +14,7 @@ let config;
 if(process.env.HEROKU_POSTGRESQL_NAVY_URL || process.env.MAX_DB_CONNS) { //running on HEROKU
     config = {
         promiseLib: Promise,
-        connectionString: process.env.HEROKU_POSTGRESQL_NAVY_URL || process.env.DATABASE_URL,
+        connectionString:  process.env.DATABASE_URL, //RE-ENABLE FOR PROD-GRAD PERF: process.env.HEROKU_POSTGRESQL_NAVY_URL ||
         max: process.env.MAX_DB_CONNS || 20,
         ssl: {rejectUnauthorized: false}
     };
